@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
+#import "HotNewsVC.h"
+#import "ImportantLive.h"
+#import "LovedCommunityVC.h"
+#import "AllCommunitiesVC.h"
+#import "FootballDataVC.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +21,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UINavigationController* hotNewsNav=[[UINavigationController alloc]initWithRootViewController:[HotNewsVC new]];
+    
+    UINavigationController* liveNav=[[UINavigationController alloc]initWithRootViewController:[ImportantLive new]];
+    
+    UINavigationController* lovedCommunityNav=[[UINavigationController alloc]initWithRootViewController:[LovedCommunityVC new]];
+    
+    UINavigationController* allCommunitiesNav=[[UINavigationController alloc]initWithRootViewController:[HotNewsVC new]];
+    
+    UINavigationController* footballDataNav=[[UINavigationController alloc]initWithRootViewController:[FootballDataVC new]];
+    
+    UITabBarController* mainTabBar=[[UITabBarController alloc]init];
+    mainTabBar.viewControllers=@[hotNewsNav,liveNav,lovedCommunityNav,allCommunitiesNav,footballDataNav];
+    
     return YES;
 }
 
