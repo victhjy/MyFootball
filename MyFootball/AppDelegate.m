@@ -23,18 +23,36 @@
     // Override point for customization after application launch.
     
     UINavigationController* hotNewsNav=[[UINavigationController alloc]initWithRootViewController:[HotNewsVC new]];
+    hotNewsNav.tabBarItem.title=@"首页";
+    hotNewsNav.tabBarItem.selectedImage=IMAGENAME(@"news_press");
+    hotNewsNav.tabBarItem.image=[IMAGENAME(@"news_normal") imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     UINavigationController* liveNav=[[UINavigationController alloc]initWithRootViewController:[ImportantLive new]];
+    liveNav.tabBarItem.title=@"直播";
+    liveNav.tabBarItem.selectedImage=IMAGENAME(@"game_press");
+    liveNav.tabBarItem.image=IMAGENAME(@"game_normal");
     
     UINavigationController* lovedCommunityNav=[[UINavigationController alloc]initWithRootViewController:[LovedCommunityVC new]];
+    lovedCommunityNav.tabBarItem.title=@"皇马";
+    lovedCommunityNav.tabBarItem.image=IMAGENAME(@"2016");
+    lovedCommunityNav.tabBarItem.selectedImage=IMAGENAME(@"2016");
     
     UINavigationController* allCommunitiesNav=[[UINavigationController alloc]initWithRootViewController:[HotNewsVC new]];
+    allCommunitiesNav.tabBarItem.title=@"圈子";
+    allCommunitiesNav.tabBarItem.selectedImage=IMAGENAME(@"circle_press");
+    allCommunitiesNav.tabBarItem.image=IMAGENAME(@"circle_normal");
     
     UINavigationController* footballDataNav=[[UINavigationController alloc]initWithRootViewController:[FootballDataVC new]];
+    footballDataNav.tabBarItem.title=@"数据";
+    footballDataNav.tabBarItem.image=IMAGENAME(@"data_normal");
+    footballDataNav.tabBarItem.selectedImage=IMAGENAME(@"data_press");
     
     UITabBarController* mainTabBar=[[UITabBarController alloc]init];
     mainTabBar.viewControllers=@[hotNewsNav,liveNav,lovedCommunityNav,allCommunitiesNav,footballDataNav];
+    mainTabBar.tabBar.tintColor=ThemeColor;
     
+    self.window.rootViewController
+    =mainTabBar;
     return YES;
 }
 
