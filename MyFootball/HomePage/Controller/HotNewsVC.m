@@ -7,8 +7,13 @@
 //
 
 #import "HotNewsVC.h"
+#import "DQHotNewsViewController.h"
+#import "DQShipViewController.h"
+#import "DQChineseTeamViewController.h"
 
-@interface HotNewsVC ()
+@interface HotNewsVC ()<LSYViewPagerVCDataSource,LSYViewPagerVCDelegate>
+@property(nonatomic,strong)NSArray* controllersArr;
+@property(nonatomic,strong)NSArray* titlesArr;
 
 @end
 
@@ -16,7 +21,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupControllers];
+    self.delegate=self;
+    self.dataSource=self;
+    self.view.backgroundColor=[UIColor whiteColor];
+    
+    
+    
+    
     // Do any additional setup after loading the view.
+}
+
+-(void)setupControllers{
+    DQHotNewsViewController* hotVC=[[DQHotNewsViewController alloc]init];
+    DQShipViewController* shipVC=[[DQShipViewController alloc]init];
+    DQChineseTeamViewController* chineseTeamVC=[[DQChineseTeamViewController alloc]init];
+    _controllersArr=@[hotVC,shipVC,chineseTeamVC];
+    
+    _titlesArr=@[@"头条",@"懂球号",@"国足"];
+}
+
+
+#pragma mark - ViewPager 代理方法实现
+
+-(NSInteger)numberOfViewControllersInViewPager:(LSYViewPagerVC *)viewPager
+{
+    //返回要实现滚动效果的控制器数量
+    return 3;
+}
+
+-(UIViewController *)viewPager:(LSYViewPagerVC *)viewPager indexOfViewControllers:(NSInteger)index
+{
+    
+    return _controllersArr[index];
+}
+
+-(NSString *)viewPager:(LSYViewPagerVC *)viewPager titleWithIndexOfViewControllers:(NSInteger)index
+{
+    return _titlesArr[index];
+}
+
+-(CGFloat)heightForTitleOfViewPager:(LSYViewPagerVC *)viewPager
+{
+    return 30;
+}
+
+#pragma View Pager Delegate
+-(void)viewPagerViewController:(LSYViewPagerVC *)viewPager willScrollerWithCurrentViewController:(UIViewController *)ViewController
+{
+    
+}
+-(void)viewPagerViewController:(LSYViewPagerVC *)viewPager didFinishScrollWithCurrentViewController:(UIViewController *)viewController
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

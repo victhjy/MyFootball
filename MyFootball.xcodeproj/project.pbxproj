@@ -78,6 +78,11 @@
 		4649CA631D79204700FC1AFA /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649CA291D79204700FC1AFA /* UIImageView+WebCache.m */; };
 		4649CA641D79204700FC1AFA /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649CA2B1D79204700FC1AFA /* UIView+WebCacheOperation.m */; };
 		4649CA671D7925EB00FC1AFA /* AllCommunitiesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649CA661D7925EB00FC1AFA /* AllCommunitiesVC.m */; };
+		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
+		466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */; };
+		466845991D7D3E1200ED2121 /* DQHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */; };
+		4668459C1D7D3E2E00ED2121 /* DQShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */; };
+		4668459F1D7D3E4300ED2121 /* DQChineseTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +252,16 @@
 		4649CA2B1D79204700FC1AFA /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		4649CA651D7925EB00FC1AFA /* AllCommunitiesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCommunitiesVC.h; sourceTree = "<group>"; };
 		4649CA661D7925EB00FC1AFA /* AllCommunitiesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCommunitiesVC.m; sourceTree = "<group>"; };
+		466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMainTabBarController.h; sourceTree = "<group>"; };
+		466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQMainTabBarController.m; sourceTree = "<group>"; };
+		466845941D7D1FE300ED2121 /* LSYViewPagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSYViewPagerVC.h; sourceTree = "<group>"; };
+		466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSYViewPagerVC.m; sourceTree = "<group>"; };
+		466845971D7D3E1200ED2121 /* DQHotNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQHotNewsViewController.h; sourceTree = "<group>"; };
+		466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQHotNewsViewController.m; sourceTree = "<group>"; };
+		4668459A1D7D3E2E00ED2121 /* DQShipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQShipViewController.h; sourceTree = "<group>"; };
+		4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQShipViewController.m; sourceTree = "<group>"; };
+		4668459D1D7D3E4300ED2121 /* DQChineseTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamViewController.h; sourceTree = "<group>"; };
+		4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +312,7 @@
 		4649C9471D791C5300FC1AFA /* MyFootball */ = {
 			isa = PBXGroup;
 			children = (
+				4668458F1D7D1B4A00ED2121 /* HomeTabBar */,
 				4649C9911D791ED000FC1AFA /* Tools */,
 				4649C97B1D791E1C00FC1AFA /* Libraries */,
 				4649C97C1D791E1C00FC1AFA /* DataPage */,
@@ -346,6 +362,7 @@
 		4649C97B1D791E1C00FC1AFA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				466845931D7D1FE300ED2121 /* LSYViewPager */,
 				4649C9A81D79204700FC1AFA /* DYMBanner */,
 				4649C9AF1D79204700FC1AFA /* AFNetworking */,
 				4649C9BD1D79204700FC1AFA /* Masonry */,
@@ -399,9 +416,9 @@
 		4649C9801D791E1C00FC1AFA /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				4649C98D1D791E8E00FC1AFA /* View */,
 				4649C98E1D791E8E00FC1AFA /* Model */,
 				4649C98F1D791E8E00FC1AFA /* Controller */,
+				4649C98D1D791E8E00FC1AFA /* View */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -517,6 +534,12 @@
 			children = (
 				4649C9961D791F4700FC1AFA /* HotNewsVC.h */,
 				4649C9971D791F4700FC1AFA /* HotNewsVC.m */,
+				466845971D7D3E1200ED2121 /* DQHotNewsViewController.h */,
+				466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */,
+				4668459A1D7D3E2E00ED2121 /* DQShipViewController.h */,
+				4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */,
+				4668459D1D7D3E4300ED2121 /* DQChineseTeamViewController.h */,
+				4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -741,6 +764,24 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		4668458F1D7D1B4A00ED2121 /* HomeTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */,
+				466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */,
+			);
+			path = HomeTabBar;
+			sourceTree = "<group>";
+		};
+		466845931D7D1FE300ED2121 /* LSYViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				466845941D7D1FE300ED2121 /* LSYViewPagerVC.h */,
+				466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */,
+			);
+			path = LSYViewPager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -873,6 +914,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4668459F1D7D3E4300ED2121 /* DQChineseTeamViewController.m in Sources */,
 				4649CA2C1D79204700FC1AFA /* DYMBannerPool.m in Sources */,
 				4649CA5C1D79204700FC1AFA /* SDWebImageManager.m in Sources */,
 				4649CA311D79204700FC1AFA /* AFSecurityPolicy.m in Sources */,
@@ -904,6 +946,7 @@
 				4649CA621D79204700FC1AFA /* UIImageView+HighlightedWebCache.m in Sources */,
 				4649C9501D791C5300FC1AFA /* ViewController.m in Sources */,
 				4649CA5E1D79204700FC1AFA /* UIButton+WebCache.m in Sources */,
+				466845991D7D3E1200ED2121 /* DQHotNewsViewController.m in Sources */,
 				4649CA631D79204700FC1AFA /* UIImageView+WebCache.m in Sources */,
 				4649CA321D79204700FC1AFA /* AFURLRequestSerialization.m in Sources */,
 				4649C94D1D791C5300FC1AFA /* AppDelegate.m in Sources */,
@@ -918,12 +961,15 @@
 				4649CA521D79204700FC1AFA /* UIScrollView+MJExtension.m in Sources */,
 				4649C9A71D79200A00FC1AFA /* FootballDataVC.m in Sources */,
 				4649CA671D7925EB00FC1AFA /* AllCommunitiesVC.m in Sources */,
+				466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */,
 				4649CA461D79204700FC1AFA /* MJRefreshAutoGifFooter.m in Sources */,
 				4649C94A1D791C5300FC1AFA /* main.m in Sources */,
 				4649CA3F1D79204700FC1AFA /* ViewController+MASAdditions.m in Sources */,
 				4649CA441D79204700FC1AFA /* MJRefreshFooter.m in Sources */,
 				4649CA3B1D79204700FC1AFA /* MASViewConstraint.m in Sources */,
 				4649CA381D79204700FC1AFA /* MASConstraintMaker.m in Sources */,
+				4668459C1D7D3E2E00ED2121 /* DQShipViewController.m in Sources */,
+				466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */,
 				4649C9A11D791FC700FC1AFA /* LovedCommunityVC.m in Sources */,
 				4649CA591D79204700FC1AFA /* SDWebImageDecoder.m in Sources */,
 				4649CA331D79204700FC1AFA /* AFURLResponseSerialization.m in Sources */,
@@ -1166,6 +1212,7 @@
 				4649C9741D791C5300FC1AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4649C9751D791C5300FC1AFA /* Build configuration list for PBXNativeTarget "MyFootballTests" */ = {
 			isa = XCConfigurationList;
@@ -1174,6 +1221,7 @@
 				4649C9771D791C5300FC1AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4649C9781D791C5300FC1AFA /* Build configuration list for PBXNativeTarget "MyFootballUITests" */ = {
 			isa = XCConfigurationList;
@@ -1182,6 +1230,7 @@
 				4649C97A1D791C5300FC1AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

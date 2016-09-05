@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HotNewsVC : UIViewController
+#import "LSYViewPagerVC.h"
+@interface HotNewsVC : LSYViewPagerVC
 
 @end

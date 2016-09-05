@@ -9,5 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface MyTools : NSObject
-
+/**
+ *  16进制颜色
+ *
+ *  @param hexColorString 16进制值
+ *
+ *  @return 16进制对应颜色
+ */
++ (UIColor *)colorWithHexString:(NSString *)hexColorString;
 @end
