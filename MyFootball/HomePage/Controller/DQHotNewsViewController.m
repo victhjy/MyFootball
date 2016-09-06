@@ -9,8 +9,8 @@
 #import "DQHotNewsViewController.h"
 #import "DYMRollingBannerVC.h"
 
-@interface DQHotNewsViewController ()
-
+@interface DQHotNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView* tableView;
 @end
 
 @implementation DQHotNewsViewController
@@ -21,19 +21,20 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     [self creatingBanner];
+    [self configTableView];
     // Do any additional setup after loading the view.
 }
 
 -(void)creatingBanner{
     _rollingBannerVC = [DYMRollingBannerVC new];
     [self addChildViewController:_rollingBannerVC];
-    [self.view addSubview:_rollingBannerVC.view];
+//    [self.view addSubview:_rollingBannerVC.view];
     
     // The code below lays out the _rollingBannerVC's view using Masonry
-    [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.top.and.right.equalTo(self.view);
-        make.height.equalTo(@180);
-    }];
+//    [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.top.and.right.equalTo(self.view);
+//        make.height.equalTo(@180);
+//    }];
     
     [_rollingBannerVC didMoveToParentViewController:self];
     _rollingBannerVC.rollingInterval=5;
@@ -49,8 +50,47 @@
                                        ];
     
     // Start auto rolling (optional, default does not auto roll)
+    
+}
+
+-(void)configTableView{
+    _tableView=[[UITableView alloc]init];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    
+    _tableView.tableHeaderView=_rollingBannerVC.view;
+    [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(_tableView);
+        make.width.mas_equalTo(UIScreenWidth);
+        make.height.mas_equalTo(180);
+    }];
+    [self.view addSubview:_tableView];
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    
     [_rollingBannerVC startRolling];
 }
+
+#pragma mark TableViewDelegate&&Datasource
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 90;
+}
+
+-(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
