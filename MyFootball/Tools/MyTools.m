@@ -39,4 +39,33 @@
                             blue:((float)b / 255.0f)
                            alpha:1.0f];
 }
+
+/**
+ *  根据字典生成属性
+ *
+ *  @param dic 输入的字典
+ */
++(void)importADic:(NSDictionary*)dic{
+    NSMutableString *codes = [NSMutableString string];
+    [dic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        NSString* code;
+        if ([obj isKindOfClass:[NSString class]]) {
+            code=[NSString stringWithFormat:@"@property(nonatomic,strong)NSString* %@;",key];
+        }
+        else if ([obj isKindOfClass:NSClassFromString(@"__NSCFBoolean")]) {
+            code = [NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@;",key];
+        }
+        else if([obj isKindOfClass:[NSArray class]]){
+            code=[NSString stringWithFormat:@"@property(nonatomic,strong)NSArray* %@;",key];
+        }
+        else if([obj isKindOfClass:[NSDictionary class]]){
+            code=[NSString stringWithFormat:@"@property(nonatomic,strong)NSDictionary* %@;",key];
+        }
+        else if([obj isKindOfClass:[NSNumber class]]){
+            code = [NSString stringWithFormat:@"@property (nonatomic, assign) NSInteger %@;",key];
+        }
+        [codes appendFormat:@"\n%@\n",code];
+    }];
+    NSLog(@"%@",codes);
+}
 @end

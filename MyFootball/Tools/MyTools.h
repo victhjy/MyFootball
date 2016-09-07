@@ -17,4 +17,11 @@
  *  @return 16进制对应颜色
  */
 + (UIColor *)colorWithHexString:(NSString *)hexColorString;
+
+/**
+ *  根据字典生成属性
+ *
+ *  @param dic 输入的字典
+ */
++(void)importADic:(NSDictionary*)dic;
 @end

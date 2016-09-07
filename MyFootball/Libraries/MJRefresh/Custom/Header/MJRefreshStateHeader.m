@@ -121,9 +121,9 @@
 //    [self setTitle:[NSBundle mj_localizedStringForKey:MJRefreshHeaderIdleText] forState:MJRefreshStateIdle];
 //    [self setTitle:[NSBundle mj_localizedStringForKey:MJRefreshHeaderPullingText] forState:MJRefreshStatePulling];
 //    [self setTitle:[NSBundle mj_localizedStringForKey:MJRefreshHeaderRefreshingText] forState:MJRefreshStateRefreshing];
-    [self setTitle:@"刷新成功" forState:MJRefreshStateIdle];
-    [self setTitle:@"释放刷新" forState:MJRefreshStatePulling];
-    [self setTitle:@"～～～刷新中～～～" forState:MJRefreshStateRefreshing];
+    [self setTitle:@"下拉刷新" forState:MJRefreshStateIdle];
+    [self setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
+    [self setTitle:@"懂球帝正在刷新" forState:MJRefreshStateRefreshing];
 }
 
 - (void)placeSubviews

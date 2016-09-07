@@ -22,20 +22,14 @@
     self.view.backgroundColor=[UIColor whiteColor];
     [self creatingBanner];
     [self configTableView];
+    
+
     // Do any additional setup after loading the view.
 }
 
 -(void)creatingBanner{
     _rollingBannerVC = [DYMRollingBannerVC new];
     [self addChildViewController:_rollingBannerVC];
-//    [self.view addSubview:_rollingBannerVC.view];
-    
-    // The code below lays out the _rollingBannerVC's view using Masonry
-//    [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.leading.top.and.right.equalTo(self.view);
-//        make.height.equalTo(@180);
-//    }];
-    
     [_rollingBannerVC didMoveToParentViewController:self];
     _rollingBannerVC.rollingInterval=5;
     

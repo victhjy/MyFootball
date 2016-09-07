@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DQMainTabBarController.h"
+#import "AFNetWorking.h"
 @interface AppDelegate ()
 
 @end
@@ -21,7 +22,7 @@
     self.window.rootViewController
     =[DQMainTabBarController new];
     
-    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [self configNavigationBar];
     return YES;
 }
