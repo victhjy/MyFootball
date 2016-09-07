@@ -99,6 +99,7 @@
 		466845991D7D3E1200ED2121 /* DQHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */; };
 		4668459C1D7D3E2E00ED2121 /* DQShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */; };
 		4668459F1D7D3E4300ED2121 /* DQChineseTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */; };
+		81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +311,8 @@
 		4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQShipViewController.m; sourceTree = "<group>"; };
 		4668459D1D7D3E4300ED2121 /* DQChineseTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamViewController.h; sourceTree = "<group>"; };
 		4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamViewController.m; sourceTree = "<group>"; };
+		81E3F0C51D804DC9002A1387 /* DQNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQNewsDetailViewController.h; sourceTree = "<group>"; };
+		81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQNewsDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +471,7 @@
 		4649C9801D791E1C00FC1AFA /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				81E3F0C41D804DAE002A1387 /* WebViews */,
 				4649C98F1D791E8E00FC1AFA /* Controller */,
 				4649C98E1D791E8E00FC1AFA /* Model */,
 				4649C98D1D791E8E00FC1AFA /* View */,
@@ -886,6 +890,15 @@
 			path = LSYViewPager;
 			sourceTree = "<group>";
 		};
+		81E3F0C41D804DAE002A1387 /* WebViews */ = {
+			isa = PBXGroup;
+			children = (
+				81E3F0C51D804DC9002A1387 /* DQNewsDetailViewController.h */,
+				81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */,
+			);
+			path = WebViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1045,6 +1058,7 @@
 				4649CA481D79204700FC1AFA /* MJRefreshAutoStateFooter.m in Sources */,
 				4649CA2E1D79204700FC1AFA /* DYMRollingBannerVC.m in Sources */,
 				464F05261D7FBB4A00C61574 /* MJPropertyKey.m in Sources */,
+				81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */,
 				4649CA431D79204700FC1AFA /* MJRefreshComponent.m in Sources */,
 				4649CA491D79204700FC1AFA /* MJRefreshBackGifFooter.m in Sources */,
 				4649CA361D79204700FC1AFA /* MASCompositeConstraint.m in Sources */,

@@ -89,8 +89,8 @@
     self.detail.text=model.detail;
     self.commentLabel.text=[NSString stringWithFormat:@"%ld",(long)model.comments_total];
     
-    //“推荐  深度”
-    if (model.label&&model.label.length>0) {
+    //“推荐  深度” 无图集
+    if (model.label&&model.label.length>0&&!model.album) {
         self.label=[UILabel new];
         self.label.textColor=[UIColor whiteColor];
         self.label.backgroundColor=[MyTools colorWithHexString:model.label_color];
@@ -109,19 +109,20 @@
             make.baseline.mas_equalTo(self.contentView).offset(-padding);
         }];
     }
-    else{
-        [self.commentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.contentView).offset(-padding);
-            make.baseline.mas_equalTo(self.contentView).offset(-padding);
-        }];
-    }
+//    else{
+//        [self.commentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.right.mas_equalTo(self.contentView).offset(-padding);
+//            make.baseline.mas_equalTo(self.contentView).offset(-padding);
+//        }];
+//    }
     
-    //图集
-    if (model.album) {
+    //图集 无推荐
+    if (model.album&&!model.label) {
         self.imageViewLeft.hidden=YES;
         self.title.preferredMaxLayoutWidth=UIScreenWidth-padding*2;
         [self.title mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.equalTo(self.contentView).offset(padding);
+            make.left.top.equalTo(self.contentView).offset(padding);
+            make.right.mas_equalTo(self.contentView).offset(-10);
         }];
         NSMutableArray* imagesArr=[NSMutableArray new];
         int count=model.album.total<3?:3;
@@ -143,6 +144,51 @@
         [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(imageView.mas_bottom).offset(padding);
             make.right.equalTo(self.contentView).offset(-padding);
+        }];
+
+    }
+    //图集  推荐
+    if (model.album&&model.label) {
+        self.imageViewLeft.hidden=YES;
+        self.title.preferredMaxLayoutWidth=UIScreenWidth-padding*2;
+        [self.title mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.equalTo(self.contentView).offset(padding);
+            make.right.mas_equalTo(self.contentView).offset(-10);
+        }];
+        NSMutableArray* imagesArr=[NSMutableArray new];
+        int count=model.album.total<3?:3;
+        for (int i=0; i<count; i++) {
+            UIImageView* imageView=[UIImageView new];
+            [self.contentView addSubview:imageView];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:model.album.pics[i]] placeholderImage:IMAGENAME(@"default_image")];
+            [imagesArr addObject:imageView];
+        }
+        for (int i=0; i<count; i++) {
+            UIImageView* imageView=imagesArr[i];
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(CGSizeMake(imageW, imageW*2/3));
+                make.centerX.equalTo(self.contentView.mas_centerX).offset((i-1)*(imageW+padding));
+                make.top.mas_equalTo(self.title.mas_bottom).offset(padding);
+            }];
+        }
+        
+        UIImageView* imageView=[imagesArr firstObject];
+        self.label=[UILabel new];
+        self.label.textColor=[UIColor whiteColor];
+        self.label.backgroundColor=[MyTools colorWithHexString:model.label_color];
+        self.label.font=self.detail.font;
+        self.label.text=model.label;
+        self.label.layer.masksToBounds=YES;
+        self.label.layer.cornerRadius=2;
+        [self.contentView addSubview:self.label];
+        
+        [self.label mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.contentView).offset(-padding);
+            make.centerY.mas_equalTo(self.commentLabel.mas_centerY);
+        }];
+        [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(imageView.mas_bottom).offset(padding);
+            make.right.equalTo(self.label.mas_left).offset(-5);
         }];
     }
     [self setNeedsUpdateConstraints];

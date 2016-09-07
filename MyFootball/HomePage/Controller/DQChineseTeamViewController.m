@@ -25,6 +25,7 @@ static NSString* reuseNormalCell=@"chineseTeamCell";
 static NSString* reuseLabelCell=@"chineseTeamLabelCell";
 static NSString* reuseImagesCell=@"chineseTeamImagesCell";
 static NSString* reuseTopCell=@"chinsesTeamTopCell";
+static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
 
 -(instancetype)init{
     if (self=[super init]) {
@@ -57,6 +58,7 @@ static NSString* reuseTopCell=@"chinsesTeamTopCell";
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseLabelCell];
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseImagesCell];
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseTopCell];
+    [_tableView registerClass:[DQChineseTeamCell class]  forCellReuseIdentifier:reuseImageAndLabel];
     __weak typeof(self) weakself=self;
     _tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakself loadArticlesWithIndex:0];
@@ -94,13 +96,16 @@ static NSString* reuseTopCell=@"chinsesTeamTopCell";
     if (model.top) {
         cell=[tableView dequeueReusableCellWithIdentifier:reuseTopCell];
     }
+    //“图集”
+    else if(model.album&&!model.label){
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
+    }
     //“推荐 深度”
-    else if (model.label){
+    else if (model.label&&!model.album){
         cell=[tableView dequeueReusableCellWithIdentifier:reuseLabelCell];
     }
-    //“图集”
-    else if(model.album){
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
+    else if (model.album&&model.label){
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseImageAndLabel];
     }
     //normal
     else{
@@ -112,6 +117,11 @@ static NSString* reuseTopCell=@"chinsesTeamTopCell";
     
     [cell configWithModel:model];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DQChineseTeamListModel* model=self.articles[indexPath.row];
+    
 }
 
 #pragma mark Request
