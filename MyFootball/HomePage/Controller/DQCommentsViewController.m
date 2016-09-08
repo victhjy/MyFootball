@@ -19,10 +19,11 @@
 @end
 
 @implementation DQCommentsViewController
-
+static NSString* reuseNormalCell=@"reuseNormalCell";
+static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self configTableView];
+    [self configTableView];
     [self loadComments];
     // Do any additional setup after loading the view.
 }
@@ -31,10 +32,12 @@
     _tableView=[UITableView new];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    [self.tableView addSubview:_tableView];
+    [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 50, 0));
     }];
+    [_tableView registerClass:[DQCommentCell class] forCellReuseIdentifier:reuseNormalCell];
+    [_tableView registerClass:[DQCommentCell class] forCellReuseIdentifier:reuseCommentInCommentCell];
     
     _toolBar=[[UIToolbar alloc]init];
     _toolBar.backgroundColor=[MyTools colorWithHexString:@"0xefefef"];
@@ -64,11 +67,16 @@
     NSDictionary* paramDic=@{@"version":@470};
     NSString* newPath=[NSString stringWithFormat:@"%@%ld",APIGetComments,(long)self.articleModel.articleId];
     [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:newPath WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
-        [MyTools importADic:dic];
         self.commentModel=[DQCommentModel mj_objectWithKeyValues:dic];
+        self.normalComments=[DQSingleCommentModel mj_objectArrayWithKeyValuesArray:self.commentModel.comments];
+        self.hotComments=[DQSingleCommentModel mj_objectArrayWithKeyValuesArray:self.commentModel.recommends];
+        
+        [_tableView reloadData];
+//        [_tableView.mj_header endRefreshing];
         
     } WithFailurBlock:^(NSError *error) {
         NSLog(@"request error %@",error);
+//        [_tableView.mj_header endRefreshing];
     }];
 }
 
@@ -79,12 +87,38 @@
     return 2;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(UIView* )tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+
+    UIView* headerView=[UIView new];
+    headerView.backgroundColor=RGB_Point(0.94, 0.94, 0.94);
+    UILabel* title=[UILabel new];
     if (section==0) {
-        return 5;
+        title.text=[NSString stringWithFormat:@"精彩评论 (%lu)",(unsigned long)self.hotComments.count];
     }
     else{
-        return 10;
+        title.text=[NSString stringWithFormat:@"最新评论 (%lu)",(unsigned long)self.commentModel.total];
+    }
+    
+    title.font=[UIFont systemFontOfSize:14];
+    title.textColor=[UIColor blackColor];
+    [headerView addSubview:title];
+    [title mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(headerView);
+        make.left.equalTo(headerView).offset(10);
+    }];
+    return headerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section==0) {
+        return self.hotComments.count;
+    }
+    else{
+        return self.normalComments.count;
     }
 }
 
@@ -93,11 +127,33 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 10;
+    DQSingleCommentModel* model;
+    if (indexPath.section==0) {
+        model=self.hotComments[indexPath.row];
+    }
+    else{
+        model=self.normalComments[indexPath.row];
+    }
+    
+    DQCommentCell* cell=[tableView dequeueReusableCellWithIdentifier:reuseNormalCell];
+    [cell configWithModel:model];
+    
+    return [cell heightForCell]+1;
 }
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
+    DQSingleCommentModel* model;
+    if (indexPath.section==0) {
+        model=self.hotComments[indexPath.row];
+    }
+    else{
+        model=self.normalComments[indexPath.row];
+    }
+    
+    DQCommentCell* cell=[tableView dequeueReusableCellWithIdentifier:reuseNormalCell forIndexPath:indexPath];
+    [cell configWithModel:model];
+    
+    return cell;
 }
 
 
@@ -108,6 +164,20 @@
         _commentModel=[[DQCommentModel alloc]init];
     }
     return _commentModel;
+}
+
+-(NSMutableArray* )hotComments{
+    if (!_hotComments) {
+        _hotComments=[NSMutableArray new];
+    }
+    return _hotComments;
+}
+
+-(NSMutableArray* )normalComments{
+    if (!_normalComments) {
+        _normalComments=[NSMutableArray new];
+    }
+    return _normalComments;
 }
 
 - (void)didReceiveMemoryWarning {

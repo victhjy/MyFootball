@@ -10,4 +10,18 @@
 
 @interface DQUserModel : NSObject
 
+@property(nonatomic,strong)NSString* userId;
+
+@property(nonatomic,strong)NSString* username;
+
+@property(nonatomic,strong)NSString* avatar; //头像
+
+@property(nonatomic,strong)NSString* medal_id;
+
+@property(nonatomic,strong)NSString* medal_desc;
+
+@property(nonatomic,strong)NSString* team_id;
+
+@property(nonatomic,strong)NSString* team_icon;
+
 @end

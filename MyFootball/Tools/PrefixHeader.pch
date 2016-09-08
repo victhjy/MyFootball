@@ -47,6 +47,6 @@
  *  第三种环境
  */
 
-    #define BASEHOST @"http://api.dongqiudi.com/"
+    #define BASEHOST @"http://api.dongqiudi.com"
 
 #endif /* PrefixHeader_pch */

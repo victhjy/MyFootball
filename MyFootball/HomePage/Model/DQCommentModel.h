@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "DQUserModel.h"
 @interface DQCommentModel : NSObject
 
 @property(nonatomic,strong)NSArray* comments;
@@ -28,6 +28,22 @@
 
 @end
 
-@interface DQSingleComment : NSObject
+
+@interface DQSingleCommentModel : NSObject
+
+@property(nonatomic,strong)NSString* singleCommentId;
+
+@property(nonatomic,strong)NSString* content;
+
+@property(nonatomic,assign)NSInteger up;
+
+@property(nonatomic,strong)NSDate* created_at;
+
+@property(nonatomic,assign)BOOL recommend;
+
+@property(nonatomic,strong)DQUserModel* user;
+
+@property(nonatomic,strong)DQSingleCommentModel* quote;
 
 @end
+

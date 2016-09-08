@@ -15,3 +15,8 @@
              };
 }
 @end
+
+@implementation DQSingleCommentModel
+
+
+@end

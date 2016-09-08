@@ -9,5 +9,9 @@
 #import "DQUserModel.h"
 
 @implementation DQUserModel
-
++ (NSDictionary *)replacedKeyFromPropertyName{
+    return @{
+             @"userId" : @"id"
+             };
+}
 @end
