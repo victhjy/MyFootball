@@ -68,4 +68,27 @@
     }];
     NSLog(@"%@",codes);
 }
+
+/**
+ *  根据字符串字体获取字符串大小
+ *
+ *  @param text 字符串
+ *  @param size **
+ *  @param font 字体
+ *
+ *  @return 所占位置
+ */
++(CGSize)string:(NSString* )text boundingRectWithSize:(CGSize)size font:(UIFont* )font
+{
+    NSDictionary *attribute = @{NSFontAttributeName:font};
+    CGSize retSize = [text boundingRectWithSize:size
+                                             options:\
+                      NSStringDrawingTruncatesLastVisibleLine |
+                      NSStringDrawingUsesLineFragmentOrigin |
+                      NSStringDrawingUsesFontLeading
+                                          attributes:attribute
+                                             context:nil].size;
+    return retSize;
+}
+
 @end

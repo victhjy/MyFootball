@@ -15,6 +15,7 @@
 #import "MyTools.h"
 #import "DQAFNetManager.h"
 #import "MJExtension.h"
+#import "DQAllAPI.h"
 
 
 #define IMAGENAME(imageName)  [UIImage imageNamed:imageName]

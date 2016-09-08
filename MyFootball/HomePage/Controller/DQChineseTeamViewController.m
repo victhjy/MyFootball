@@ -9,6 +9,7 @@
 #import "DQChineseTeamViewController.h"
 #import "DQChineseTeamModel.h"
 #import "DQChineseTeamCell.h"
+#import "DQNewsDetailViewController.h"
 @interface DQChineseTeamViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray* articles;
@@ -30,14 +31,13 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
 -(instancetype)init{
     if (self=[super init]) {
         [self configTableView];
-        [self loadArticlesWithIndex:0];
+        [self loadArticles];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
 //    [self configTableView];
 //    [self loadArticlesWithIndex:0];
     
@@ -61,9 +61,12 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
     [_tableView registerClass:[DQChineseTeamCell class]  forCellReuseIdentifier:reuseImageAndLabel];
     __weak typeof(self) weakself=self;
     _tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakself loadArticlesWithIndex:0];
+        [weakself loadArticles];
     }];
-    
+    _tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakself loadMoreArticlesWithModel:self.model];
+    }];
+    _tableView.backgroundColor=[MyTools colorWithHexString:@"0xf4f3f4"];
 }
 
 #pragma mark TableView Delegate
@@ -121,12 +124,17 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DQChineseTeamListModel* model=self.articles[indexPath.row];
+    DQNewsDetailViewController* detail=[[DQNewsDetailViewController alloc]init];
+    detail.detailModel=model;
+    detail.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:detail animated:YES];
     
 }
 
 #pragma mark Request
--(void)loadArticlesWithIndex:(NSInteger)index{
-    [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:@"/app/tabs/iphone/56.json" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+-(void)loadArticles{
+
+    [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
         if (dic) {
             self.model=(DQChineseTeamModel* )[DQChineseTeamModel mj_objectWithKeyValues:dic];
             self.articles=[NSMutableArray new];
@@ -141,4 +149,23 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
             [_tableView.mj_header endRefreshing];
     }];
 }
+
+-(void)loadMoreArticlesWithModel:(DQChineseTeamModel*)model{
+    NSDictionary* paramDic=@{@"after":[NSNumber numberWithInteger:model.min],@"page":[NSNumber numberWithInteger:model.page]};
+    [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
+        if (dic) {
+            self.model=(DQChineseTeamModel* )[DQChineseTeamModel mj_objectWithKeyValues:dic];
+            NSArray* newArticles=[DQChineseTeamListModel mj_objectArrayWithKeyValuesArray:self.model.articles];
+            [self.articles addObjectsFromArray:newArticles];
+            [_tableView reloadData];
+            [_tableView.mj_footer endRefreshing];
+        }
+        
+    } WithFailurBlock:^(NSError *error) {
+        NSLog(@" request error %@",error);
+        [_tableView.mj_footer endRefreshing];
+    }];
+}
+
+
 @end

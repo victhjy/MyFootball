@@ -89,6 +89,14 @@
     self.detail.text=model.detail;
     self.commentLabel.text=[NSString stringWithFormat:@"%ld",(long)model.comments_total];
     
+    //无图集  无推荐
+    if (!model.album&&!model.label) {
+        [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.baseline.equalTo(self.imageViewLeft.mas_bottom);
+            make.right.equalTo(self.contentView).offset(-padding);
+        }];
+    }
+    
     //“推荐  深度” 无图集
     if (model.label&&model.label.length>0&&!model.album) {
         self.label=[UILabel new];
