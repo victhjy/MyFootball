@@ -99,6 +99,7 @@
 		464F052F1D7FBE9000C61574 /* DQChineseTeamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F052E1D7FBE9000C61574 /* DQChineseTeamModel.m */; };
 		464F05351D7FD6FE00C61574 /* DQChineseTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */; };
 		464F05391D80065300C61574 /* DQAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05381D80065300C61574 /* DQAlbum.m */; };
+		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
 		466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */; };
 		466845991D7D3E1200ED2121 /* DQHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */; };
@@ -125,8 +126,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4646A0691D8134E400C12B7E /* DQAllAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAllAPI.h; sourceTree = "<group>"; };
-		4646A06A1D8134E400C12B7E /* DQAllAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAllAPI.m; sourceTree = "<group>"; };
+		4646A0691D8134E400C12B7E /* DQAllAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DQAllAPI.h; path = ../Common/DQAllAPI.h; sourceTree = "<group>"; };
+		4646A06A1D8134E400C12B7E /* DQAllAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DQAllAPI.m; path = ../Common/DQAllAPI.m; sourceTree = "<group>"; };
 		4646A06C1D813E7D00C12B7E /* DQCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommentsViewController.h; sourceTree = "<group>"; };
 		4646A06D1D813E7D00C12B7E /* DQCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommentsViewController.m; sourceTree = "<group>"; };
 		4646A06F1D81401100C12B7E /* DQCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommentCell.h; sourceTree = "<group>"; };
@@ -316,6 +317,8 @@
 		464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamCell.m; sourceTree = "<group>"; };
 		464F05371D80065300C61574 /* DQAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlbum.h; sourceTree = "<group>"; };
 		464F05381D80065300C61574 /* DQAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlbum.m; sourceTree = "<group>"; };
+		465ECD291D8262F500F60284 /* DQAttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAttachmentModel.h; sourceTree = "<group>"; };
+		465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAttachmentModel.m; sourceTree = "<group>"; };
 		466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMainTabBarController.h; sourceTree = "<group>"; };
 		466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQMainTabBarController.m; sourceTree = "<group>"; };
 		466845941D7D1FE300ED2121 /* LSYViewPagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSYViewPagerVC.h; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 			children = (
 				4646A0731D81425B00C12B7E /* DQUserModel.h */,
 				4646A0741D81425B00C12B7E /* DQUserModel.m */,
+				465ECD291D8262F500F60284 /* DQAttachmentModel.h */,
+				465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */,
 			);
 			path = CommonModel;
 			sourceTree = "<group>";
@@ -856,6 +861,8 @@
 		464F05041D7FB00D00C61574 /* DQAPIRequest */ = {
 			isa = PBXGroup;
 			children = (
+				4646A0691D8134E400C12B7E /* DQAllAPI.h */,
+				4646A06A1D8134E400C12B7E /* DQAllAPI.m */,
 				464F05051D7FB08A00C61574 /* DQAllRequest.h */,
 				464F05061D7FB08A00C61574 /* DQAllRequest.m */,
 				464F05081D7FB2E500C61574 /* DQAFNetManager.h */,
@@ -899,8 +906,6 @@
 				4646A0721D81422C00C12B7E /* CommonModel */,
 				464F05371D80065300C61574 /* DQAlbum.h */,
 				464F05381D80065300C61574 /* DQAlbum.m */,
-				4646A0691D8134E400C12B7E /* DQAllAPI.h */,
-				4646A06A1D8134E400C12B7E /* DQAllAPI.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1079,6 +1084,7 @@
 				4649C9981D791F4700FC1AFA /* HotNewsVC.m in Sources */,
 				4649CA551D79204700FC1AFA /* MKAnnotationView+WebCache.m in Sources */,
 				4649CA2D1D79204700FC1AFA /* DYMBannerVC.m in Sources */,
+				465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */,
 				4649CA471D79204700FC1AFA /* MJRefreshAutoNormalFooter.m in Sources */,
 				4649CA371D79204700FC1AFA /* MASConstraint.m in Sources */,
 				4649CA541D79204700FC1AFA /* UIView+MJExtension.m in Sources */,

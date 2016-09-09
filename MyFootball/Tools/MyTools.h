@@ -35,4 +35,13 @@
  *  @return 所占位置
  */
 +(CGSize)string:(NSString* )text boundingRectWithSize:(CGSize)size font:(UIFont* )font;
+
+/**
+ *  字符串转字符串时间
+ *
+ *  @param string 时间格式的字符串
+ *
+ *  @return 时间字符串，月月-日日 时时：分分
+ */
++(NSString* )stringDateFromString:(NSString* )string;
 @end

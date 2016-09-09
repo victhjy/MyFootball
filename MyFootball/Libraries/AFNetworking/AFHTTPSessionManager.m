@@ -123,6 +123,7 @@
                                                  downloadProgress:downloadProgress
                                                           success:success
                                                           failure:failure];
+    
 
     [dataTask resume];
 

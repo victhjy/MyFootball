@@ -91,4 +91,26 @@
     return retSize;
 }
 
+/**
+ *  字符串转字符串时间
+ *
+ *  @param string 时间格式的字符串
+ *
+ *  @return 时间字符串，月月-日日 时时：分分
+ */
++(NSString* )stringDateFromString:(NSString* )string{
+    //设置转换格式
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //NSString转NSDate
+    NSDate *date=[formatter dateFromString:string];
+    
+    NSDateFormatter *stringFormatter = [[NSDateFormatter alloc] init] ;
+    [stringFormatter setDateFormat:@"MM-dd hh:mm"];
+    NSString* returnString=[stringFormatter stringFromDate:date];
+    
+    
+    return returnString;
+}
+
 @end

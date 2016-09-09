@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DQUserModel.h"
+#import "DQAttachmentModel.h"
 @interface DQCommentModel : NSObject
 
 @property(nonatomic,strong)NSArray* comments;
@@ -37,13 +38,17 @@
 
 @property(nonatomic,assign)NSInteger up;
 
-@property(nonatomic,strong)NSDate* created_at;
+@property(nonatomic,strong)NSString* created_at;
 
 @property(nonatomic,assign)BOOL recommend;
 
 @property(nonatomic,strong)DQUserModel* user;
 
 @property(nonatomic,strong)DQSingleCommentModel* quote;
+
+@property(nonatomic,assign)NSInteger attachments_total;
+
+@property(nonatomic,strong)NSArray* attachments;
 
 @end
 

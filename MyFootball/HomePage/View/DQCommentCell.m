@@ -26,19 +26,31 @@
     self.like=[UIImageView new];
     self.commentDetail=[UILabel new];
     
+    self.recommentBG=[UIView new];
+    self.recommentDetail=[UILabel new];
+    self.recommentUserName=[UILabel new];
+    
     self.userName.textColor=ThemeColor;
     self.userName.font=[UIFont systemFontOfSize:12];
     
     self.time.textColor=[UIColor grayColor];
     self.time.font=self.userName.font;
     
-    self.likedCount.textColor=self.userName.textColor;
+    self.likedCount.textColor=self.time.textColor;
     self.likedCount.font=self.userName.font;
     
     self.commentDetail.textColor=[UIColor blackColor];
     self.commentDetail.font=[UIFont systemFontOfSize:14];
     self.commentDetail.numberOfLines=0;
     self.commentDetail.preferredMaxLayoutWidth=UIScreenWidth-30;
+    
+    self.recommentBG.backgroundColor=[MyTools colorWithHexString:@"0xe8e8e8"];
+    self.recommentDetail.textColor=[MyTools colorWithHexString:@"0x8e8e8e"];
+    self.recommentUserName.textColor=[MyTools colorWithHexString:@"0x6c6c6c"];
+    self.recommentUserName.font=[UIFont systemFontOfSize:12];
+    self.recommentDetail.font=self.recommentUserName.font;
+    self.recommentDetail.numberOfLines=0;
+    self.recommentDetail.preferredMaxLayoutWidth=UIScreenWidth-60;
     
     [self.contentView addSubview:self.userPic];
     [self.contentView addSubview:self.userName];
@@ -85,24 +97,128 @@
     }];
     
     
+    //底部线条
+    UILabel* line=[UILabel new];
+    line.backgroundColor=[MyTools colorWithHexString:@"0xdcdcdc"];
+    [self.contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView.mas_bottom);
+        make.height.mas_equalTo(0.5);
+        make.left.right.equalTo(self.contentView);
+    }];
+
+    
 }
 
 -(void)configWithModel:(DQSingleCommentModel* )model{
-//    //是回复的评论
-//    if (model.quote) {
-//        
-//    }
-//    //普通评论
-//    else{
-        [self.userPic sd_setImageWithURL:[NSURL URLWithString:model.user.avatar] placeholderImage:[UIImage imageNamed:@"Defaultuser"]];
-        self.userName.text=model.user.username;
-        self.likedTeamPic.image=[UIImage imageNamed:@"2016"];
+    self.tempHeight=0;
+    //是回复的评论
+    if (model.quote) {
+        [self.contentView addSubview:self.recommentBG];
+        [self.recommentBG addSubview:self.recommentUserName];
+        [self.recommentBG addSubview:self.recommentDetail];
         
-        self.time.text=[NSString stringWithFormat:@"%@",model.created_at];
-        self.likedCount.text=[NSString stringWithFormat:@"%ld",(long)model.up];
+        [self.recommentUserName mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.equalTo(self.recommentBG).offset(10);
+        }];
+        [self.recommentDetail mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.recommentUserName);
+            make.right.bottom.equalTo(self.recommentBG).offset(-10);
+            make.top.equalTo(self.recommentUserName.mas_baseline).offset(10);
+        }];
+        
+        [self.recommentBG mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.userPic.mas_bottom).offset(10);
+            make.left.equalTo(self.contentView).offset(20);
+            make.right.mas_equalTo(self.contentView).offset(-20);
+            make.bottom.equalTo(self.recommentDetail.mas_bottom).offset(10);
+        }];
+        [self.commentDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.recommentBG.mas_bottom).offset(10);
+            make.left.equalTo(self.contentView).offset(10);
+            make.right.equalTo(self.contentView).offset(-20);
+        }];
+        self.recommentUserName.text=model.quote.user.username;
+        self.recommentDetail.text=model.quote.content;
+        
+        //recomment无图
+        if(!model.attachments_total){
+            
+        }
+        //recomment有图
+        else{
+            NSArray* attArr=[DQAttachmentModel mj_objectArrayWithKeyValuesArray:model.attachments];
+            CGFloat width=(UIScreenWidth-(model.attachments_total+1)*10)/model.attachments_total;
+            for (int i=0; i<model.attachments_total; i++) {
+                
+                DQAttachmentModel* attModel=attArr[i];
+                CGFloat height=width*attModel.height/attModel.width;
+                self.tempHeight=self.tempHeight<height?height:self.tempHeight;
+                UIImageView* imageView=[UIImageView new];
+                imageView.contentMode=UIViewContentModeScaleAspectFill;
+                [imageView sd_setImageWithURL:[NSURL URLWithString:attModel.url] placeholderImage:IMAGENAME(@"default_image")];
+                
+                [self.contentView addSubview:imageView];
+                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.mas_equalTo(self.commentDetail.mas_bottom).offset(10);
+                    make.left.mas_equalTo(self.contentView).offset((i-1)*width+10*i);
+                    make.size.mas_equalTo(CGSizeMake(width, height));
+                }];
+            }
+            
+            
+        }
+        
+    }
+    //普通评论
+    else{
+        //normal无图
+        if(!model.attachments_total){
+            
+        }
+        //normal有图
+        else{
+            NSArray* attArr=[DQAttachmentModel mj_objectArrayWithKeyValuesArray:model.attachments];
+            CGFloat width=(UIScreenWidth-(model.attachments_total+1)*10)/model.attachments_total;
+            for (int i=0; i<model.attachments_total; i++) {
+                
+                DQAttachmentModel* attModel=attArr[i];
+                CGFloat height=width*attModel.height/attModel.width;
+                self.tempHeight=self.tempHeight<height?height:self.tempHeight;
+                UIImageView* imageView=[UIImageView new];
+                imageView.contentMode=UIViewContentModeScaleToFill;
+                [imageView sd_setImageWithURL:[NSURL URLWithString:attModel.url] placeholderImage:IMAGENAME(@"default_image")];
+                
+                [self.contentView addSubview:imageView];
+                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.mas_equalTo(self.commentDetail.mas_bottom).offset(10);
+                    make.left.mas_equalTo(self.contentView).offset((i-1)*width+10*i);
+                    make.size.mas_equalTo(CGSizeMake(width, height));
+                }];
+            }
+            
+            
+        }
+
+    }
+    
+    //评论者信息和时间
+    self.commentDetail.text=model.content;
+    [self.userPic sd_setImageWithURL:[NSURL URLWithString:model.user.avatar] placeholderImage:[UIImage imageNamed:@"Defaultuser"]];
+    self.userName.text=model.user.username;
+    self.likedTeamPic.image=[UIImage imageNamed:@"2016"];
+    self.time.text=[NSString stringWithFormat:@"%@",[MyTools stringDateFromString:model.created_at]];
+    self.likedCount.text=[NSString stringWithFormat:@"%ld",(long)model.up];
+    
+    if (model.recommend) {
         self.like.image=[UIImage imageNamed:@"good_yellow"];
-        self.commentDetail.text=model.content;
-//    }
+    }
+    else
+    {
+        self.like.image=[UIImage imageNamed:@"NewGrayUp"];
+    }
+    
+
     
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
@@ -110,9 +226,13 @@
     [self layoutIfNeeded];
 }
 
+//-(void)prepareForReuse{
+//    self.tempHeight=0;
+//}
+
 -(CGFloat)heightForCell{
-    NSLog(@"%f   %f",self.commentDetail.frame.origin.y,self.commentDetail.frame.size.height);
-    return self.commentDetail.frame.origin.y+self.commentDetail.frame.size.height+10;
+//    NSLog(@"%f   %f",self.commentDetail.frame.origin.y,self.commentDetail.frame.size.height);
+    return self.commentDetail.frame.origin.y+self.commentDetail.frame.size.height+10+self.tempHeight;
 }
 
 @end

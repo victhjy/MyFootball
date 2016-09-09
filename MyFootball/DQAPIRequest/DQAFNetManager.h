@@ -26,7 +26,7 @@ typedef enum {
 
 
 + (instancetype)sharedManager;
-
++ (instancetype)sharedManagerAbsoluteUrl;
 - (void)requestWithMethod:(HTTPMethod)method
                  WithPath:(NSString *)path
                WithParams:(NSDictionary*)params
