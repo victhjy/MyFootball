@@ -228,19 +228,19 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
     
     //only recomment
     if (model.quote&&!model.attachments_total) {
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseCommentInCommentCell];
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseCommentInCommentCell forIndexPath:indexPath];
     }
     //recomment && image
     else if (model.quote&&model.attachments_total){
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseCommentInCommentAndImageCell];
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseCommentInCommentAndImageCell forIndexPath:indexPath];
     }
     //normal comment && image
     else if (!model.quote&&model.attachments_total){
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseImageCell];
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseImageCell forIndexPath:indexPath];
     }
     //normal
     else{
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseNormalCell];
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseNormalCell forIndexPath:indexPath];
     }
      cell.selectionStyle=UITableViewCellSelectionStyleNone;
     [cell configWithModel:model];

@@ -44,4 +44,21 @@
  *  @return 时间字符串，月月-日日 时时：分分
  */
 +(NSString* )stringDateFromString:(NSString* )string;
+
+/**
+ *  缓存数据
+ *
+ *  @param object 需要缓存的数据
+ *  @param key    key
+ */
++(void)cacheData:(NSObject* )object withKey:(NSString* )key;
+
+/**
+ *  获取缓存
+ *
+ *  @param key key
+ *
+ *  @return 取出的缓存
+ */
++(NSObject* )getCacheDataForKey:(NSString* )key;
 @end

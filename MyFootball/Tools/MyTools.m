@@ -113,4 +113,31 @@
     return returnString;
 }
 
+/**
+ *  缓存数据
+ *
+ *  @param object 需要缓存的数据
+ *  @param key    key
+ */
++(void)cacheData:(NSObject* )object withKey:(NSString* )key{
+    NSData* data=[NSKeyedArchiver archivedDataWithRootObject:object];
+    NSUserDefaults *userdefault=[NSUserDefaults standardUserDefaults];
+    [userdefault setObject:data forKey:key];
+    [userdefault synchronize];
+}
+
+/**
+ *  获取缓存
+ *
+ *  @param key key
+ *
+ *  @return 取出的缓存
+ */
++(NSObject* )getCacheDataForKey:(NSString* )key{
+    NSUserDefaults *userdefault=[NSUserDefaults standardUserDefaults];
+    NSData* data=[userdefault objectForKey:key];
+    NSObject* obj=[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return obj;
+}
+
 @end

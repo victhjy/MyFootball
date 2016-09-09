@@ -33,15 +33,23 @@
     [_rollingBannerVC didMoveToParentViewController:self];
     _rollingBannerVC.rollingInterval=5;
     
-    NSArray* imageUrl=@[@"http://jiangsu.china.com.cn/uploadfile/2016/0811/1470877745678390.jpg"
-                        , @"http://cmsimg.sports.cn/Image/140829/54-140RZI133354.jpg"
-                        , @"http://sports.scol.com.cn/gjfootball/img/attachement/jpg/site2/20120426/001d093215011103063056.jpg"
-                        , @"http://img3.imgtn.bdimg.com/it/u=3982668665,3056609966&fm=21&gp=0.jpg"
-                        , @"http://cdnq.duitang.com/uploads/item/201502/02/20150202135339_XmNLE.thumb.700_0.jpeg"
-                        ];
+    NSArray* showedImages=[NSArray new];
+    showedImages=(NSArray* )[MyTools getCacheDataForKey:@"DQBannerImages"];
+    if (!showedImages) {
+        UIImage* image1=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://jiangsu.china.com.cn/uploadfile/2016/0811/1470877745678390.jpg"]]];
+        UIImage* image2=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cmsimg.sports.cn/Image/140829/54-140RZI133354.jpg"]]];
+        UIImage* image3=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://sports.scol.com.cn/gjfootball/img/attachement/jpg/site2/20120426/001d093215011103063056.jpg"]]];
+        UIImage* image4=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdnq.duitang.com/uploads/item/201502/02/20150202135339_XmNLE.thumb.700_0.jpeg"]]];
+        
+        showedImages=@[image1,image2,image3,image4];
+        [MyTools cacheData:showedImages withKey:@"DQBannerImages"];
+    }
+
     // setup the rolling images
-    _rollingBannerVC.rollingImages = @[[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl[0]]]],[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl[1]]]],[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl[2]]]],[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl[4]]]]
-                                       ];
+
+//                                       ];
+    _rollingBannerVC.rollingImages = showedImages;
+
     
     // Start auto rolling (optional, default does not auto roll)
     
