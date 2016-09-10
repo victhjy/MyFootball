@@ -85,8 +85,8 @@
     }];
     [self.like mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-10);
-        make.bottom.equalTo(self.likedCount.mas_baseline);
-//        make.centerY.equalTo(self.likedCount);
+//        make.bottom.equalTo(self.likedCount.mas_baseline);
+        make.centerY.equalTo(self.likedCount);
         make.size.mas_equalTo(CGSizeMake(15, 15));
     }];
     
@@ -147,22 +147,28 @@
         }
         //recomment有图
         else{
+            NSMutableArray* imagesArr=[NSMutableArray new];
             NSArray* attArr=[DQAttachmentModel mj_objectArrayWithKeyValuesArray:model.attachments];
             CGFloat width=(UIScreenWidth-(model.attachments_total+1)*10)/model.attachments_total;
             for (int i=0; i<model.attachments_total; i++) {
                 
                 DQAttachmentModel* attModel=attArr[i];
-                CGFloat height=width*attModel.height/attModel.width;
-                self.tempHeight=self.tempHeight<height?height:self.tempHeight;
+                //                CGFloat height=width*attModel.height/attModel.width;
+                //                self.tempHeight=self.tempHeight<height?height:self.tempHeight;
+                self.tempHeight=width;
                 UIImageView* imageView=[UIImageView new];
-                imageView.contentMode=UIViewContentModeScaleAspectFill;
+                imageView.contentMode=UIViewContentModeScaleToFill;
                 [imageView sd_setImageWithURL:[NSURL URLWithString:attModel.url] placeholderImage:IMAGENAME(@"default_image")];
                 
                 [self.contentView addSubview:imageView];
-                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                [imagesArr addObject:imageView];
+            }
+            for (int i=0; i<model.attachments_total; i++) {
+                self.tempImageView=imagesArr[i];
+                [self.tempImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.top.mas_equalTo(self.commentDetail.mas_bottom).offset(10);
                     make.left.mas_equalTo(self.contentView).offset((i-1)*width+10*i);
-                    make.size.mas_equalTo(CGSizeMake(width, height));
+                    make.size.mas_equalTo(CGSizeMake(width, width));
                 }];
             }
             
@@ -178,22 +184,28 @@
         }
         //normal有图
         else{
+            NSMutableArray* imagesArr=[NSMutableArray new];
             NSArray* attArr=[DQAttachmentModel mj_objectArrayWithKeyValuesArray:model.attachments];
             CGFloat width=(UIScreenWidth-(model.attachments_total+1)*10)/model.attachments_total;
             for (int i=0; i<model.attachments_total; i++) {
                 
                 DQAttachmentModel* attModel=attArr[i];
-                CGFloat height=width*attModel.height/attModel.width;
-                self.tempHeight=self.tempHeight<height?height:self.tempHeight;
+//                CGFloat height=width*attModel.height/attModel.width;
+//                self.tempHeight=self.tempHeight<height?height:self.tempHeight;
+                self.tempHeight=width+10;
                 UIImageView* imageView=[UIImageView new];
                 imageView.contentMode=UIViewContentModeScaleToFill;
                 [imageView sd_setImageWithURL:[NSURL URLWithString:attModel.url] placeholderImage:IMAGENAME(@"default_image")];
                 
                 [self.contentView addSubview:imageView];
-                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                [imagesArr addObject:imageView];
+            }
+            for (int i=0; i<model.attachments_total; i++) {
+                self.tempImageView=imagesArr[i];
+                [self.tempImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.top.mas_equalTo(self.commentDetail.mas_bottom).offset(10);
                     make.left.mas_equalTo(self.contentView).offset((i-1)*width+10*i);
-                    make.size.mas_equalTo(CGSizeMake(width, height));
+                    make.size.mas_equalTo(CGSizeMake(width, width));
                 }];
             }
             

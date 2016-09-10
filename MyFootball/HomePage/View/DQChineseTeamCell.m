@@ -209,9 +209,9 @@
     return self.commentLabel.frame.origin.y+self.commentLabel.frame.size.height+10;
 }
 
--(void)prepareForReuse{
-    [super prepareForReuse];
-    self.label.text=nil;
-}
+//-(void)prepareForReuse{
+//    [super prepareForReuse];
+//    self.label.text=nil;
+//}
 
 @end

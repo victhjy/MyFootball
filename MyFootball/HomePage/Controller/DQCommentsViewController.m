@@ -9,7 +9,7 @@
 #import "DQCommentsViewController.h"
 #import "DQCommentCell.h"
 #import "DQCommentModel.h"
-@interface DQCommentsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DQCommentsViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)UIToolbar* toolBar;
@@ -34,6 +34,9 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
     _tableView=[UITableView new];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.emptyDataSetSource=self;
+    _tableView.emptyDataSetDelegate=self;
+    _tableView.tableFooterView=[UIView new];
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -106,6 +109,7 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
              [_tableView.mj_footer endRefreshing];
         }else{
             [_tableView.mj_footer endRefreshingWithNoMoreData];
+//            [_tableView.mj_footer endRefreshing];
         }
 
     } WithFailurBlock:^(NSError *error) {
@@ -149,7 +153,12 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    if (section==0||section==1) {
+        return 30;
+    }
+    else{
+        return 0.0000000001;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -162,8 +171,11 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
         }
         
     }
-    else{
+    else if(section==1){
         return self.normalComments.count;
+    }
+    else{
+        return 0;
     }
 }
 
@@ -250,6 +262,13 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+
+#pragma mark DZNEmpty
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"navLeftLogo"];
 }
 
 

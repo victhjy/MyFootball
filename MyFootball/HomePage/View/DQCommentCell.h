@@ -23,6 +23,8 @@
 @property(nonatomic,strong)UILabel* recommentUserName;
 @property(nonatomic,strong)UILabel* recommentDetail;
 
+@property(nonatomic,strong)UIImageView* tempImageView;
+
 @property(nonatomic,assign)CGFloat tempHeight;
 -(void)configWithModel:(DQSingleCommentModel* )model;
 -(CGFloat)heightForCell;
