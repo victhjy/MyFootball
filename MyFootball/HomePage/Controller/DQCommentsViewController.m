@@ -75,6 +75,7 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
     _tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakself loadMoreComments];
     }];
+    _tableView.mj_footer.automaticallyHidden=YES;
     
 }
 
@@ -109,7 +110,6 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
              [_tableView.mj_footer endRefreshing];
         }else{
             [_tableView.mj_footer endRefreshingWithNoMoreData];
-//            [_tableView.mj_footer endRefreshing];
         }
 
     } WithFailurBlock:^(NSError *error) {
@@ -179,9 +179,10 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
-}
+//使用估算高度后headerViewInSection在上拉加载更多后会不准确
+//-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 80;
+//}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     DQSingleCommentModel* model;
@@ -268,9 +269,18 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIImage imageNamed:@"navLeftLogo"];
+    return [UIImage imageNamed:@"2016"];
+    
 }
 
+-(NSAttributedString* )titleForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString* text=@"HJYDQD Tell You \n No More Data";
+    return [[NSAttributedString alloc]initWithString:text attributes:nil];
+}
+
+- (void)emptyDataSetWillDisappear:(UIScrollView *)scrollView{
+    
+}
 
 #pragma mark getter&& setter
 

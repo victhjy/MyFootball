@@ -43,6 +43,11 @@
     self.commentLabel.textColor=self.detail.textColor;
     [self.contentView addSubview:self.commentLabel];
     
+    self.topLabel=[UILabel new];
+    self.topLabel.font=[UIFont systemFontOfSize:11];
+    self.topLabel.textColor=ThemeColor;
+    self.topLabel.text=@"置顶";
+    
     
 }
 
@@ -88,6 +93,13 @@
     self.title.text=model.title;
     self.detail.text=model.detail;
     self.commentLabel.text=[NSString stringWithFormat:@"%ld",(long)model.comments_total];
+    
+    if (model.top) {
+        [self.contentView addSubview:self.topLabel];
+        [self.topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.equalTo(self.contentView);
+        }];
+    }
     
     //无图集  无推荐
     if (!model.album&&!model.label) {

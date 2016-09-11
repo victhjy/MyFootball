@@ -13,6 +13,8 @@
 @interface DQNewsDetailViewController ()<WKNavigationDelegate>
 @property(nonatomic,strong)UIToolbar* toolBar;
 @property(nonatomic,strong)WKWebView* wkWebView;
+@property(nonatomic,strong)UILabel* loadingLable;
+@property(nonatomic,strong)UILabel* loadErrorLable;
 @end
 
 @implementation DQNewsDetailViewController
@@ -20,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configWKWebView];
-    [self configNavigationItem];
     // Do any additional setup after loading the view.
 }
 
@@ -39,31 +40,40 @@
         make.width.mas_equalTo(UIScreenWidth);
         make.top.mas_equalTo(self.wkWebView.mas_bottom);
     }];
+    
+    self.loadingLable=[UILabel new];
+    self.loadingLable.text=@"努力加载中";
+    self.loadingLable.font=[UIFont systemFontOfSize:15];
+    self.loadingLable.textColor=ThemeColor;
+    
+    self.loadErrorLable=[UILabel new];
+    self.loadErrorLable.text=@"加载失败";
+    self.loadErrorLable.font=[UIFont systemFontOfSize:15];
+    self.loadErrorLable.textColor=ThemeColor;
+    
+    [self.view addSubview:self.loadingLable];
+    [self.view addSubview:self.loadErrorLable];
+    
+    [self.loadingLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view);
+    }];
+    [self.loadErrorLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.view);
+        make.centerX.equalTo(self.view);
+    }];
+    self.loadErrorLable.hidden=YES;
+    self.loadingLable.hidden=YES;
 }
 
 -(void)configNavigationItem{
-//    UIView* commentButton=[UIView new];
-//    commentButton.backgroundColor=ThemeColor;
-//    commentButton.layer.borderWidth=1;
-//    commentButton.layer.borderColor=[MyTools colorWithHexString:@"0x48d467"].CGColor;
-//    
-//    
+   
     UILabel* commentLabel=[UILabel new];
     commentLabel.text=[NSString stringWithFormat:@"%ld条评论",self.detailModel.comments_total];
     commentLabel.font=[UIFont systemFontOfSize:12];
     CGSize labelSize=[MyTools string:commentLabel.text boundingRectWithSize:CGSizeMake(320, 0) font:commentLabel.font];
     commentLabel.textColor=[UIColor whiteColor];
 
-//    [commentButton addSubview:commentLabel];
-//    [commentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.mas_equalTo(commentButton).offset(-10);
-//        make.centerY.mas_equalTo(commentButton);
-//        make.size.mas_equalTo(labelSize);
-//    }];
-//    
-//    UITapGestureRecognizer* gesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goToComment)];
-//    commentButton.userInteractionEnabled=YES;
-//    [commentButton addGestureRecognizer:gesture];
     UIButton* commentButton=[[UIButton alloc]init];
     commentButton.frame=CGRectMake(0, 0, labelSize.width+5, labelSize.height+5);
     [commentButton setTitle:[NSString stringWithFormat:@"%ld条评论",self.detailModel.comments_total] forState:UIControlStateNormal];
@@ -88,19 +98,25 @@
 
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
-    
+    NSLog(@"准备开始");
+    self.loadingLable.hidden=NO;
 }
 // 当内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
-    
+    NSLog(@"提交导航");
 }
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
+    //加载完成后再显示右上角的评论数
+     [self configNavigationItem];
+    self.loadingLable.hidden=YES;
+    NSLog(@"结束导航");
 }
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{
-    
+    NSLog(@"加载失败");
+    self.loadErrorLable.hidden=NO;
 }
 
 
