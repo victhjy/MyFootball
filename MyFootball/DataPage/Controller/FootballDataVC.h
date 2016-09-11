@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FootballDataVC : UIViewController
+#import "LSYViewPagerVC.h"
+@interface FootballDataVC : LSYViewPagerVC
 
 @end

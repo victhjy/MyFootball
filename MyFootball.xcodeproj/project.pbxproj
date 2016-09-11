@@ -99,6 +99,7 @@
 		464F052F1D7FBE9000C61574 /* DQChineseTeamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F052E1D7FBE9000C61574 /* DQChineseTeamModel.m */; };
 		464F05351D7FD6FE00C61574 /* DQChineseTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */; };
 		464F05391D80065300C61574 /* DQAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05381D80065300C61574 /* DQAlbum.m */; };
+		4655A7B01D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */; };
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
 		466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */; };
@@ -318,6 +319,8 @@
 		464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamCell.m; sourceTree = "<group>"; };
 		464F05371D80065300C61574 /* DQAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlbum.h; sourceTree = "<group>"; };
 		464F05381D80065300C61574 /* DQAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlbum.m; sourceTree = "<group>"; };
+		4655A7AE1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamsRankVCViewController.h; sourceTree = "<group>"; };
+		4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamsRankVCViewController.m; sourceTree = "<group>"; };
 		465ECD291D8262F500F60284 /* DQAttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAttachmentModel.h; sourceTree = "<group>"; };
 		465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAttachmentModel.m; sourceTree = "<group>"; };
 		466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMainTabBarController.h; sourceTree = "<group>"; };
@@ -531,6 +534,8 @@
 			children = (
 				4649C9A51D79200A00FC1AFA /* FootballDataVC.h */,
 				4649C9A61D79200A00FC1AFA /* FootballDataVC.m */,
+				4655A7AE1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.h */,
+				4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1088,6 +1093,7 @@
 				464F05351D7FD6FE00C61574 /* DQChineseTeamCell.m in Sources */,
 				4649CA2C1D79204700FC1AFA /* DYMBannerPool.m in Sources */,
 				4646A06E1D813E7D00C12B7E /* DQCommentsViewController.m in Sources */,
+				4655A7B01D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m in Sources */,
 				4649CA5C1D79204700FC1AFA /* SDWebImageManager.m in Sources */,
 				4649CA311D79204700FC1AFA /* AFSecurityPolicy.m in Sources */,
 				464F05071D7FB08A00C61574 /* DQAllRequest.m in Sources */,

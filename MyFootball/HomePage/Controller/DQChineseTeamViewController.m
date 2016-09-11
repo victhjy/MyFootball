@@ -53,6 +53,7 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 50, 0));
     }];
+    _tableView.scrollsToTop=YES;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseNormalCell];
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseLabelCell];

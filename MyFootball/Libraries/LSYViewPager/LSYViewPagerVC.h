@@ -58,7 +58,20 @@
 -(CGFloat)heightForHeaderOfViewPager:(LSYViewPagerVC *)viewPager;
 @end
 
+@interface LSYViewPagerTitleButton : UIButton
+
+@end
 @interface LSYViewPagerVC : UIViewController
+{
+    NSInteger numberOfViewController;   //VC的总数量
+    NSArray *arrayOfViewController;     //存放VC的数组
+    NSArray *arrayOfViewControllerButton;    //存放VC Button的数组
+    UIView *headerView;     //头部视图
+    CGRect oldRect;   //用来保存title布局的Rect
+    LSYViewPagerTitleButton *oldButton;
+    NSInteger pendingVCIndex;   //将要显示的View Controller 索引
+    
+}
 @property (nonatomic,weak) id<LSYViewPagerVCDataSource>dataSource;
 @property (nonatomic,weak) id<LSYViewPagerVCDelegate>delegate;
 /**
@@ -70,6 +83,3 @@
 
 #pragma mark View Controller Title Button
 
-@interface LSYViewPagerTitleButton : UIButton
-
-@end

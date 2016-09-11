@@ -8,29 +8,29 @@
 
 #import "LSYViewPagerVC.h"
 
-@interface LSYViewPagerVC ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
-{
-    NSInteger numberOfViewController;   //VC的总数量
-    NSArray *arrayOfViewController;     //存放VC的数组
-    NSArray *arrayOfViewControllerButton;    //存放VC Button的数组
-    UIView *headerView;     //头部视图
-    CGRect oldRect;   //用来保存title布局的Rect
-    LSYViewPagerTitleButton *oldButton;
-    NSInteger pendingVCIndex;   //将要显示的View Controller 索引
-    
-}
+@interface LSYViewPagerVC ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIScrollViewDelegate>
+
 @property (nonatomic,strong) UIPageViewController *pageViewController;
 @property (nonatomic,strong) UIScrollView *titleBackground;
 @end
 
 @implementation LSYViewPagerVC
-
+{
+    NSInteger _flagTemp;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.view addSubview:self.titleBackground];
+    
+    for (UIView *v in self.pageViewController.view.subviews) {
+        if ([v isKindOfClass:[UIScrollView class]]) {
+//            UIScrollView* scr=(UIScrollView *)v;
+            ((UIScrollView *)v).delegate = self;
+        }
+    }
 }
 -(UIPageViewController *)pageViewController
 {
@@ -38,6 +38,7 @@
         _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
+        
 
     }
     return _pageViewController;
@@ -145,6 +146,7 @@
     sender.selected = YES;
     oldButton = sender;
     NSInteger index = [arrayOfViewControllerButton indexOfObject:sender];
+    _flagTemp=index;
     [_pageViewController setViewControllers:@[arrayOfViewController[index]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     [self scrollViewOffset:sender];
     
@@ -179,6 +181,7 @@
 {
     if (completed) {
         if (pendingVCIndex != [arrayOfViewController indexOfObject:previousViewControllers[0]]) {
+            _flagTemp=pendingVCIndex;
             [self p_titleSelectIndex:pendingVCIndex];
             if ([self.delegate respondsToSelector:@selector(viewPagerViewController:didFinishScrollWithCurrentViewController:)]) {
                 [self.delegate viewPagerViewController:self didFinishScrollWithCurrentViewController:[arrayOfViewController objectAtIndex:pendingVCIndex]];
@@ -202,8 +205,8 @@
         return nil;
     }
     else{
-        
-        return arrayOfViewController[--index];
+        --index;
+        return arrayOfViewController[index];
         
     }
 }
@@ -214,8 +217,8 @@
         return nil;
     }
     else{
-        
-        return arrayOfViewController[++index];
+        ++index;
+        return arrayOfViewController[index];
     }
 }
 -(void)p_titleSelectIndex:(NSInteger)index
@@ -239,6 +242,27 @@
     NSDictionary *fontAttribute = @{NSFontAttributeName : [UIFont systemFontOfSize:14]};
     CGSize fontSize = [text boundingRectWithSize:CGSizeMake(MAXFLOAT, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:fontAttribute context:nil].size;
     return fontSize.width+padding;
+}
+
+#pragma -mark scrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (_flagTemp==0) {
+        if (scrollView.contentOffset.x<UIScreenWidth) {
+            scrollView.scrollEnabled=NO;
+        }
+        else{
+            scrollView.scrollEnabled=YES;
+        }
+    }
+    if (_flagTemp==self->arrayOfViewController.count-1) {
+        if (scrollView.contentOffset.x>UIScreenWidth) {
+            scrollView.scrollEnabled=NO;
+        }
+        else{
+            scrollView.scrollEnabled=YES;
+        }
+    }
+
 }
 
 @end
@@ -269,4 +293,6 @@
         CGContextStrokePath(ctx);
     }
 }
+
+
 @end
