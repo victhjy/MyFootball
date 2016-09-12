@@ -233,7 +233,7 @@
         
         _titleBackground.contentSize = CGSizeMake(((UIButton *)arrayOfViewControllerButton.lastObject).frame.size.width+((UIButton *)arrayOfViewControllerButton.lastObject).frame.origin.x, _titleBackground.frame.size.height);
     }
-    _pageViewController.view.frame = CGRectMake(0, _titleBackground.frame.origin.y+_titleBackground.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-(_titleBackground.frame.origin.y+_titleBackground.frame.size.height));
+    _pageViewController.view.frame = CGRectMake(0, _titleBackground.frame.origin.y+_titleBackground.frame.size.height-1, self.view.frame.size.width, self.view.frame.size.height-(_titleBackground.frame.origin.y+_titleBackground.frame.size.height));
 }
 #pragma maek 计算字体宽度
 -(CGFloat)p_fontText:(NSString *)text withFontHeight:(CGFloat)height
