@@ -10,7 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "DQCommentsViewController.h"
 
-@interface DQNewsDetailViewController ()<WKNavigationDelegate>
+@interface DQNewsDetailViewController ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
 @property(nonatomic,strong)UIToolbar* toolBar;
 @property(nonatomic,strong)WKWebView* wkWebView;
 @property(nonatomic,strong)UILabel* loadingLable;
@@ -30,7 +30,14 @@
     [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 50, 0));
     }];
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.url]]];
+    NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.url]];
+    NSMutableURLRequest* mutableRequest=[request mutableCopy];
+    [mutableRequest addValue:@"device_id=eyJpdiI6IkNsdjJhdUd4aVJYQlBha3d3cGl0dFdTbU00eU9vcXU2MFZONWlNNWNjbEE9IiwidmFsdWUiOiJDU2pYSEtsVUYrYm9hditXZk4zSnB6ZkFjZzdvM25JVHk0djZ6cjk5SVNVPSIsIm1hYyI6IjNiNThmZWYzMWRjMTk4YTkyMDM4YjYwNjRiNmM1YTVhMjA4M2RkYjBlNDM4YmMyNjJhNTI1OWZiZGFmYmI1MDMifQ%3D%3D; laravel_session=eyJpdiI6ImhaN3pvd1RNeWRRZ0Ywbm85elJvbFhNenk4R3l5MFpDcWtvN2poM3hqcEE9IiwidmFsdWUiOiJIdkhqcjgxcGZUMFdaYnJBMFY4TXo0SFl5K2hqTklaQWpMMzVReTZjdmVcL0xuUTdmbXNcL01lXC9objZlSEIxVjQzV1Mwb3hHc3RqM1hObjBwQlZvTmVYdz09IiwibWFjIjoiODQwY2I4MzMzOWJjYmQzMzRhZmVhZDQ1YzBjODQ2ZDFlMmQxODBmYzJhOGE1MzQ3NThkMzQyOGI4N2NjZGFiNCJ9" forHTTPHeaderField:@"Cookie"];
+    
+    [mutableRequest addValue:@"ZpUDJ4pc8QuyckYG0C39qnKqiRICvxOI9Sxzbp8U3iWq0lUUFxCjpVMpJZd2JaNd" forHTTPHeaderField:@"Authorization"];
+    
+    request=[mutableRequest copy];
+    [self.wkWebView loadRequest:request];
     NSLog(@"DQD WKWebView url %@",self.detailModel.url);
     
     
@@ -119,24 +126,51 @@
     self.loadErrorLable.hidden=NO;
 }
 
+// 接收到服务器跳转请求之后调用
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+    
+}
+// 在收到响应后，决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+    if ([[navigationResponse.response.URL.absoluteString substringToIndex:4] isEqualToString:@"dong"]) {
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        NSLog(@"响应后%@",navigationResponse.response.URL.absoluteString);
+    }
+    else{
+        decisionHandler(WKNavigationResponsePolicyAllow);
+    }
+    
+}
+// 在发送请求之前，决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    if ([[navigationAction.request.URL.absoluteString substringToIndex:4] isEqualToString:@"dong"]) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        NSLog(@"响应前%@",navigationAction.request.URL.absoluteString);
+        
+    }
+    else{
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+    
+}
 
-//// 接收到服务器跳转请求之后调用
-//- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
-//    
-//}
-//// 在收到响应后，决定是否跳转
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
-//    
-//}
-//// 在发送请求之前，决定是否跳转
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-//    
-//}
+#pragma mark  UIDelegate
+
+
+#pragma mark WKScriptMessageHandler
+-(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
+    NSLog(@"%@",message);
+}
+
 #pragma mark getter&&setter
 
 -(WKWebView* )wkWebView{
     if (!_wkWebView) {
-        _wkWebView=[WKWebView new];
+        
+        WKWebViewConfiguration* config = [WKWebViewConfiguration new];
+        //注册js方法
+        [config.userContentController addScriptMessageHandler:self name:@"herf"];
+        _wkWebView=[[WKWebView alloc]initWithFrame:self.view.bounds configuration:config];;
         _wkWebView.navigationDelegate=self;
     }
     return _wkWebView;
