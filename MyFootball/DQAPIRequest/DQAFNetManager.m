@@ -82,17 +82,17 @@
 //                NSLog(@"JSON: %@", responseObject);
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
+                DQLog(@"Error: %@", error);
                 failure(error);
             }];
             break;
         }
         case POST:{
             [self POST:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
-                NSLog(@"JSON: %@", responseObject);
+                DQLog(@"JSON: %@", responseObject);
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
+                DQLog(@"Error: %@", error);
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:error.localizedDescription delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
                 failure(error);

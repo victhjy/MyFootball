@@ -522,7 +522,7 @@ forHTTPHeaderField:(NSString *)field
         [mutableRequest setHTTPBody:[query dataUsingEncoding:self.stringEncoding]];
     }
     //自定义GET请求方法时的打印
-    NSLog(@"DQD request url:%@",mutableRequest.URL.absoluteString);
+    DQLog(@"DQD request url:%@",mutableRequest.URL.absoluteString);
     return mutableRequest;
 }
 

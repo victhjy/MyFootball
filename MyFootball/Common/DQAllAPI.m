@@ -13,7 +13,7 @@ NSString* const APIGetComments=@"/articles/comments/";
 NSString* const APIGetDataTeamRanking=@"/data/team_ranking/";
 NSString* const APIGetDataGoalRanking=@"/data/goal_ranking/";
 NSString* const APIGetDataAssistRanking=@"/data/assist_ranking/";
-NSString* const APIGetDataGameRanking=@"/data/待定/";
+NSString* const APIGetDataGameRanking=@"/data/schedule";
 @implementation DQAllAPI
 
 @end

@@ -38,7 +38,7 @@
     
     request=[mutableRequest copy];
     [self.wkWebView loadRequest:request];
-    NSLog(@"DQD WKWebView url %@",self.detailModel.url);
+    DQLog(@"DQD WKWebView url %@",self.detailModel.url);
     
     
     [self.view addSubview:self.toolBar];
@@ -105,12 +105,12 @@
 
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
-    NSLog(@"准备开始");
+    DQLog(@"准备开始");
     self.loadingLable.hidden=NO;
 }
 // 当内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
-    NSLog(@"提交导航");
+    DQLog(@"提交导航");
 }
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
@@ -118,7 +118,7 @@
     //加载完成后再显示右上角的评论数
      [self configNavigationItem];
     self.loadingLable.hidden=YES;
-    NSLog(@"结束导航");
+    DQLog(@"结束导航");
 }
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{

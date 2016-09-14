@@ -414,6 +414,14 @@
 				4649C97E1D791E1C00FC1AFA /* CenterPage */,
 				4649C97F1D791E1C00FC1AFA /* Live */,
 				4649C9801D791E1C00FC1AFA /* HomePage */,
+				4649C9481D791C5300FC1AFA /* Supporting Files */,
+			);
+			path = MyFootball;
+			sourceTree = "<group>";
+		};
+		4649C9481D791C5300FC1AFA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				4649C94B1D791C5300FC1AFA /* AppDelegate.h */,
 				4649C94C1D791C5300FC1AFA /* AppDelegate.m */,
 				4649C94E1D791C5300FC1AFA /* ViewController.h */,
@@ -423,14 +431,6 @@
 				4649C9541D791C5300FC1AFA /* Assets.xcassets */,
 				4649C9561D791C5300FC1AFA /* LaunchScreen.storyboard */,
 				4649C9591D791C5300FC1AFA /* Info.plist */,
-				4649C9481D791C5300FC1AFA /* Supporting Files */,
-			);
-			path = MyFootball;
-			sourceTree = "<group>";
-		};
-		4649C9481D791C5300FC1AFA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				4649C9491D791C5300FC1AFA /* main.m */,
 			);
 			name = "Supporting Files";

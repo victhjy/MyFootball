@@ -21,3 +21,19 @@
 }
 
 @end
+
+@implementation DQDataPlayerRankModel
+
+
+
+@end
+
+@implementation DQDataLeagueScheduleModel
+
+
+@end
+
+@implementation DQDataScheduleModel
+
+
+@end

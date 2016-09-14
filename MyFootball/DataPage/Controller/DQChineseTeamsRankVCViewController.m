@@ -20,6 +20,7 @@
     UITableView* _tableView;
 }
 static NSString * reuseCell=@"normalLeagueCell";
+static NSString * reuseTopCell=@"topLeagueCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[MyTools colorWithHexString:@"0x4b4b4b"];
@@ -37,12 +38,14 @@ static NSString * reuseCell=@"normalLeagueCell";
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
     _tableView.tableFooterView=[UIView new];
+    _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.segment.mas_bottom).offset(10);
         make.left.right.equalTo(self.view);
         make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
     }];
     [_tableView registerClass:[DQDataNormalLeagueRankCell class] forCellReuseIdentifier:reuseCell];
+    [_tableView registerClass:[DQDataNormalLeagueRankCell class] forCellReuseIdentifier:reuseTopCell];
 }
 
 -(void)configSegment{
@@ -81,20 +84,36 @@ static NSString * reuseCell=@"normalLeagueCell";
     }
     //league51 为中超
     NSString* pathAndLeague=[NSString stringWithFormat:@"%@%@",path,league];
-    paramDic=@{
-               @"season_id":@"",
-               };
+    if (type==3) {
+        pathAndLeague=[NSString stringWithFormat:@"%@",path];
+        paramDic=@{
+                   @"round_id":@"34227",
+                   @"gameweek":@"24"
+                   };
+    }
+    else{
+        paramDic=@{
+                   @"season_id":@"",
+                   };
+    }
     [[DQAFNetManager sharedManager]requestWithMethod:GET WithPath:pathAndLeague WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
         if (dic) {
-            NSArray* resultArr=(NSArray* )dic;
-            NSDictionary* resultDic=resultArr[0];
-            self.teamsModel=[DQDataTeamsRankModel mj_objectWithKeyValues:resultDic];
-            self.teamsRankArr=[DQDataSingleTeamModel mj_objectArrayWithKeyValuesArray:self.teamsModel.rankings];
+            if (type==3) {
+                NSArray* arr=[dic valueForKey:@"matches"];
+                [MyTools importADic:arr[0]];
+            }
+            else{
+                NSArray* resultArr=(NSArray* )dic;
+                NSDictionary* resultDic=resultArr[0];
+                self.teamsModel=[DQDataTeamsRankModel mj_objectWithKeyValues:resultDic];
+                self.teamsRankArr=[DQDataSingleTeamModel mj_objectArrayWithKeyValuesArray:self.teamsModel.rankings];
+            }
+            
             [_tableView reloadData];
         }
     } WithFailurBlock:^(NSError *error) {
         if (error) {
-            NSLog(@"%@",error);
+            DQLog(@"%@",error);
         }
     }];
 }
@@ -160,27 +179,26 @@ static NSString * reuseCell=@"normalLeagueCell";
     
     winLabel.text=@"胜";
     [winLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(gameLabel.mas_right).offset(UIScreenWidth/22);
+        make.centerX.equalTo(gameLabel).offset(UIScreenWidth/12);
         make.centerY.equalTo(teamLabel);
     }];
     
     drawLabel.text=@"平";
     [drawLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(teamLabel);
-        make.left.equalTo(winLabel.mas_right).offset(UIScreenWidth/22);
+        make.centerX.equalTo(winLabel).offset(UIScreenWidth/12);
     }];
     
     defeatLabel.text=@"负";
     [defeatLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(teamLabel);
-        make.left.equalTo(drawLabel.mas_right).offset(UIScreenWidth/22);
+        make.centerX.equalTo(drawLabel).offset(UIScreenWidth/12);
     }];
     
     goalsLabel.text=@"进/失";
     [goalsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(teamLabel);
-//        make.right.equalTo(scoreLabel.mas_left).offset(-padding);
-        make.left.equalTo(defeatLabel.mas_right).offset(UIScreenWidth/22);
+        make.centerX.equalTo(defeatLabel).offset(UIScreenWidth/9);
     }];
     
     scoreLabel.text=@"积分";
@@ -195,10 +213,40 @@ static NSString * reuseCell=@"normalLeagueCell";
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DQDataSingleTeamModel* model=self.teamsRankArr[indexPath.row];
-    DQDataNormalLeagueRankCell* cell=[tableView dequeueReusableCellWithIdentifier:reuseCell];
+    DQDataNormalLeagueRankCell* cell;
+    if (indexPath.row<3) {
+        
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseTopCell];
+        cell.colorFlag=YES;
+    }
+    else{
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseCell];
+    }
     [cell configWithModel:model];
     return cell;
 }
+#pragma mark - segmentDelegate
+
+-(void)clickedSegment:(UISegmentedControl*)segment{
+//    switch (segment.selectedSegmentIndex) {
+//        case 0:
+//            DQLog(@"0");
+            [self loadDataWithType:segment.selectedSegmentIndex andLeague:@"51"];
+//            break;
+//        case 1:
+//            DQLog(@"1");
+//            break;
+//        case 2:
+//            DQLog(@"2");
+//            break;
+//        case 3:
+//            DQLog(@"3");
+//            break;
+//        default:
+//            break;
+//    }
+}
+
 
 #pragma mark - getter&&setter
 
@@ -211,6 +259,7 @@ static NSString * reuseCell=@"normalLeagueCell";
             make.right.equalTo(self.view).offset(-10);
             make.height.mas_offset(30);
         }];
+        [_segment addTarget:self action:@selector(clickedSegment:) forControlEvents:UIControlEventValueChanged];
     }
     return _segment;
 }

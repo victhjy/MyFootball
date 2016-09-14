@@ -60,16 +60,18 @@
     [self.contentView addSubview:self.scoreLabel];
     
     [self.rankLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.contentView).offset(padding);
+        make.left.equalTo(self.contentView).offset(padding);
+        make.centerY.equalTo(self.contentView);
     }];
     [self.teamImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        make.left.equalTo(self.rankLabel.mas_right).offset(padding);
+        make.left.equalTo(self.self.contentView.mas_left).offset(padding*3);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     [self.teamNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        make.left.equalTo(self.teamImage.mas_right).offset(padding);
+        make.left.equalTo(self.teamImage.mas_right).offset(5);
+        make.right.equalTo(self.contentView.mas_centerX).offset(-5);
     }];
     [self.gamesLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
@@ -77,34 +79,46 @@
     }];
     
     [self.winLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.gamesLabel.mas_right).offset(UIScreenWidth/22);
+//        make.left.equalTo(self.gamesLabel.mas_right).offset(UIScreenWidth/24);
+        make.centerX.equalTo(self.gamesLabel.mas_centerX).offset(UIScreenWidth/12);
         make.centerY.equalTo(self.rankLabel);
     }];
     
     [self.drawLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        make.left.equalTo(self.winLabel.mas_right).offset(UIScreenWidth/22);
+//        make.left.equalTo(self.winLabel.mas_right).offset(UIScreenWidth/24);
+        make.centerX.equalTo(self.winLabel.mas_centerX).offset(UIScreenWidth/12);
     }];
     
     [self.defeatLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        make.left.equalTo(self.drawLabel.mas_right).offset(UIScreenWidth/22);
+//        make.left.equalTo(self.drawLabel.mas_right).offset(UIScreenWidth/24);
+         make.centerX.equalTo(self.drawLabel.mas_centerX).offset(UIScreenWidth/12);
     }];
     
     [self.goalsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        //        make.right.equalTo(scoreLabel.mas_left).offset(-padding);
-        make.left.equalTo(self.defeatLabel.mas_right).offset(UIScreenWidth/22);
+        make.centerX.equalTo(self.defeatLabel.mas_centerX).offset(UIScreenWidth/9);
     }];
     
     [self.scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        make.right.equalTo(self.contentView).offset(-padding);
+        make.right.equalTo(self.contentView).offset(-padding-5);
     }];
 
+    UILabel* line=[UILabel new];
+    line.backgroundColor=[MyTools colorWithHexString:@"0x454545"];
+    [self.contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.contentView);
+        make.height.mas_equalTo(1);
+    }];
 }
 
 -(void)configWithModel:(DQDataSingleTeamModel* )model{
+    if (self.colorFlag) {
+        self.contentView.backgroundColor=ThemeColor;
+    }
     self.rankLabel.text=model.rank;
     self.teamImage.image=IMAGENAME(@"2016");
     self.teamNameLabel.text=model.club_name;

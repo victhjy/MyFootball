@@ -18,5 +18,7 @@
 @property(nonatomic,strong)UILabel* defeatLabel;
 @property(nonatomic,strong)UILabel* goalsLabel;
 @property(nonatomic,strong)UILabel* scoreLabel;
+
+@property(nonatomic,assign)BOOL colorFlag;
 -(void)configWithModel:(DQDataSingleTeamModel* )model;
 @end
