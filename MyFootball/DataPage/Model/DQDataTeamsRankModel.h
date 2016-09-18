@@ -62,6 +62,8 @@
 @property(nonatomic,strong)NSString* team_name;
 @property(nonatomic,strong)NSString* count;
 
+@property(nonatomic,strong)NSString* rank;
+
 @end
 
 //联赛赛程Model

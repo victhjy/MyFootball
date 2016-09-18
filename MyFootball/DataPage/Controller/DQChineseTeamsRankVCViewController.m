@@ -9,6 +9,7 @@
 #import "DQChineseTeamsRankVCViewController.h"
 #import "DQDataTeamsRankModel.h"
 #import "DQDataNormalLeagueRankCell.h"
+#import "DQDataPlayerCell.h"
 @interface DQChineseTeamsRankVCViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UISegmentedControl* segment;
 @property(nonatomic,strong)DQDataTeamsRankModel* teamsModel;
@@ -21,6 +22,7 @@
 }
 static NSString * reuseCell=@"normalLeagueCell";
 static NSString * reuseTopCell=@"topLeagueCell";
+static NSString* reusePlayerCell=@"playerCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[MyTools colorWithHexString:@"0x4b4b4b"];
@@ -46,6 +48,7 @@ static NSString * reuseTopCell=@"topLeagueCell";
     }];
     [_tableView registerClass:[DQDataNormalLeagueRankCell class] forCellReuseIdentifier:reuseCell];
     [_tableView registerClass:[DQDataNormalLeagueRankCell class] forCellReuseIdentifier:reuseTopCell];
+    [_tableView registerClass:[DQDataPlayerCell class] forCellReuseIdentifier:reusePlayerCell];
 }
 
 -(void)configSegment{
@@ -102,11 +105,19 @@ static NSString * reuseTopCell=@"topLeagueCell";
                 NSArray* arr=[dic valueForKey:@"matches"];
                 [MyTools importADic:arr[0]];
             }
-            else{
+            else if (type==1){
+                NSArray* resultArr=(NSArray* )dic;
+                self.teamsRankArr=[DQDataPlayerRankModel mj_objectArrayWithKeyValuesArray:resultArr];
+                
+            }
+            else if(type==0){
                 NSArray* resultArr=(NSArray* )dic;
                 NSDictionary* resultDic=resultArr[0];
                 self.teamsModel=[DQDataTeamsRankModel mj_objectWithKeyValues:resultDic];
                 self.teamsRankArr=[DQDataSingleTeamModel mj_objectArrayWithKeyValuesArray:self.teamsModel.rankings];
+            }
+            else if (type==2){
+                
             }
             
             [_tableView reloadData];
@@ -212,18 +223,28 @@ static NSString * reuseTopCell=@"topLeagueCell";
 }
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DQDataSingleTeamModel* model=self.teamsRankArr[indexPath.row];
-    DQDataNormalLeagueRankCell* cell;
-    if (indexPath.row<3) {
-        
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseTopCell];
-        cell.colorFlag=YES;
+    if (self.segment.selectedSegmentIndex==0) {
+        DQDataSingleTeamModel* model=self.teamsRankArr[indexPath.row];
+        DQDataNormalLeagueRankCell* cell;
+        if (indexPath.row<3) {
+            
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseTopCell];
+            cell.colorFlag=YES;
+        }
+        else{
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseCell];
+        }
+        [cell configWithModel:model];
+        return cell;
+
     }
     else{
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseCell];
+        DQDataPlayerRankModel* model=self.teamsRankArr[indexPath.row];
+        model.rank=[NSString stringWithFormat:@"%zd",indexPath.row];
+        DQDataPlayerCell* cell=[tableView dequeueReusableCellWithIdentifier:reusePlayerCell];
+        [cell configWithModel:model];
+        return cell;
     }
-    [cell configWithModel:model];
-    return cell;
 }
 #pragma mark - segmentDelegate
 
