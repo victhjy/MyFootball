@@ -42,6 +42,8 @@
 
 @property (nonatomic, assign) BOOL is_video;
 
+@property(nonatomic,strong)NSString* collection_type;
+
 @property(nonatomic,strong)NSString* published_at;
 
 @property(nonatomic,strong)NSString* channel;
@@ -65,4 +67,26 @@
 @property (nonatomic, assign) BOOL top;
 
 @property (nonatomic, strong)DQAlbum* album;
+
+@property (nonatomic,strong)NSDictionary* sub_items;  //滚动视图
+
+@end
+
+@interface DQChineseTeamSubItemModel : NSObject
+
+
+@property(nonatomic,strong)NSString* time;
+
+@property(nonatomic,strong)NSString* itemId;
+
+@property(nonatomic,strong)NSString* title;
+
+@property(nonatomic,strong)NSString* match_id;
+
+@property(nonatomic,strong)NSString* thumb;
+
+@property (nonatomic, assign) NSInteger comments_total;
+
+@property(nonatomic,strong)NSString* url;
+
 @end

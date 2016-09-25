@@ -95,10 +95,14 @@
     self.commentLabel.text=[NSString stringWithFormat:@"%ld",(long)model.comments_total];
     
     if (model.top) {
+        self.topLabel.hidden=NO;
         [self.contentView addSubview:self.topLabel];
         [self.topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.right.equalTo(self.contentView);
         }];
+    }
+    else{
+        self.topLabel.hidden=YES;
     }
     
     //无图集  无推荐

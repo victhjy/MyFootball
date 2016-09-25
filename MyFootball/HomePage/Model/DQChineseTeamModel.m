@@ -26,3 +26,13 @@
              };
 }
 @end
+
+@implementation DQChineseTeamSubItemModel
+
++(NSDictionary *)replacedKeyFromPropertyName{
+    return @{
+             @"itemId":@"id",
+             };
+}
+
+@end

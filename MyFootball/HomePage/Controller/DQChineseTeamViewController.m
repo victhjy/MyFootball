@@ -10,6 +10,7 @@
 #import "DQChineseTeamModel.h"
 #import "DQChineseTeamCell.h"
 #import "DQNewsDetailViewController.h"
+#import "DQChineseTeamGifCell.h"
 @interface DQChineseTeamViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray* articles;
@@ -25,8 +26,9 @@
 static NSString* reuseNormalCell=@"chineseTeamCell";
 static NSString* reuseLabelCell=@"chineseTeamLabelCell";
 static NSString* reuseImagesCell=@"chineseTeamImagesCell";
-static NSString* reuseTopCell=@"chinsesTeamTopCell";
 static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
+
+static NSString* reuseGifCell=@"gifCell";
 
 -(instancetype)init{
     if (self=[super init]) {
@@ -58,8 +60,8 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseNormalCell];
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseLabelCell];
     [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseImagesCell];
-    [_tableView registerClass:[DQChineseTeamCell class] forCellReuseIdentifier:reuseTopCell];
     [_tableView registerClass:[DQChineseTeamCell class]  forCellReuseIdentifier:reuseImageAndLabel];
+    [_tableView registerClass:[DQChineseTeamGifCell class] forCellReuseIdentifier:reuseGifCell];
     __weak typeof(self) weakself=self;
     _tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakself loadArticles];
@@ -95,32 +97,38 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DQChineseTeamListModel* model=self.articles[indexPath.row];
-    DQChineseTeamCell* cell;
-    //置顶
-    if (model.top) {
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseTopCell];
-    }
-    //“图集”
-    else if(model.album&&!model.label){
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
-    }
-    //“推荐 深度”
-    else if (model.label&&!model.album){
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseLabelCell];
-    }
-    else if (model.album&&model.label){
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseImageAndLabel];
-    }
-    //normal
-    else{
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseNormalCell];
-    }
     
+    if ([model.collection_type isEqualToString:@"gif"]) {
+        DQChineseTeamGifCell* cell;
+        cell=[tableView dequeueReusableCellWithIdentifier:reuseGifCell];
+        
+        
+        return cell;
+    }else{
+        DQChineseTeamCell* cell;
+        //“图集”
+        if(model.album&&!model.label){
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
+        }
+        //“推荐 深度”
+        else if (model.label&&!model.album){
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseLabelCell];
+        }
+        else if (model.album&&model.label){
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseImageAndLabel];
+        }
+        //normal
+        else{
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseNormalCell];
+        }
+        
+        
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        
+        [cell configWithModel:model];
+        return cell;
+    }
 
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    
-    [cell configWithModel:model];
-    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -134,8 +142,11 @@ static NSString* reuseImageAndLabel=@"chineseTeamImageAndLabelCell";
 
 #pragma mark Request
 -(void)loadArticles{
+    NSDictionary* parDic=@{
+                           @"mark":@"gif"
+                           };
 
-    [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+    [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:parDic WithSuccessBlock:^(NSDictionary *dic) {
         if (dic) {
             self.model=(DQChineseTeamModel* )[DQChineseTeamModel mj_objectWithKeyValues:dic];
             self.articles=[NSMutableArray new];

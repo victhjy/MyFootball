@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		463D5F931D8666C000C95592 /* DQDataTeamsRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */; };
 		463D5F961D8668EB00C95592 /* DQDataNormalLeagueRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */; };
+		464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */; };
 		4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A06A1D8134E400C12B7E /* DQAllAPI.m */; };
 		4646A06E1D813E7D00C12B7E /* DQCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A06D1D813E7D00C12B7E /* DQCommentsViewController.m */; };
 		4646A0711D81401100C12B7E /* DQCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A0701D81401100C12B7E /* DQCommentCell.m */; };
@@ -135,6 +136,8 @@
 		463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamsRankModel.m; sourceTree = "<group>"; };
 		463D5F941D8668EB00C95592 /* DQDataNormalLeagueRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataNormalLeagueRankCell.h; sourceTree = "<group>"; };
 		463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataNormalLeagueRankCell.m; sourceTree = "<group>"; };
+		464551D61D97D4A4005A89E3 /* DQChineseTeamGifCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamGifCell.h; sourceTree = "<group>"; };
+		464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamGifCell.m; sourceTree = "<group>"; };
 		4646A0691D8134E400C12B7E /* DQAllAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DQAllAPI.h; path = ../Common/DQAllAPI.h; sourceTree = "<group>"; };
 		4646A06A1D8134E400C12B7E /* DQAllAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DQAllAPI.m; path = ../Common/DQAllAPI.m; sourceTree = "<group>"; };
 		4646A06C1D813E7D00C12B7E /* DQCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommentsViewController.h; sourceTree = "<group>"; };
@@ -631,6 +634,8 @@
 				464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */,
 				4646A06F1D81401100C12B7E /* DQCommentCell.h */,
 				4646A0701D81401100C12B7E /* DQCommentCell.m */,
+				464551D61D97D4A4005A89E3 /* DQChineseTeamGifCell.h */,
+				464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1200,6 +1205,7 @@
 				4649C9951D791F0F00FC1AFA /* MyTools.m in Sources */,
 				4649CA2F1D79204700FC1AFA /* AFHTTPSessionManager.m in Sources */,
 				464F052C1D7FBB4A00C61574 /* NSString+MJExtension.m in Sources */,
+				464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
