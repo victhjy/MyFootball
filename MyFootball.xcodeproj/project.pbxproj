@@ -104,6 +104,7 @@
 		464F05391D80065300C61574 /* DQAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05381D80065300C61574 /* DQAlbum.m */; };
 		4655A7B01D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */; };
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
+		465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F60501D98B29C00A571C5 /* DQGifCellItemView.m */; };
 		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
 		466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */; };
 		466845991D7D3E1200ED2121 /* DQHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */; };
@@ -333,6 +334,8 @@
 		4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamsRankVCViewController.m; sourceTree = "<group>"; };
 		465ECD291D8262F500F60284 /* DQAttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAttachmentModel.h; sourceTree = "<group>"; };
 		465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAttachmentModel.m; sourceTree = "<group>"; };
+		465F604F1D98B29C00A571C5 /* DQGifCellItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQGifCellItemView.h; sourceTree = "<group>"; };
+		465F60501D98B29C00A571C5 /* DQGifCellItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQGifCellItemView.m; sourceTree = "<group>"; };
 		466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMainTabBarController.h; sourceTree = "<group>"; };
 		466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQMainTabBarController.m; sourceTree = "<group>"; };
 		466845941D7D1FE300ED2121 /* LSYViewPagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSYViewPagerVC.h; sourceTree = "<group>"; };
@@ -636,6 +639,8 @@
 				4646A0701D81401100C12B7E /* DQCommentCell.m */,
 				464551D61D97D4A4005A89E3 /* DQChineseTeamGifCell.h */,
 				464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */,
+				465F604F1D98B29C00A571C5 /* DQGifCellItemView.h */,
+				465F60501D98B29C00A571C5 /* DQGifCellItemView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1199,6 +1204,7 @@
 				4649CA391D79204700FC1AFA /* MASLayoutConstraint.m in Sources */,
 				464F05271D7FBB4A00C61574 /* MJPropertyType.m in Sources */,
 				4649CA571D79204700FC1AFA /* SDImageCache.m in Sources */,
+				465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */,
 				4649CA4B1D79204700FC1AFA /* MJRefreshBackStateFooter.m in Sources */,
 				4649CA641D79204700FC1AFA /* UIView+WebCacheOperation.m in Sources */,
 				4649C99B1D791F7700FC1AFA /* ImportantLive.m in Sources */,

@@ -88,18 +88,31 @@
 }
 
 -(void)configWithModel:(DQChineseTeamListModel *)model{
+    
+    int label_Right=0;
+    int comment_Right=0;
+    if (model.label) {
+        comment_Right++;
+    }
+    if (model.top) {
+        label_Right++;
+    }
+    
+    
      CGFloat padding=10;
     [self.imageViewLeft sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:IMAGENAME(@"default_image")];
     self.title.text=model.title;
     self.detail.text=model.detail;
-    self.commentLabel.text=[NSString stringWithFormat:@"%ld",(long)model.comments_total];
+    self.commentLabel.text=[NSString stringWithFormat:@"%ld评论",(long)model.comments_total];
     
     if (model.top) {
         self.topLabel.hidden=NO;
         [self.contentView addSubview:self.topLabel];
         [self.topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.right.equalTo(self.contentView);
+            make.right.equalTo(self.contentView);
+            make.bottom.equalTo(self.contentView).offset(-10);
         }];
+        label_Right++;
     }
     else{
         self.topLabel.hidden=YES;
@@ -215,6 +228,12 @@
             make.right.equalTo(self.label.mas_left).offset(-5);
         }];
     }
+    
+    [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(imageView.mas_bottom).offset(padding);
+        make.bottom.equalTo(self.contentView).offset(-10);
+        make.right.equalTo(self.contentView.mas_right).offset(-label_Right*20-comment_Right*20-10);
+    }];
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
     [self updateConstraints];

@@ -47,10 +47,9 @@
 
     // setup the rolling images
 
-//                                       ];
+//                                       
     _rollingBannerVC.rollingImages = showedImages;
 
-    
     // Start auto rolling (optional, default does not auto roll)
     
 }
@@ -61,14 +60,24 @@
     _tableView.dataSource=self;
     
     _tableView.tableHeaderView=_rollingBannerVC.view;
+
     [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(_tableView);
         make.width.mas_equalTo(UIScreenWidth);
         make.height.mas_equalTo(180);
     }];
+    CGRect oldFrame=_tableView. tableHeaderView.frame;
+    CGRect newFrame=CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, 180);
+    
+    UIView *view=_tableView. tableHeaderView;
+    view.frame=newFrame;
+    _tableView. tableHeaderView =view;
+
+    DQLog(@"高度  %f",_tableView.tableHeaderView.frame.size.height);
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
+        make.top.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-49);
     }];
     
     [_rollingBannerVC startRolling];
@@ -81,15 +90,20 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 20;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 90;
+    return 44;
 }
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
+    UITableViewCell* cell;
+    if (!cell) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text=@"紧急处理中……";
+    return cell;
 }
 
 

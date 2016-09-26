@@ -84,15 +84,21 @@ static NSString* reuseGifCell=@"gifCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
      DQChineseTeamListModel* model=self.articles[indexPath.row];
-    DQChineseTeamCell* cell;
-    if (model.album) {
-        cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
-        [cell configWithModel:model];
-        return [cell heightForCell];
+    if ([model.collection_type isEqualToString:@"gif"]) {
+        return 220;
     }
     else{
-        return 84;
+        DQChineseTeamCell* cell;
+        if (model.album) {
+            cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
+            [cell configWithModel:model];
+            return [cell heightForCell];
+        }
+        else{
+            return 84;
+        }
     }
+    
 }
 
 -(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -101,7 +107,7 @@ static NSString* reuseGifCell=@"gifCell";
     if ([model.collection_type isEqualToString:@"gif"]) {
         DQChineseTeamGifCell* cell;
         cell=[tableView dequeueReusableCellWithIdentifier:reuseGifCell];
-        
+        [cell configViewWithModel:model];
         
         return cell;
     }else{
@@ -163,7 +169,7 @@ static NSString* reuseGifCell=@"gifCell";
 }
 
 -(void)loadMoreArticlesWithModel:(DQChineseTeamModel*)model{
-    NSDictionary* paramDic=@{@"after":[NSNumber numberWithInteger:model.min],@"page":[NSNumber numberWithInteger:model.page]};
+    NSDictionary* paramDic=@{@"after":[NSNumber numberWithInteger:model.min],@"page":[NSNumber numberWithInteger:model.page],@"mark":@"gif"};
     [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
         if (dic) {
             self.model=(DQChineseTeamModel* )[DQChineseTeamModel mj_objectWithKeyValues:dic];
