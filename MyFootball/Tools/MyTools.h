@@ -61,4 +61,32 @@
  *  @return 取出的缓存
  */
 +(NSObject* )getCacheDataForKey:(NSString* )key;
+
+/**
+ *  utc时间转换成本地时间
+ *
+ *  @param anyDate utc时间
+ *
+ *  @return 本地时间
+ */
++ (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate;
+
+/**
+ *  讲字符串转换成nsdate
+ *
+ *  @param dateString 时间型字符串
+ *
+ *  @return NSDate型时间
+ */
++(NSDate* )getDateFromDataString:(NSString* )dateString;
+
+
+/**
+ *  nsdate转字符串
+ *
+ *  @param date 输入NSDate
+ *
+ *  @return 输出字符串型的时间 10-12 12：00
+ */
++(NSString* )dateStringFromNSDate:(NSDate* )date;
 @end

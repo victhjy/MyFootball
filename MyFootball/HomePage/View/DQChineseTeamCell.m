@@ -174,14 +174,14 @@
              [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                  make.size.mas_equalTo(CGSizeMake(imageW, imageW*2/3));
                  make.centerX.equalTo(self.contentView.mas_centerX).offset((i-1)*(imageW+padding));
-                 make.top.mas_equalTo(self.title.mas_bottom).offset(padding);
+                 make.top.mas_equalTo(self.title.mas_bottom).offset(5);
              }];
          }
-        UIImageView* imageView=[imagesArr firstObject];
-        [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(imageView.mas_bottom).offset(padding);
-            make.right.equalTo(self.contentView).offset(-padding);
-        }];
+//        UIImageView* imageView=[imagesArr firstObject];
+//        [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(imageView.mas_bottom).offset(padding);
+//            make.right.equalTo(self.contentView).offset(-padding);
+//        }];
 
     }
     //图集  推荐
@@ -209,24 +209,24 @@
             }];
         }
         
-        UIImageView* imageView=[imagesArr firstObject];
-        self.label=[UILabel new];
-        self.label.textColor=[UIColor whiteColor];
-        self.label.backgroundColor=[MyTools colorWithHexString:model.label_color];
-        self.label.font=self.detail.font;
-        self.label.text=model.label;
-        self.label.layer.masksToBounds=YES;
-        self.label.layer.cornerRadius=2;
-        [self.contentView addSubview:self.label];
-        
-        [self.label mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(self.contentView).offset(-padding);
-            make.centerY.mas_equalTo(self.commentLabel.mas_centerY);
-        }];
-        [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(imageView.mas_bottom).offset(padding);
-            make.right.equalTo(self.label.mas_left).offset(-5);
-        }];
+//        UIImageView* imageView=[imagesArr firstObject];
+//        self.label=[UILabel new];
+//        self.label.textColor=[UIColor whiteColor];
+//        self.label.backgroundColor=[MyTools colorWithHexString:model.label_color];
+//        self.label.font=self.detail.font;
+//        self.label.text=model.label;
+//        self.label.layer.masksToBounds=YES;
+//        self.label.layer.cornerRadius=2;
+//        [self.contentView addSubview:self.label];
+//        
+//        [self.label mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.right.mas_equalTo(self.contentView).offset(-padding);
+//            make.centerY.mas_equalTo(self.commentLabel.mas_centerY);
+//        }];
+//        [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(imageView.mas_bottom).offset(padding);
+//            make.right.equalTo(self.label.mas_left).offset(-5);
+//        }];
     }
     
     [self.commentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {

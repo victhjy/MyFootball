@@ -10,4 +10,5 @@
 
 @interface DQChineseTeamsRankVCViewController : UIViewController
 
+@property(nonatomic,strong)NSString* leagueNumber;
 @end

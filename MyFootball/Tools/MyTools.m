@@ -140,4 +140,59 @@
     return obj;
 }
 
+/**
+ *  utc时间转换成本地时间
+ *
+ *  @param anyDate utc时间
+ *
+ *  @return 本地时间
+ */
++ (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
+{
+    //设置源日期时区
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
+    //设置转换后的目标日期时区
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    //得到源日期与世界标准时间的偏移量
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:anyDate];
+    //目标日期与本地时区的偏移量
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:anyDate];
+    //得到时间偏移量的差值
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    //转为现在时间
+    NSDate* destinationDateNow = [[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate];
+    return destinationDateNow;
+}
+
+/**
+ *  将字符串转换成nsdate
+ *
+ *  @param dateString 时间型字符串
+ *
+ *  @return NSDate型时间
+ */
++(NSDate* )getDateFromDataString:(NSString* )dateString{
+    //需要转换的字符串
+//    NSString *dateString = @"2015-06-26 08:08:08";
+    //设置转换格式
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //NSString转NSDate
+    NSDate *date=[formatter dateFromString:dateString];
+    return date;
+}
+
+/**
+ *  nsdate转字符串
+ *
+ *  @param date 输入NSDate
+ *
+ *  @return NSString 10-12 12:00
+ */
++(NSString* )dateStringFromNSDate:(NSDate* )date{
+    NSDateFormatter *stringFormatter = [[NSDateFormatter alloc] init] ;
+    [stringFormatter setDateFormat:@"MM-dd HH:mm"];
+    NSString* returnString=[stringFormatter stringFromDate:date];
+    return returnString;
+}
 @end

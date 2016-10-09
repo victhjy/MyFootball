@@ -13,6 +13,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self createUI];
+        self.contentView.backgroundColor=DATACELLBGCOLOR;
     }
     return self;
 }
@@ -56,25 +57,47 @@
     [self.teamImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
         make.centerX.equalTo(self.contentView).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(25, 25));
+        make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
     
     [self.teamLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.teamImage.mas_right).offset(10);
         make.centerY.equalTo(self.rankLabel);
     }];
-    
     [self.count mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-15);
+        make.centerX.equalTo(self.contentView.mas_right).offset(-25);
         make.centerY.equalTo(self.rankLabel);
+    }];
+    
+    self.rankLabel.textColor=[UIColor whiteColor];
+    self.nameLabel.textColor=self.rankLabel.textColor;
+    self.teamLabel.textColor=self.rankLabel.textColor;
+    self.count.textColor=self.rankLabel.textColor;
+    
+    UILabel* line=[UILabel new];
+    line.backgroundColor=[MyTools colorWithHexString:@"0x454545"];
+    [self.contentView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.contentView);
+        make.height.mas_equalTo(0.5);
     }];
 }
 -(void)configWithModel:(DQDataPlayerRankModel*)model{
     self.rankLabel.text=model.rank;
     self.nameLabel.text=model.name;
     self.teamLabel.text=model.team_name;
-    self.teamImage.image=[UIImage imageNamed:@"2016"];
+    [self.teamImage sd_setImageWithURL:[NSURL URLWithString:TEAMIMAGE(model.team_id)] placeholderImage:IMAGENAME(@"2016")];
     self.count.text=model.count;
+    if (self.topPlayer) {
+        self.contentView.backgroundColor=ThemeColor;
+    }
+    else{
+        self.contentView.backgroundColor=[MyTools colorWithHexString:@"0x4b4b4b"];
+    }
+}
+
+-(void)prepareForReuse{
+    self.topPlayer=nil;
 }
 
 @end

@@ -13,12 +13,13 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self createUI];
+        self.contentView.backgroundColor=DATACELLBGCOLOR;
     }
     return self;
 }
 
 -(void)createUI{
-    self.contentView.backgroundColor=[MyTools colorWithHexString:@"0x4b4b4b"];
+//    self.contentView.backgroundColor=[MyTools colorWithHexString:@"0x4b4b4b"];
     CGFloat padding=10;
     self.rankLabel=[UILabel new];
     self.teamImage=[UIImageView new];
@@ -66,7 +67,7 @@
     [self.teamImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
         make.left.equalTo(self.self.contentView.mas_left).offset(padding*3);
-        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
     [self.teamNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
@@ -103,7 +104,7 @@
     
     [self.scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.rankLabel);
-        make.right.equalTo(self.contentView).offset(-padding-5);
+        make.right.equalTo(self.contentView).offset(-padding);
     }];
 
     UILabel* line=[UILabel new];
@@ -111,16 +112,25 @@
     [self.contentView addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.equalTo(self.contentView);
-        make.height.mas_equalTo(1);
+        make.height.mas_equalTo(0.5);
     }];
 }
 
 -(void)configWithModel:(DQDataSingleTeamModel* )model{
-    if (self.colorFlag) {
+    
+    if (self.colorTop) {
         self.contentView.backgroundColor=ThemeColor;
     }
+     else if (self.colorBottom) {
+        self.contentView.backgroundColor=[UIColor grayColor];
+    }
+     else{
+         self.contentView.backgroundColor=[MyTools colorWithHexString:@"0x4b4b4b"];
+     }
+
+    
     self.rankLabel.text=model.rank;
-    self.teamImage.image=IMAGENAME(@"2016");
+    [self.teamImage sd_setImageWithURL:[NSURL URLWithString:TEAMIMAGE(model.team_id)] placeholderImage:IMAGENAME(@"2016")];
     self.teamNameLabel.text=model.club_name;
     self.gamesLabel.text=model.matches_total;
     self.winLabel.text=model.matches_won;
@@ -129,5 +139,8 @@
     self.goalsLabel.text=[NSString stringWithFormat:@"%@/%@",model.goals_pro,model.goals_against];
     self.scoreLabel.text=model.points;
 }
-
+-(void)prepareForReuse{
+    self.colorTop=nil;
+    self.colorBottom=nil;
+}
 @end

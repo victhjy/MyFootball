@@ -26,8 +26,11 @@
 
 -(void)setupControllers{
     DQChineseTeamsRankVCViewController* chineseTeamRank=[[DQChineseTeamsRankVCViewController alloc]init];
+    chineseTeamRank.leagueNumber=@"51";
     DQChineseTeamsRankVCViewController* shipVC=[[DQChineseTeamsRankVCViewController alloc]init];
+    shipVC.leagueNumber=@"8";
     DQChineseTeamsRankVCViewController* chineseTeamVC=[[DQChineseTeamsRankVCViewController alloc]init];
+    chineseTeamVC.leagueNumber=@"7";
     _controllersArr=@[chineseTeamRank,shipVC,chineseTeamVC];
     
     _titlesArr=@[@"中超",@"英超",@"西甲"];

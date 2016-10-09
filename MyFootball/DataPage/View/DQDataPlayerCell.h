@@ -15,6 +15,8 @@
 @property(nonatomic,strong)UILabel* teamLabel;
 @property(nonatomic,strong)UILabel* count;
 
+@property(nonatomic,assign)BOOL topPlayer;
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 -(void)configWithModel:(DQDataPlayerRankModel*)model;

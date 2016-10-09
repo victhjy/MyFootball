@@ -111,6 +111,7 @@
 		4668459C1D7D3E2E00ED2121 /* DQShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */; };
 		4668459F1D7D3E4300ED2121 /* DQChineseTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */; };
 		46B823E31D8E66B70009E0DB /* DQDataPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B823E21D8E66B70009E0DB /* DQDataPlayerCell.m */; };
+		46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */; };
 		813CDB4D1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */; };
 		81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -348,6 +349,8 @@
 		4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamViewController.m; sourceTree = "<group>"; };
 		46B823E11D8E66B70009E0DB /* DQDataPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataPlayerCell.h; sourceTree = "<group>"; };
 		46B823E21D8E66B70009E0DB /* DQDataPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataPlayerCell.m; sourceTree = "<group>"; };
+		46FB602B1DA8C0D800970C31 /* DQDataTeamScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataTeamScheduleCell.h; sourceTree = "<group>"; };
+		46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamScheduleCell.m; sourceTree = "<group>"; };
 		813CDB4B1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		81E3F0C51D804DC9002A1387 /* DQNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQNewsDetailViewController.h; sourceTree = "<group>"; };
@@ -537,6 +540,8 @@
 				463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */,
 				46B823E11D8E66B70009E0DB /* DQDataPlayerCell.h */,
 				46B823E21D8E66B70009E0DB /* DQDataPlayerCell.m */,
+				46FB602B1DA8C0D800970C31 /* DQDataTeamScheduleCell.h */,
+				46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1193,6 +1198,7 @@
 				464F05391D80065300C61574 /* DQAlbum.m in Sources */,
 				464F05281D7FBB4A00C61574 /* NSObject+MJClass.m in Sources */,
 				4649CA591D79204700FC1AFA /* SDWebImageDecoder.m in Sources */,
+				46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */,
 				463D5F931D8666C000C95592 /* DQDataTeamsRankModel.m in Sources */,
 				464F05251D7FBB4A00C61574 /* MJProperty.m in Sources */,
 				4649CA331D79204700FC1AFA /* AFURLResponseSerialization.m in Sources */,

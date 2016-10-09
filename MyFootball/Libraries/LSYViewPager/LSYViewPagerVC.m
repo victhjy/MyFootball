@@ -49,6 +49,7 @@
         _titleBackground = [[UIScrollView alloc] init];
         _titleBackground.showsHorizontalScrollIndicator = NO;
         _titleBackground.showsVerticalScrollIndicator = NO;
+        _titleBackground.scrollsToTop=NO;
     }
     return _titleBackground;
 }

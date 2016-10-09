@@ -18,7 +18,9 @@ extern NSString* const APIGetDataGoalRanking; //球员进球排行
 
 extern NSString* const APIGetDataAssistRanking; //球员助攻排行
 
-extern NSString* const APIGetDataGameRanking; //球队积分排行
+extern NSString* const APIGetDataGameSchedule; //球队赛程排行
+
+extern NSString* const APIGetDataTeamRounding; //联赛当前轮数
 
 @interface DQAllAPI : NSObject
 @end

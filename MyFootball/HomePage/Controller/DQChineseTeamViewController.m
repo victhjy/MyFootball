@@ -85,6 +85,7 @@ static NSString* reuseGifCell=@"gifCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
      DQChineseTeamListModel* model=self.articles[indexPath.row];
     if ([model.collection_type isEqualToString:@"gif"]) {
+        NSLog(@"gif cell %zd",220);
         return 220;
     }
     else{
@@ -92,7 +93,9 @@ static NSString* reuseGifCell=@"gifCell";
         if (model.album) {
             cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
             [cell configWithModel:model];
-            return [cell heightForCell];
+            NSLog(@"ablum cell %f",[cell heightForCell]);
+//            return [cell heightForCell];
+            return 134;
         }
         else{
             return 84;
