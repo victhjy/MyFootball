@@ -15,6 +15,9 @@
 		4646A0711D81401100C12B7E /* DQCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A0701D81401100C12B7E /* DQCommentCell.m */; };
 		4646A0751D81425B00C12B7E /* DQUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A0741D81425B00C12B7E /* DQUserModel.m */; };
 		4646A0781D8148A300C12B7E /* DQCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A0771D8148A300C12B7E /* DQCommentModel.m */; };
+		46490B681DAA194E00587896 /* DQDataTeamDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46490B671DAA194E00587896 /* DQDataTeamDetailVC.m */; };
+		46490B6C1DAA1B7D00587896 /* SimulateTwitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46490B6B1DAA1B7D00587896 /* SimulateTwitterView.m */; };
+		46490B6F1DAA2AFB00587896 /* DQCommunityIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46490B6E1DAA2AFB00587896 /* DQCommunityIconCell.m */; };
 		4649C94A1D791C5300FC1AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649C9491D791C5300FC1AFA /* main.m */; };
 		4649C94D1D791C5300FC1AFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649C94C1D791C5300FC1AFA /* AppDelegate.m */; };
 		4649C9501D791C5300FC1AFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4649C94F1D791C5300FC1AFA /* ViewController.m */; };
@@ -111,6 +114,8 @@
 		4668459C1D7D3E2E00ED2121 /* DQShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459B1D7D3E2E00ED2121 /* DQShipViewController.m */; };
 		4668459F1D7D3E4300ED2121 /* DQChineseTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */; };
 		46B823E31D8E66B70009E0DB /* DQDataPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B823E21D8E66B70009E0DB /* DQDataPlayerCell.m */; };
+		46C516AB1DAA446C00800C43 /* DQCommunityHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C516AA1DAA446C00800C43 /* DQCommunityHomeVC.m */; };
+		46C516AE1DAA448500800C43 /* DQCommunityHotTopicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C516AD1DAA448500800C43 /* DQCommunityHotTopicVC.m */; };
 		46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */; };
 		813CDB4D1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */; };
 		81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */; };
@@ -150,6 +155,12 @@
 		4646A0741D81425B00C12B7E /* DQUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQUserModel.m; sourceTree = "<group>"; };
 		4646A0761D8148A300C12B7E /* DQCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommentModel.h; sourceTree = "<group>"; };
 		4646A0771D8148A300C12B7E /* DQCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommentModel.m; sourceTree = "<group>"; };
+		46490B661DAA194E00587896 /* DQDataTeamDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataTeamDetailVC.h; sourceTree = "<group>"; };
+		46490B671DAA194E00587896 /* DQDataTeamDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamDetailVC.m; sourceTree = "<group>"; };
+		46490B6A1DAA1B7D00587896 /* SimulateTwitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulateTwitterView.h; sourceTree = "<group>"; };
+		46490B6B1DAA1B7D00587896 /* SimulateTwitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulateTwitterView.m; sourceTree = "<group>"; };
+		46490B6D1DAA2AFB00587896 /* DQCommunityIconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommunityIconCell.h; sourceTree = "<group>"; };
+		46490B6E1DAA2AFB00587896 /* DQCommunityIconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityIconCell.m; sourceTree = "<group>"; };
 		4649C9451D791C5300FC1AFA /* MyFootball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFootball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4649C9491D791C5300FC1AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4649C94B1D791C5300FC1AFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -349,6 +360,10 @@
 		4668459E1D7D3E4300ED2121 /* DQChineseTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamViewController.m; sourceTree = "<group>"; };
 		46B823E11D8E66B70009E0DB /* DQDataPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataPlayerCell.h; sourceTree = "<group>"; };
 		46B823E21D8E66B70009E0DB /* DQDataPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataPlayerCell.m; sourceTree = "<group>"; };
+		46C516A91DAA446C00800C43 /* DQCommunityHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommunityHomeVC.h; sourceTree = "<group>"; };
+		46C516AA1DAA446C00800C43 /* DQCommunityHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityHomeVC.m; sourceTree = "<group>"; };
+		46C516AC1DAA448500800C43 /* DQCommunityHotTopicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommunityHotTopicVC.h; sourceTree = "<group>"; };
+		46C516AD1DAA448500800C43 /* DQCommunityHotTopicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityHotTopicVC.m; sourceTree = "<group>"; };
 		46FB602B1DA8C0D800970C31 /* DQDataTeamScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataTeamScheduleCell.h; sourceTree = "<group>"; };
 		46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamScheduleCell.m; sourceTree = "<group>"; };
 		813CDB4B1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
@@ -391,6 +406,15 @@
 				465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */,
 			);
 			path = CommonModel;
+			sourceTree = "<group>";
+		};
+		46490B691DAA1B7D00587896 /* SimulateTwitterView */ = {
+			isa = PBXGroup;
+			children = (
+				46490B6A1DAA1B7D00587896 /* SimulateTwitterView.h */,
+				46490B6B1DAA1B7D00587896 /* SimulateTwitterView.m */,
+			);
+			path = SimulateTwitterView;
 			sourceTree = "<group>";
 		};
 		4649C93C1D791C5300FC1AFA = {
@@ -469,6 +493,7 @@
 		4649C97B1D791E1C00FC1AFA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				46490B691DAA1B7D00587896 /* SimulateTwitterView */,
 				813CDB4A1D83B6BB001666D2 /* DZNEmpty */,
 				464F050B1D7FBB4A00C61574 /* MJExtension */,
 				466845931D7D1FE300ED2121 /* LSYViewPager */,
@@ -562,6 +587,8 @@
 				4649C9A61D79200A00FC1AFA /* FootballDataVC.m */,
 				4655A7AE1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.h */,
 				4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */,
+				46490B661DAA194E00587896 /* DQDataTeamDetailVC.h */,
+				46490B671DAA194E00587896 /* DQDataTeamDetailVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -569,6 +596,8 @@
 		4649C9841D791E7300FC1AFA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				46490B6D1DAA2AFB00587896 /* DQCommunityIconCell.h */,
+				46490B6E1DAA2AFB00587896 /* DQCommunityIconCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -583,8 +612,12 @@
 		4649C9861D791E7300FC1AFA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				46C516A91DAA446C00800C43 /* DQCommunityHomeVC.h */,
+				46C516AA1DAA446C00800C43 /* DQCommunityHomeVC.m */,
 				4649CA651D7925EB00FC1AFA /* AllCommunitiesVC.h */,
 				4649CA661D7925EB00FC1AFA /* AllCommunitiesVC.m */,
+				46C516AC1DAA448500800C43 /* DQCommunityHotTopicVC.h */,
+				46C516AD1DAA448500800C43 /* DQCommunityHotTopicVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1158,6 +1191,7 @@
 				4649CA451D79204700FC1AFA /* MJRefreshHeader.m in Sources */,
 				4649CA3E1D79204700FC1AFA /* View+MASAdditions.m in Sources */,
 				4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */,
+				46C516AB1DAA446C00800C43 /* DQCommunityHomeVC.m in Sources */,
 				4649CA411D79204700FC1AFA /* MJRefreshAutoFooter.m in Sources */,
 				4649CA561D79204700FC1AFA /* NSData+ImageContentType.m in Sources */,
 				4649CA621D79204700FC1AFA /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1173,6 +1207,7 @@
 				4649CA3D1D79204700FC1AFA /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				4649CA341D79204700FC1AFA /* AFURLSessionManager.m in Sources */,
 				4649CA4D1D79204700FC1AFA /* MJRefreshNormalHeader.m in Sources */,
+				46C516AE1DAA448500800C43 /* DQCommunityHotTopicVC.m in Sources */,
 				464F052F1D7FBE9000C61574 /* DQChineseTeamModel.m in Sources */,
 				4649CA4E1D79204700FC1AFA /* MJRefreshStateHeader.m in Sources */,
 				4649CA4C1D79204700FC1AFA /* MJRefreshGifHeader.m in Sources */,
@@ -1188,6 +1223,7 @@
 				4649CA461D79204700FC1AFA /* MJRefreshAutoGifFooter.m in Sources */,
 				4649C94A1D791C5300FC1AFA /* main.m in Sources */,
 				4649CA3F1D79204700FC1AFA /* ViewController+MASAdditions.m in Sources */,
+				46490B6F1DAA2AFB00587896 /* DQCommunityIconCell.m in Sources */,
 				4649CA441D79204700FC1AFA /* MJRefreshFooter.m in Sources */,
 				4649CA3B1D79204700FC1AFA /* MASViewConstraint.m in Sources */,
 				4649CA381D79204700FC1AFA /* MASConstraintMaker.m in Sources */,
@@ -1211,11 +1247,13 @@
 				464F05271D7FBB4A00C61574 /* MJPropertyType.m in Sources */,
 				4649CA571D79204700FC1AFA /* SDImageCache.m in Sources */,
 				465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */,
+				46490B6C1DAA1B7D00587896 /* SimulateTwitterView.m in Sources */,
 				4649CA4B1D79204700FC1AFA /* MJRefreshBackStateFooter.m in Sources */,
 				4649CA641D79204700FC1AFA /* UIView+WebCacheOperation.m in Sources */,
 				4649C99B1D791F7700FC1AFA /* ImportantLive.m in Sources */,
 				4649C9951D791F0F00FC1AFA /* MyTools.m in Sources */,
 				4649CA2F1D79204700FC1AFA /* AFHTTPSessionManager.m in Sources */,
+				46490B681DAA194E00587896 /* DQDataTeamDetailVC.m in Sources */,
 				464F052C1D7FBB4A00C61574 /* NSString+MJExtension.m in Sources */,
 				464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */,
 			);

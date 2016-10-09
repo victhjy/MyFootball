@@ -11,6 +11,7 @@
 #import "DQDataNormalLeagueRankCell.h"
 #import "DQDataPlayerCell.h"
 #import "DQDataTeamScheduleCell.h"
+#import "DQDataTeamDetailVC.h"
 @interface DQChineseTeamsRankVCViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UISegmentedControl* segment;
 @property(nonatomic,strong)DQDataTeamsRankModel* teamsModel;
@@ -189,7 +190,7 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
         UILabel* defeatLabel=[UILabel new];
         UILabel* goalsLabel=[UILabel new];
         UILabel* scoreLabel=[UILabel new];
-        CGFloat padding=10;
+//        CGFloat padding=10;
         UIFont* font=[UIFont systemFontOfSize:13];
         teamLabel.font=font;
         gameLabel.font=font;
@@ -336,6 +337,7 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
     if (self.segment.selectedSegmentIndex==0) {
         DQDataSingleTeamModel* model=self.teamsRankArr[indexPath.row];
         DQDataNormalLeagueRankCell* cell;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (indexPath.row<3) {
             
             cell=[tableView dequeueReusableCellWithIdentifier:reuseTopCell];
@@ -358,6 +360,7 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
         DQDataPlayerRankModel* model=self.teamsRankArr[indexPath.row];
         model.rank=[NSString stringWithFormat:@"%zd",indexPath.row+1];
         DQDataPlayerCell* cell=[tableView dequeueReusableCellWithIdentifier:reusePlayerCell];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if (indexPath.row<3) {
             cell.topPlayer=YES;
         }
@@ -368,6 +371,7 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
     else{
         DQDataScheduleModel* model=self.teamsRankArr[indexPath.row];
         DQDataTeamScheduleCell* cell=[tableView dequeueReusableCellWithIdentifier:resuescheduleCell];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         [cell configWithModel:model];
         return cell;
     }
@@ -375,7 +379,11 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell=[tableView cellForRowAtIndexPath:indexPath];
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];// 取消选中
+    
+    if (self.segment.selectedSegmentIndex==3) {
+        [self gotoTeamDetail];
+    }
 }
 
 #pragma mark - private method
@@ -386,6 +394,11 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
 
 -(void)nextRounding{
     DQLog(@"下一轮");
+}
+
+-(void)gotoTeamDetail{
+    DQDataTeamDetailVC* teamDetail=[DQDataTeamDetailVC new];
+    [self.navigationController pushViewController:teamDetail animated:YES];
 }
 #pragma mark - segmentDelegate
 

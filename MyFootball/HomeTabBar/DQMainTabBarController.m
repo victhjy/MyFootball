@@ -10,7 +10,7 @@
 #import "HotNewsVC.h"
 #import "ImportantLive.h"
 #import "LovedCommunityVC.h"
-#import "AllCommunitiesVC.h"
+#import "DQCommunityHomeVC.h"
 #import "FootballDataVC.h"
 @interface DQMainTabBarController ()
 
@@ -39,7 +39,7 @@
     lovedCommunityNav.tabBarItem.image=[IMAGENAME(@"2016")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     lovedCommunityNav.tabBarItem.selectedImage=[IMAGENAME(@"2016")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UINavigationController* allCommunitiesNav=[[UINavigationController alloc]initWithRootViewController:[AllCommunitiesVC new]];
+    UINavigationController* allCommunitiesNav=[[UINavigationController alloc]initWithRootViewController:[DQCommunityHomeVC new]];
     allCommunitiesNav.tabBarItem.title=@"圈子";
     allCommunitiesNav.tabBarItem.selectedImage=[IMAGENAME(@"circle_press")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     allCommunitiesNav.tabBarItem.image=[IMAGENAME(@"circle_normal")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

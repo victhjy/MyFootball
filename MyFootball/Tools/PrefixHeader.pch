@@ -20,7 +20,7 @@
 
 
 #define IMAGENAME(imageName)  [UIImage imageNamed:imageName]
-#define ThemeColor [MyTools colorWithHexString:@"0x16a233"]
+#define ThemeColor [MyTools colorWithHexString:@"0x15ac39"]
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]  
 #define RGB(r,g,b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1]
 #define RGB_Point(r,g,b) [UIColor colorWithRed:r green:g blue:b alpha:1];

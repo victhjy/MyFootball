@@ -14,6 +14,7 @@
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self createUI];
         self.contentView.backgroundColor=DATACELLBGCOLOR;
+        self.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -50,7 +51,7 @@
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.rankLabel).offset(20);
+        make.left.equalTo(self.rankLabel.mas_right).offset(5);
         make.centerY.equalTo(self.rankLabel);
     }];
     

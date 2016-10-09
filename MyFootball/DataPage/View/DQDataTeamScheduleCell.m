@@ -14,6 +14,7 @@
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self createUI];
         self.contentView.backgroundColor=DATACELLBGCOLOR;
+        self.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     return self;
 }
