@@ -14,7 +14,7 @@
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self createView];
         [self configViews];
-        self.contentView.backgroundColor=[MyTools colorWithHexString:@"0xf4f3f4"];
+        self.contentView.backgroundColor=NORMALCOLOR;
     }
     return self;
 }

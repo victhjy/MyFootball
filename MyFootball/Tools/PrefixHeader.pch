@@ -37,6 +37,7 @@
 
 #define DATACELLBGCOLOR [MyTools colorWithHexString:@"0x4b4b4b"]
 #define TEAMIMAGE(TEAMID) [NSString stringWithFormat:@"http://img.dongqiudi.com/data/pic/%@.png",TEAMID]
+#define NORMALCOLOR [MyTools colorWithHexString:@"0xf4f3f4"]
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

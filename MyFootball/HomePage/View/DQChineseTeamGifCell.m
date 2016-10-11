@@ -14,7 +14,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self createUI];
-        self.contentView.backgroundColor=[MyTools colorWithHexString:@"0xf4f3f4"];
+        self.contentView.backgroundColor=NORMALCOLOR;
         self.contentView.autoresizingMask=UIViewAutoresizingNone;
     }
     return self;

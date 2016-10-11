@@ -378,7 +378,6 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell=[tableView cellForRowAtIndexPath:indexPath];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];// 取消选中
     
     if (self.segment.selectedSegmentIndex==3) {

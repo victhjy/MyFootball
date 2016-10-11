@@ -105,6 +105,8 @@
 		464F052F1D7FBE9000C61574 /* DQChineseTeamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F052E1D7FBE9000C61574 /* DQChineseTeamModel.m */; };
 		464F05351D7FD6FE00C61574 /* DQChineseTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */; };
 		464F05391D80065300C61574 /* DQAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 464F05381D80065300C61574 /* DQAlbum.m */; };
+		46524ACD1DACBC7300483FD6 /* DQCommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46524ACC1DACBC7300483FD6 /* DQCommunityModel.m */; };
+		46524AD01DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46524ACF1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m */; };
 		4655A7B01D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */; };
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F60501D98B29C00A571C5 /* DQGifCellItemView.m */; };
@@ -342,6 +344,10 @@
 		464F05341D7FD6FE00C61574 /* DQChineseTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamCell.m; sourceTree = "<group>"; };
 		464F05371D80065300C61574 /* DQAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlbum.h; sourceTree = "<group>"; };
 		464F05381D80065300C61574 /* DQAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlbum.m; sourceTree = "<group>"; };
+		46524ACB1DACBC7300483FD6 /* DQCommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommunityModel.h; sourceTree = "<group>"; };
+		46524ACC1DACBC7300483FD6 /* DQCommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityModel.m; sourceTree = "<group>"; };
+		46524ACE1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommunityCollectionHeaderView.h; sourceTree = "<group>"; };
+		46524ACF1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityCollectionHeaderView.m; sourceTree = "<group>"; };
 		4655A7AE1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamsRankVCViewController.h; sourceTree = "<group>"; };
 		4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamsRankVCViewController.m; sourceTree = "<group>"; };
 		465ECD291D8262F500F60284 /* DQAttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAttachmentModel.h; sourceTree = "<group>"; };
@@ -598,6 +604,8 @@
 			children = (
 				46490B6D1DAA2AFB00587896 /* DQCommunityIconCell.h */,
 				46490B6E1DAA2AFB00587896 /* DQCommunityIconCell.m */,
+				46524ACE1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.h */,
+				46524ACF1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -605,6 +613,8 @@
 		4649C9851D791E7300FC1AFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46524ACB1DACBC7300483FD6 /* DQCommunityModel.h */,
+				46524ACC1DACBC7300483FD6 /* DQCommunityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1192,6 +1202,7 @@
 				4649CA3E1D79204700FC1AFA /* View+MASAdditions.m in Sources */,
 				4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */,
 				46C516AB1DAA446C00800C43 /* DQCommunityHomeVC.m in Sources */,
+				46524AD01DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m in Sources */,
 				4649CA411D79204700FC1AFA /* MJRefreshAutoFooter.m in Sources */,
 				4649CA561D79204700FC1AFA /* NSData+ImageContentType.m in Sources */,
 				4649CA621D79204700FC1AFA /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1255,6 +1266,7 @@
 				4649CA2F1D79204700FC1AFA /* AFHTTPSessionManager.m in Sources */,
 				46490B681DAA194E00587896 /* DQDataTeamDetailVC.m in Sources */,
 				464F052C1D7FBB4A00C61574 /* NSString+MJExtension.m in Sources */,
+				46524ACD1DACBC7300483FD6 /* DQCommunityModel.m in Sources */,
 				464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

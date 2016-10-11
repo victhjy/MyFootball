@@ -8,11 +8,16 @@
 
 #import "AllCommunitiesVC.h"
 #import "DQCommunityIconCell.h"
+#import "DQCommunityModel.h"
+#import "DQCommunityCollectionHeaderView.h"
 @interface AllCommunitiesVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
 {
     UICollectionView *_mainCollectionView;
     NSMutableArray* _foldFlagArr;
 }
+@property(nonatomic,strong)NSMutableArray*  resultArr;
+@property(nonatomic,strong)NSMutableArray <DQCommunitySingleModel * > * groupModel;
 @end
 
 @implementation AllCommunitiesVC
@@ -21,6 +26,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     [self configCollectionView];
+    [self loadData];
     // Do any additional setup after loading the view.
 }
 
@@ -37,27 +43,71 @@
     //2.初始化collectionView
     _mainCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight-64-30-49) collectionViewLayout:layout];
     [self.view addSubview:_mainCollectionView];
-    _mainCollectionView.backgroundColor = [UIColor clearColor];
+    _mainCollectionView.backgroundColor = NORMALCOLOR;
     
     //3.注册collectionViewCell
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
     [_mainCollectionView registerClass:[DQCommunityIconCell class] forCellWithReuseIdentifier:@"cellId"];
     
     //注册headerView  此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致  均为reusableView
-    [_mainCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
-    
+    [_mainCollectionView registerClass:[DQCommunityCollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
+    [_mainCollectionView registerClass:[DQCommunityCollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableClickView"];
+
     //4.设置代理
     _mainCollectionView.delegate = self;
     _mainCollectionView.dataSource = self;
-    _foldFlagArr=[@[@0,@0,@0] mutableCopy];
+    _foldFlagArr=[@[@1,@0,@0,@0,@0,@0] mutableCopy];
 }
 
+-(void)loadData{
+    NSArray* arrFromCache=(NSArray* ) [MyTools getCacheDataForKey:@"communityArr"];
+    if (arrFromCache) {
+        self.resultArr=[NSMutableArray arrayWithArray:arrFromCache];
+        [_foldFlagArr removeAllObjects];
+        for (int i=0; i<self.resultArr.count+2; i++) {
+            if(i==0||i==2){
+                [_foldFlagArr addObject:@1];
+            }
+            else{
+                [_foldFlagArr addObject:@0];
+            }
+        }
+        [_mainCollectionView reloadData];
+    }
+    else{
+        [self loadDataRequest];
+    }
+    
+}
+
+-(void)loadDataRequest{
+    [[DQAFNetManager sharedManagerAbsoluteUrl]requestWithMethod:GET WithPath:@"https://api.dongqiudi.com/leagues/groups" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+        NSArray* arr=(NSArray* )dic;
+        self.resultArr=[DQCommunityModel mj_objectArrayWithKeyValuesArray:arr[1]];
+        [_foldFlagArr removeAllObjects];
+        
+        [MyTools cacheData:self.resultArr withKey:@"communityArr"];
+        
+        for (int i=0; i<self.resultArr.count+2; i++) {
+            if(i==0||i==2){
+                [_foldFlagArr addObject:@1];
+            }
+            else{
+              [_foldFlagArr addObject:@0];
+            }
+        }
+        [_mainCollectionView reloadData];
+        
+    } WithFailurBlock:^(NSError *error) {
+        DQLog(@"error:%@",error);
+    }];
+}
 #pragma mark collectionView代理方法
 
 //返回section个数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 3;
+    return self.resultArr.count + 2;
 }
 
 //每个section的item个数
@@ -67,18 +117,38 @@
         return 0;
     }
     else{
-        return 9;
+        if (section==0) {
+            return 1;
+        }
+        else if (section==1){
+            return 0;
+        }
+        else{
+            DQCommunityModel* communityModel=self.resultArr[section-2];
+           return communityModel.groups_total;
+        }
+        
     }
 
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    DQCommunityIconCell *cell = (DQCommunityIconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-
-    
-    return cell;
+    if(indexPath.section<1){
+        DQCommunityIconCell *cell = (DQCommunityIconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
+        DQCommunityModel* communityModel=self.resultArr[0];
+        self.groupModel=[DQCommunitySingleModel mj_objectArrayWithKeyValuesArray:communityModel.groups];
+        [cell configWithModel:self.groupModel[indexPath.row]];
+        return cell;
+    }
+    else {
+        DQCommunityIconCell *cell = (DQCommunityIconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
+        DQCommunityModel* communityModel=self.resultArr[indexPath.section-2];
+        self.groupModel=[DQCommunitySingleModel mj_objectArrayWithKeyValuesArray:communityModel.groups];
+        [cell configWithModel:self.groupModel[indexPath.row]];
+        
+        return cell;
+    }
 }
 
 //设置每个item的尺寸
@@ -116,21 +186,34 @@
 //通过设置SupplementaryViewOfKind 来设置头部或者底部的view，其中 ReuseIdentifier 的值必须和 注册是填写的一致，本例都为 “reusableView”
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView" forIndexPath:indexPath];
-    headerView.backgroundColor =[UIColor grayColor];
-    UILabel *label = [[UILabel alloc] initWithFrame:headerView.bounds];
-    label.text = @"这是collectionView的头部";
-    label.font = [UIFont systemFontOfSize:12];
-    [headerView addSubview:label];
-    label.userInteractionEnabled=YES;
-    label.tag=1000+indexPath.section;
+    if (indexPath.section==0||indexPath.section==1) {
+        DQCommunityCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView" forIndexPath:indexPath];
+        headerView.backgroundColor =[UIColor lightGrayColor];
+        headerView.textLabel.text = indexPath.section==0?@"关注(1)":@"全部";
+        return headerView;
+    }
+    else{
+    DQCommunityCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableClickView" forIndexPath:indexPath];
+    headerView.backgroundColor =NORMALCOLOR;
+    
+        DQCommunityModel* communityModel=self.resultArr[indexPath.section-2];
+    headerView.textLabel.text = [NSString stringWithFormat:@"%@(%zd)",communityModel.name,communityModel.groups_total];
+    headerView.userInteractionEnabled=YES;
+    headerView.tag=1000+indexPath.section;
     UITapGestureRecognizer* gesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(foldOrSpread:)];
-    [label addGestureRecognizer:gesture];
+    [headerView addGestureRecognizer:gesture];
     return headerView;
+    }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(UIScreenWidth, 30);
+    if (section==0||section==1) {
+        return CGSizeMake(UIScreenWidth, 20);
+    }
+    else{
+       return CGSizeMake(UIScreenWidth, 30);
+    }
+    
 }
 
 
