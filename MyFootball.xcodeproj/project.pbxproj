@@ -108,6 +108,7 @@
 		46524ACD1DACBC7300483FD6 /* DQCommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46524ACC1DACBC7300483FD6 /* DQCommunityModel.m */; };
 		46524AD01DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46524ACF1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m */; };
 		4655A7B01D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */; };
+		465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */; };
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F60501D98B29C00A571C5 /* DQGifCellItemView.m */; };
 		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
@@ -350,6 +351,8 @@
 		46524ACF1DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityCollectionHeaderView.m; sourceTree = "<group>"; };
 		4655A7AE1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamsRankVCViewController.h; sourceTree = "<group>"; };
 		4655A7AF1D85431D0036BBFE /* DQChineseTeamsRankVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamsRankVCViewController.m; sourceTree = "<group>"; };
+		465E0FEF1DBDB1970013F1B2 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		465ECD291D8262F500F60284 /* DQAttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAttachmentModel.h; sourceTree = "<group>"; };
 		465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAttachmentModel.m; sourceTree = "<group>"; };
 		465F604F1D98B29C00A571C5 /* DQGifCellItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQGifCellItemView.h; sourceTree = "<group>"; };
@@ -724,6 +727,7 @@
 		4649C9911D791ED000FC1AFA /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				465E0FEE1DBDB1970013F1B2 /* Cagtgory */,
 				4649C9931D791F0F00FC1AFA /* MyTools.h */,
 				4649C9941D791F0F00FC1AFA /* MyTools.m */,
 			);
@@ -992,6 +996,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		465E0FEE1DBDB1970013F1B2 /* Cagtgory */ = {
+			isa = PBXGroup;
+			children = (
+				465E0FEF1DBDB1970013F1B2 /* UIView+Frame.h */,
+				465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */,
+			);
+			path = Cagtgory;
+			sourceTree = "<group>";
+		};
 		4668458F1D7D1B4A00ED2121 /* HomeTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,6 +1214,7 @@
 				4649CA451D79204700FC1AFA /* MJRefreshHeader.m in Sources */,
 				4649CA3E1D79204700FC1AFA /* View+MASAdditions.m in Sources */,
 				4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */,
+				465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */,
 				46C516AB1DAA446C00800C43 /* DQCommunityHomeVC.m in Sources */,
 				46524AD01DACC4F900483FD6 /* DQCommunityCollectionHeaderView.m in Sources */,
 				4649CA411D79204700FC1AFA /* MJRefreshAutoFooter.m in Sources */,

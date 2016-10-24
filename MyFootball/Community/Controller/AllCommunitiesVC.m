@@ -73,6 +73,9 @@
             }
         }
         [_mainCollectionView reloadData];
+        
+        
+        [self performSelector:@selector(loadDataRequest) withObject:nil afterDelay:5];
     }
     else{
         [self loadDataRequest];

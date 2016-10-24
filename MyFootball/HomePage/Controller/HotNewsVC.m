@@ -24,6 +24,7 @@
     [self setupControllers];
     self.delegate=self;
     self.dataSource=self;
+    self.bounce=YES;
     self.view.backgroundColor=[UIColor whiteColor];
     
     

@@ -247,22 +247,25 @@
 
 #pragma -mark scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (_flagTemp==0) {
-        if (scrollView.contentOffset.x<UIScreenWidth) {
-            scrollView.scrollEnabled=NO;
+    if (!self.bounce) {
+        if (_flagTemp==0) {
+            if (scrollView.contentOffset.x<UIScreenWidth) {
+                scrollView.scrollEnabled=NO;
+            }
+            else{
+                scrollView.scrollEnabled=YES;
+            }
         }
-        else{
-            scrollView.scrollEnabled=YES;
+        if (_flagTemp==self->arrayOfViewController.count-1) {
+            if (scrollView.contentOffset.x>UIScreenWidth) {
+                scrollView.scrollEnabled=NO;
+            }
+            else{
+                scrollView.scrollEnabled=YES;
+            }
         }
     }
-    if (_flagTemp==self->arrayOfViewController.count-1) {
-        if (scrollView.contentOffset.x>UIScreenWidth) {
-            scrollView.scrollEnabled=NO;
-        }
-        else{
-            scrollView.scrollEnabled=YES;
-        }
-    }
+    
 
 }
 

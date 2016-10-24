@@ -74,6 +74,7 @@
 }
 @property (nonatomic,weak) id<LSYViewPagerVCDataSource>dataSource;
 @property (nonatomic,weak) id<LSYViewPagerVCDelegate>delegate;
+@property (nonatomic,assign) BOOL bounce;  ///<s是否有弹簧效果
 /**
  用来刷新ViewPager
  */
