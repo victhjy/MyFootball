@@ -11,6 +11,7 @@
 
 @interface DQHotNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView* tableView;
+@property(nonatomic,strong)UIView* searchView;
 @end
 
 @implementation DQHotNewsViewController
@@ -58,9 +59,13 @@
     _tableView=[[UITableView alloc]init];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.contentInset=UIEdgeInsetsMake(20, 0, 0, 0);
     
     _tableView.tableHeaderView=_rollingBannerVC.view;
-
+    
+    [_tableView addSubview:self.searchView];
+    
+    
     [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(_tableView);
         make.width.mas_equalTo(UIScreenWidth);
@@ -106,7 +111,16 @@
     return cell;
 }
 
+#pragma mark - private method
 
+-(UIView* )searchView{
+    if (!_searchView) {
+        _searchView=[UIView new];
+        _searchView.backgroundColor=[UIColor grayColor];
+        _searchView.frame=CGRectMake(0, -20, UIScreenWidth, 20);
+    }
+    return _searchView;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

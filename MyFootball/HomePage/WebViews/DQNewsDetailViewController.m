@@ -9,7 +9,7 @@
 #import "DQNewsDetailViewController.h"
 #import <WebKit/WebKit.h>
 #import "DQCommentsViewController.h"
-
+#import "DQArticleDetail.h"
 @interface DQNewsDetailViewController ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
 @property(nonatomic,strong)UIToolbar* toolBar;
 @property(nonatomic,strong)WKWebView* wkWebView;
@@ -76,14 +76,14 @@
 -(void)configNavigationItem{
    
     UILabel* commentLabel=[UILabel new];
-    commentLabel.text=[NSString stringWithFormat:@"%ld条评论",self.detailModel.comments_total];
+    commentLabel.text=[NSString stringWithFormat:@"%zd条评论",self.detailModel.comments_total];
     commentLabel.font=[UIFont systemFontOfSize:12];
     CGSize labelSize=[MyTools string:commentLabel.text boundingRectWithSize:CGSizeMake(320, 0) font:commentLabel.font];
     commentLabel.textColor=[UIColor whiteColor];
 
     UIButton* commentButton=[[UIButton alloc]init];
     commentButton.frame=CGRectMake(0, 0, labelSize.width+5, labelSize.height+5);
-    [commentButton setTitle:[NSString stringWithFormat:@"%ld条评论",self.detailModel.comments_total] forState:UIControlStateNormal];
+    [commentButton setTitle:[NSString stringWithFormat:@"%zd条评论",self.detailModel.comments_total] forState:UIControlStateNormal];
     commentButton.tintColor=[UIColor whiteColor];
     commentButton.titleLabel.font=commentLabel.font;
     commentButton.layer.borderWidth=1;
@@ -146,7 +146,25 @@
     if ([[navigationAction.request.URL.absoluteString substringToIndex:4] isEqualToString:@"dong"]) {
         decisionHandler(WKNavigationActionPolicyCancel);
         NSLog(@"响应前%@",navigationAction.request.URL.absoluteString);
-        
+        __block DQArticleDetail* articleModel;
+        __weak typeof(self) weakself=self;
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+        NSString *resultStr = [[navigationAction.request.URL.absoluteString componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        NSString* absoluteUrlString=[NSString stringWithFormat:@"%@%@",APIGetArticleFromId,resultStr];
+        [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:absoluteUrlString WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+            articleModel=[DQArticleDetail mj_objectWithKeyValues:dic];
+            DQChineseTeamListModel* detailModel=[DQChineseTeamListModel new];
+            detailModel.url=articleModel.url;
+            detailModel.articleId=articleModel.articleId.integerValue;
+            detailModel.comments_total=articleModel.comments_total;
+            
+            DQNewsDetailViewController* detailVC=[DQNewsDetailViewController new];
+            detailVC.detailModel=detailModel;
+            [weakself.navigationController pushViewController:detailVC animated:YES];
+            
+        } WithFailurBlock:^(NSError *error) {
+            DQLog(@"Error,%@",error);
+        }];
     }
     else{
         decisionHandler(WKNavigationActionPolicyAllow);

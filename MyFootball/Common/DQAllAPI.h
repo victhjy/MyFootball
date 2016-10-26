@@ -22,5 +22,7 @@ extern NSString* const APIGetDataGameSchedule; //球队赛程排行
 
 extern NSString* const APIGetDataTeamRounding; //联赛当前轮数
 
+extern NSString* const APIGetArticleFromId;//根据文章id获取详情
+
 @interface DQAllAPI : NSObject
 @end

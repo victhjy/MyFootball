@@ -18,6 +18,7 @@ NSString* const APIGetDataAssistRanking=@"/data/assist_ranking/";
 NSString* const APIGetDataGameSchedule=@"/data/schedule";
 NSString* const APIGetDataTeamRounding=@"/data/round_list/";
 
+NSString* const APIGetArticleFromId=@"/articles/info/";
 @implementation DQAllAPI
 
 @end

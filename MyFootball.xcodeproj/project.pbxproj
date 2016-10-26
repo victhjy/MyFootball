@@ -111,6 +111,7 @@
 		465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */; };
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F60501D98B29C00A571C5 /* DQGifCellItemView.m */; };
+		4667E4DD1DC05BC0006BEB1C /* DQArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4667E4DC1DC05BC0006BEB1C /* DQArticleDetail.m */; };
 		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
 		466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */; };
 		466845991D7D3E1200ED2121 /* DQHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845981D7D3E1200ED2121 /* DQHotNewsViewController.m */; };
@@ -357,6 +358,8 @@
 		465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAttachmentModel.m; sourceTree = "<group>"; };
 		465F604F1D98B29C00A571C5 /* DQGifCellItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQGifCellItemView.h; sourceTree = "<group>"; };
 		465F60501D98B29C00A571C5 /* DQGifCellItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQGifCellItemView.m; sourceTree = "<group>"; };
+		4667E4DB1DC05BC0006BEB1C /* DQArticleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQArticleDetail.h; sourceTree = "<group>"; };
+		4667E4DC1DC05BC0006BEB1C /* DQArticleDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQArticleDetail.m; sourceTree = "<group>"; };
 		466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMainTabBarController.h; sourceTree = "<group>"; };
 		466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQMainTabBarController.m; sourceTree = "<group>"; };
 		466845941D7D1FE300ED2121 /* LSYViewPagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSYViewPagerVC.h; sourceTree = "<group>"; };
@@ -449,7 +452,7 @@
 		4649C9471D791C5300FC1AFA /* MyFootball */ = {
 			isa = PBXGroup;
 			children = (
-				464F05361D80063B00C61574 /* Common */,
+				464F05361D80063B00C61574 /* CommonModel */,
 				464F05041D7FB00D00C61574 /* DQAPIRequest */,
 				4668458F1D7D1B4A00ED2121 /* HomeTabBar */,
 				4649C9911D791ED000FC1AFA /* Tools */,
@@ -986,13 +989,16 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
-		464F05361D80063B00C61574 /* Common */ = {
+		464F05361D80063B00C61574 /* CommonModel */ = {
 			isa = PBXGroup;
 			children = (
 				4646A0721D81422C00C12B7E /* CommonModel */,
 				464F05371D80065300C61574 /* DQAlbum.h */,
 				464F05381D80065300C61574 /* DQAlbum.m */,
+				4667E4DB1DC05BC0006BEB1C /* DQArticleDetail.h */,
+				4667E4DC1DC05BC0006BEB1C /* DQArticleDetail.m */,
 			);
+			name = CommonModel;
 			path = Common;
 			sourceTree = "<group>";
 		};
@@ -1275,6 +1281,7 @@
 				46490B6C1DAA1B7D00587896 /* SimulateTwitterView.m in Sources */,
 				4649CA4B1D79204700FC1AFA /* MJRefreshBackStateFooter.m in Sources */,
 				4649CA641D79204700FC1AFA /* UIView+WebCacheOperation.m in Sources */,
+				4667E4DD1DC05BC0006BEB1C /* DQArticleDetail.m in Sources */,
 				4649C99B1D791F7700FC1AFA /* ImportantLive.m in Sources */,
 				4649C9951D791F0F00FC1AFA /* MyTools.m in Sources */,
 				4649CA2F1D79204700FC1AFA /* AFHTTPSessionManager.m in Sources */,
