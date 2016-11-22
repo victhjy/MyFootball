@@ -35,15 +35,22 @@
     _rollingBannerVC.rollingInterval=5;
     
     NSArray* showedImages=[NSArray new];
-    showedImages=(NSArray* )[MyTools getCacheDataForKey:@"DQBannerImages"];
-    if (!showedImages) {
+//    showedImages=(NSArray* )[MyTools getCacheDataForKey:@"DQBannerImages"];
+    YYCache* cache=[YYCache cacheWithName:@"DQD"];
+    if ([cache containsObjectForKey:DQCACHEKEYBannerImages]) {
+        showedImages=(NSArray* )[cache objectForKey:DQCACHEKEYBannerImages];
+        DQLog(@"get banner images from cache");
+    }
+    else{
         UIImage* image1=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://jiangsu.china.com.cn/uploadfile/2016/0811/1470877745678390.jpg"]]];
         UIImage* image2=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cmsimg.sports.cn/Image/140829/54-140RZI133354.jpg"]]];
         UIImage* image3=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://sports.scol.com.cn/gjfootball/img/attachement/jpg/site2/20120426/001d093215011103063056.jpg"]]];
         UIImage* image4=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdnq.duitang.com/uploads/item/201502/02/20150202135339_XmNLE.thumb.700_0.jpeg"]]];
         
         showedImages=@[image1,image2,image3,image4];
-        [MyTools cacheData:showedImages withKey:@"DQBannerImages"];
+        [cache setObject:showedImages forKey:DQCACHEKEYBannerImages];
+        DQLog(@"cached banner images");
+//        [MyTools cacheData:showedImages withKey:@"DQBannerImages"];
     }
 
     // setup the rolling images

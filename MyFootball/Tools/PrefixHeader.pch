@@ -18,6 +18,8 @@
 #import "DQAllAPI.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "UIView+Frame.h"
+#import "YYCache.h"
+#import "DQCacheKeys.h"
 
 
 #define IMAGENAME(imageName)  [UIImage imageNamed:imageName]

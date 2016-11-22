@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		463D14F51DDD5C99008BD0BA /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14EE1DDD5C99008BD0BA /* YYCache.m */; };
+		463D14F61DDD5C99008BD0BA /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14F01DDD5C99008BD0BA /* YYDiskCache.m */; };
+		463D14F71DDD5C99008BD0BA /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14F21DDD5C99008BD0BA /* YYKVStorage.m */; };
+		463D14F81DDD5C99008BD0BA /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14F41DDD5C99008BD0BA /* YYMemoryCache.m */; };
+		463D14FB1DDD5CE3008BD0BA /* DQCacheKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14FA1DDD5CE3008BD0BA /* DQCacheKeys.m */; };
+		463D14FD1DDD89C8008BD0BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 463D14FC1DDD89C8008BD0BA /* libsqlite3.tbd */; };
 		463D5F931D8666C000C95592 /* DQDataTeamsRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */; };
 		463D5F961D8668EB00C95592 /* DQDataNormalLeagueRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */; };
 		464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */; };
@@ -143,6 +149,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		463D14ED1DDD5C99008BD0BA /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
+		463D14EE1DDD5C99008BD0BA /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
+		463D14EF1DDD5C99008BD0BA /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
+		463D14F01DDD5C99008BD0BA /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
+		463D14F11DDD5C99008BD0BA /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
+		463D14F21DDD5C99008BD0BA /* YYKVStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKVStorage.m; sourceTree = "<group>"; };
+		463D14F31DDD5C99008BD0BA /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
+		463D14F41DDD5C99008BD0BA /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
+		463D14F91DDD5CE3008BD0BA /* DQCacheKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCacheKeys.h; sourceTree = "<group>"; };
+		463D14FA1DDD5CE3008BD0BA /* DQCacheKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCacheKeys.m; sourceTree = "<group>"; };
+		463D14FC1DDD89C8008BD0BA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		463D5F911D8666C000C95592 /* DQDataTeamsRankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataTeamsRankModel.h; sourceTree = "<group>"; };
 		463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamsRankModel.m; sourceTree = "<group>"; };
 		463D5F941D8668EB00C95592 /* DQDataNormalLeagueRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataNormalLeagueRankCell.h; sourceTree = "<group>"; };
@@ -389,6 +406,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463D14FD1DDD89C8008BD0BA /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +427,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		463D14EC1DDD5C99008BD0BA /* YYCache */ = {
+			isa = PBXGroup;
+			children = (
+				463D14ED1DDD5C99008BD0BA /* YYCache.h */,
+				463D14EE1DDD5C99008BD0BA /* YYCache.m */,
+				463D14EF1DDD5C99008BD0BA /* YYDiskCache.h */,
+				463D14F01DDD5C99008BD0BA /* YYDiskCache.m */,
+				463D14F11DDD5C99008BD0BA /* YYKVStorage.h */,
+				463D14F21DDD5C99008BD0BA /* YYKVStorage.m */,
+				463D14F31DDD5C99008BD0BA /* YYMemoryCache.h */,
+				463D14F41DDD5C99008BD0BA /* YYMemoryCache.m */,
+			);
+			path = YYCache;
+			sourceTree = "<group>";
+		};
+		463D14FE1DDD8A0C008BD0BA /* Frameworking */ = {
+			isa = PBXGroup;
+			children = (
+				463D14FC1DDD89C8008BD0BA /* libsqlite3.tbd */,
+			);
+			path = Frameworking;
+			sourceTree = "<group>";
+		};
 		4646A0721D81422C00C12B7E /* CommonModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,7 +493,7 @@
 		4649C9471D791C5300FC1AFA /* MyFootball */ = {
 			isa = PBXGroup;
 			children = (
-				464F05361D80063B00C61574 /* CommonModel */,
+				464F05361D80063B00C61574 /* Common */,
 				464F05041D7FB00D00C61574 /* DQAPIRequest */,
 				4668458F1D7D1B4A00ED2121 /* HomeTabBar */,
 				4649C9911D791ED000FC1AFA /* Tools */,
@@ -505,6 +546,8 @@
 		4649C97B1D791E1C00FC1AFA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				463D14FE1DDD8A0C008BD0BA /* Frameworking */,
+				463D14EC1DDD5C99008BD0BA /* YYCache */,
 				46490B691DAA1B7D00587896 /* SimulateTwitterView */,
 				813CDB4A1D83B6BB001666D2 /* DZNEmpty */,
 				464F050B1D7FBB4A00C61574 /* MJExtension */,
@@ -989,7 +1032,7 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
-		464F05361D80063B00C61574 /* CommonModel */ = {
+		464F05361D80063B00C61574 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				4646A0721D81422C00C12B7E /* CommonModel */,
@@ -997,8 +1040,9 @@
 				464F05381D80065300C61574 /* DQAlbum.m */,
 				4667E4DB1DC05BC0006BEB1C /* DQArticleDetail.h */,
 				4667E4DC1DC05BC0006BEB1C /* DQArticleDetail.m */,
+				463D14F91DDD5CE3008BD0BA /* DQCacheKeys.h */,
+				463D14FA1DDD5CE3008BD0BA /* DQCacheKeys.m */,
 			);
-			name = CommonModel;
 			path = Common;
 			sourceTree = "<group>";
 		};
@@ -1194,6 +1238,7 @@
 				4649CA5D1D79204700FC1AFA /* SDWebImagePrefetcher.m in Sources */,
 				4649CA421D79204700FC1AFA /* MJRefreshBackFooter.m in Sources */,
 				4649CA611D79204700FC1AFA /* UIImage+WebP.m in Sources */,
+				463D14F51DDD5C99008BD0BA /* YYCache.m in Sources */,
 				4649C9981D791F4700FC1AFA /* HotNewsVC.m in Sources */,
 				4649CA551D79204700FC1AFA /* MKAnnotationView+WebCache.m in Sources */,
 				4649CA2D1D79204700FC1AFA /* DYMBannerVC.m in Sources */,
@@ -1218,6 +1263,7 @@
 				4649CA401D79204700FC1AFA /* MBProgressHUD.m in Sources */,
 				4649CA581D79204700FC1AFA /* SDWebImageCompat.m in Sources */,
 				4649CA451D79204700FC1AFA /* MJRefreshHeader.m in Sources */,
+				463D14FB1DDD5CE3008BD0BA /* DQCacheKeys.m in Sources */,
 				4649CA3E1D79204700FC1AFA /* View+MASAdditions.m in Sources */,
 				4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */,
 				465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */,
@@ -1247,6 +1293,7 @@
 				4649CA4A1D79204700FC1AFA /* MJRefreshBackNormalFooter.m in Sources */,
 				4649CA521D79204700FC1AFA /* UIScrollView+MJExtension.m in Sources */,
 				4649C9A71D79200A00FC1AFA /* FootballDataVC.m in Sources */,
+				463D14F61DDD5C99008BD0BA /* YYDiskCache.m in Sources */,
 				4649CA671D7925EB00FC1AFA /* AllCommunitiesVC.m in Sources */,
 				4646A0711D81401100C12B7E /* DQCommentCell.m in Sources */,
 				464F050A1D7FB2E500C61574 /* DQAFNetManager.m in Sources */,
@@ -1268,6 +1315,7 @@
 				46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */,
 				463D5F931D8666C000C95592 /* DQDataTeamsRankModel.m in Sources */,
 				464F05251D7FBB4A00C61574 /* MJProperty.m in Sources */,
+				463D14F81DDD5C99008BD0BA /* YYMemoryCache.m in Sources */,
 				4649CA331D79204700FC1AFA /* AFURLResponseSerialization.m in Sources */,
 				4649CA531D79204700FC1AFA /* UIScrollView+MJRefresh.m in Sources */,
 				4649CA601D79204700FC1AFA /* UIImage+MultiFormat.m in Sources */,
@@ -1281,6 +1329,7 @@
 				46490B6C1DAA1B7D00587896 /* SimulateTwitterView.m in Sources */,
 				4649CA4B1D79204700FC1AFA /* MJRefreshBackStateFooter.m in Sources */,
 				4649CA641D79204700FC1AFA /* UIView+WebCacheOperation.m in Sources */,
+				463D14F71DDD5C99008BD0BA /* YYKVStorage.m in Sources */,
 				4667E4DD1DC05BC0006BEB1C /* DQArticleDetail.m in Sources */,
 				4649C99B1D791F7700FC1AFA /* ImportantLive.m in Sources */,
 				4649C9951D791F0F00FC1AFA /* MyTools.m in Sources */,
