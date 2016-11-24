@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* const DQCACHEKEYBannerImages;
+extern NSString* const DQCACHEKEYBannerImages; //banner图片
 
 @interface DQCacheKeys : NSObject
 

@@ -397,6 +397,7 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
 
 -(void)gotoTeamDetail{
     DQDataTeamDetailVC* teamDetail=[DQDataTeamDetailVC new];
+    teamDetail.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:teamDetail animated:YES];
 }
 #pragma mark - segmentDelegate

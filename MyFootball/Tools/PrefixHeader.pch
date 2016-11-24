@@ -14,12 +14,36 @@
 #import "MBProgressHUD.h"
 #import "MyTools.h"
 #import "DQAFNetManager.h"
-#import "MJExtension.h"
+//#import "MJExtension.h"
 #import "DQAllAPI.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "UIView+Frame.h"
 #import "YYCache.h"
 #import "DQCacheKeys.h"
+
+//category  常用扩展类
+#import "NSString+MAC.h"
+
+#import "NSArray+SafeAccess.h"
+#import "NSObjcet+MAC.h"
+#import "UIColor+Mac.h"
+#import "UIColor+MACProject.h"
+#import "UIViewHeader.h"
+#import "UIImageViewHeader.h"
+#import "UIImageView+WebCache.h"
+#import "UITableViewCell+MAC.h"
+#import "UIViewController+MAC.h"
+#import "UINavigationBar+Awesome.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
+
+#import "UINavigationController+MAC.h"
+#import "UIApplication+AppInfo.h"
+
+#import "GCD.h"
+#import "UserAuth.h"
+#import "MJExtension.h"
+//#import "BaseService.h"
+//#import "IQKeyboardManager.h"
 
 
 #define IMAGENAME(imageName)  [UIImage imageNamed:imageName]

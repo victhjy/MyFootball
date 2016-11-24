@@ -8,8 +8,8 @@
 
 #import "ImportantLive.h"
 
-@interface ImportantLive ()
-
+@interface ImportantLive ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView* tableView;
 @end
 
 @implementation ImportantLive
