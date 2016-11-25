@@ -38,11 +38,11 @@
     
     self.headerImageView = [[UIImageView alloc] initWithFrame:self.header.frame];
     self.headerImageView.image = IMAGENAME(@"bg");
-    self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.headerImageView.contentMode = UIViewContentModeScaleToFill;
     self.header.clipsToBounds = YES;
     [self.header addSubview:self.headerImageView];
     
-    self.tableView.tableHeaderView= [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.header.frame.size.height + 73)];
+    self.tableView.tableHeaderView= [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.header.frame.size.height + 13)];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -86,6 +86,7 @@
         headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0);
         headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0);
         self.header.layer.transform = headerTransform;
+        self.header.hidden=NO;
     }
     // 上拉
     else {
