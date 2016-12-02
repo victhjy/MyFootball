@@ -39,6 +39,7 @@
     self.headerImageView = [[UIImageView alloc] initWithFrame:self.header.frame];
     self.headerImageView.image = IMAGENAME(@"bg");
     self.headerImageView.contentMode = UIViewContentModeScaleToFill;
+    self.headerImageView.layer.masksToBounds=YES;
     self.header.clipsToBounds = YES;
     [self.header addSubview:self.headerImageView];
     
