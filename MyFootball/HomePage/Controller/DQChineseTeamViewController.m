@@ -20,7 +20,7 @@
 @implementation DQChineseTeamViewController
 
 {
-    UITableView* _tableView;
+    MACTableView* _tableView;
 }
 
 static NSString* reuseNormalCell=@"chineseTeamCell";
@@ -48,7 +48,7 @@ static NSString* reuseGifCell=@"gifCell";
 }
 
 -(void)configTableView{
-    _tableView=[[UITableView alloc]init];
+    _tableView=[[MACTableView alloc]init];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
@@ -76,6 +76,7 @@ static NSString* reuseGifCell=@"gifCell";
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
+//    return 0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

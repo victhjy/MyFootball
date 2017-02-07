@@ -328,6 +328,8 @@
 		46B823E31D8E66B70009E0DB /* DQDataPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B823E21D8E66B70009E0DB /* DQDataPlayerCell.m */; };
 		46C516AB1DAA446C00800C43 /* DQCommunityHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C516AA1DAA446C00800C43 /* DQCommunityHomeVC.m */; };
 		46C516AE1DAA448500800C43 /* DQCommunityHotTopicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C516AD1DAA448500800C43 /* DQCommunityHotTopicVC.m */; };
+		46D6293A1E49CF0400DB2062 /* CorePullScaleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D629371E49CF0400DB2062 /* CorePullScaleImageView.m */; };
+		46D6293B1E49CF0400DB2062 /* UIScrollView+PullScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D629391E49CF0400DB2062 /* UIScrollView+PullScale.m */; };
 		46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */; };
 		813CDB4D1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */; };
 		81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */; };
@@ -1008,6 +1010,10 @@
 		46C516AA1DAA446C00800C43 /* DQCommunityHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityHomeVC.m; sourceTree = "<group>"; };
 		46C516AC1DAA448500800C43 /* DQCommunityHotTopicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommunityHotTopicVC.h; sourceTree = "<group>"; };
 		46C516AD1DAA448500800C43 /* DQCommunityHotTopicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommunityHotTopicVC.m; sourceTree = "<group>"; };
+		46D629361E49CF0400DB2062 /* CorePullScaleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePullScaleImageView.h; sourceTree = "<group>"; };
+		46D629371E49CF0400DB2062 /* CorePullScaleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePullScaleImageView.m; sourceTree = "<group>"; };
+		46D629381E49CF0400DB2062 /* UIScrollView+PullScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+PullScale.h"; sourceTree = "<group>"; };
+		46D629391E49CF0400DB2062 /* UIScrollView+PullScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PullScale.m"; sourceTree = "<group>"; };
 		46FB602B1DA8C0D800970C31 /* DQDataTeamScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataTeamScheduleCell.h; sourceTree = "<group>"; };
 		46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamScheduleCell.m; sourceTree = "<group>"; };
 		80BD12C105D8317BFFD40AE6 /* Pods-MyFootball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFootball.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFootball/Pods-MyFootball.release.xcconfig"; sourceTree = "<group>"; };
@@ -1169,6 +1175,7 @@
 		4649C97B1D791E1C00FC1AFA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				46D629351E49CF0400DB2062 /* CorePullScale */,
 				4655B3CD1DE6D9A6006DE712 /* YYText */,
 				4655B2D71DE6C88B006DE712 /* MMPopupView */,
 				4655B2C31DE6C76D006DE712 /* TSMessages */,
@@ -2670,6 +2677,17 @@
 			path = LSYViewPager;
 			sourceTree = "<group>";
 		};
+		46D629351E49CF0400DB2062 /* CorePullScale */ = {
+			isa = PBXGroup;
+			children = (
+				46D629361E49CF0400DB2062 /* CorePullScaleImageView.h */,
+				46D629371E49CF0400DB2062 /* CorePullScaleImageView.m */,
+				46D629381E49CF0400DB2062 /* UIScrollView+PullScale.h */,
+				46D629391E49CF0400DB2062 /* UIScrollView+PullScale.m */,
+			);
+			path = CorePullScale;
+			sourceTree = "<group>";
+		};
 		813CDB4A1D83B6BB001666D2 /* DZNEmpty */ = {
 			isa = PBXGroup;
 			children = (
@@ -3114,6 +3132,7 @@
 				4655B4071DE6D9A6006DE712 /* YYTextLayout.m in Sources */,
 				4646A0751D81425B00C12B7E /* DQUserModel.m in Sources */,
 				4649C9A11D791FC700FC1AFA /* LovedCommunityVC.m in Sources */,
+				46D6293B1E49CF0400DB2062 /* UIScrollView+PullScale.m in Sources */,
 				4655B2381DE6C699006DE712 /* UINavigationController+MAC.m in Sources */,
 				464F05391D80065300C61574 /* DQAlbum.m in Sources */,
 				4655B23D1DE6C699006DE712 /* UIResponder+FirstResponder.m in Sources */,
@@ -3190,6 +3209,7 @@
 				4655B2761DE6C699006DE712 /* CoreAnimationEffect.m in Sources */,
 				4655B2281DE6C699006DE712 /* UIFont+Fonts.m in Sources */,
 				4655B20A1DE6C698006DE712 /* NSObject+KVOBlocks.m in Sources */,
+				46D6293A1E49CF0400DB2062 /* CorePullScaleImageView.m in Sources */,
 				4655B27B1DE6C699006DE712 /* UIViewController+WXSTransition.m in Sources */,
 				4655B2141DE6C699006DE712 /* NSString+UUID.m in Sources */,
 				4655B2221DE6C699006DE712 /* UIButton+TouchAreaInsets.m in Sources */,

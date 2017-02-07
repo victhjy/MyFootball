@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DQMainTabBarController.h"
 #import "AFNetWorking.h"
+#import "YYFPSLabel.h"
 @interface AppDelegate ()
 
 @end
@@ -35,6 +36,8 @@
                                                            NSForegroundColorAttributeName : [UIColor whiteColor]
                                                            }];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    YYFPSLabel* fps=[[YYFPSLabel alloc]initWithFrame:CGRectMake(UIScreenWidth/2+50, 20, 0, 0)];
+    [[UIApplication sharedApplication].keyWindow addSubview:fps];
     [[UIBarButtonItem appearance]
      setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
      forBarMetrics:UIBarMetricsDefault];
