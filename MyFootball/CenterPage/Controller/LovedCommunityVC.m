@@ -88,6 +88,7 @@ NSArray *allSubviews(UIView *aView){
         } completion:^(BOOL finished) {
             
         }];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     }else{
         [UIView animateWithDuration:0.5 animations:^{
             _headerView.height=0;
@@ -103,6 +104,7 @@ NSArray *allSubviews(UIView *aView){
                 [self.view layoutSubviews];
             }];
         }];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
     }
 }

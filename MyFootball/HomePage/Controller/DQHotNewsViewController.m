@@ -8,6 +8,7 @@
 
 #import "DQHotNewsViewController.h"
 #import "DYMRollingBannerVC.h"
+#import "YYFPSLabel.h"
 
 @interface DQHotNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView* tableView;
@@ -24,7 +25,9 @@
     [self creatingBanner];
     [self configTableView];
     
-
+    YYFPSLabel* fps=[[YYFPSLabel alloc]initWithFrame:CGRectMake(UIScreenWidth/2+50, 44, 55, 20)];
+    [[UIApplication sharedApplication].windows[0] addSubview:fps];
+    
     // Do any additional setup after loading the view.
 }
 

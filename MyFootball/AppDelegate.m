@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "DQMainTabBarController.h"
 #import "AFNetWorking.h"
-#import "YYFPSLabel.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,12 +19,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     self.window.rootViewController
     =[DQMainTabBarController new];
     
+//    fps.textColor=[UIColor whiteColor];
+    
+    
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [self configNavigationBar];
+//    [self.window addSubview:fps];
     return YES;
 }
 
@@ -36,8 +40,6 @@
                                                            NSForegroundColorAttributeName : [UIColor whiteColor]
                                                            }];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
-    YYFPSLabel* fps=[[YYFPSLabel alloc]initWithFrame:CGRectMake(UIScreenWidth/2+50, 20, 0, 0)];
-    [[UIApplication sharedApplication].keyWindow addSubview:fps];
     [[UIBarButtonItem appearance]
      setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
      forBarMetrics:UIBarMetricsDefault];
@@ -58,10 +60,12 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

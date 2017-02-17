@@ -9,6 +9,10 @@
 #import "DQShipViewController.h"
 
 @interface DQShipViewController ()
+{
+    UIImageView* huaji;
+    UIImageView* xiong;
+}
 
 @end
 
@@ -37,46 +41,54 @@
 //    }];
     
     [self performSelector:@selector(createButton) withObject:nil afterDelay:0];
+    [self createHuaji];
     
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self createHuaji];
+}
 
 #pragma mark - 创建悬浮的按钮
 
 - (void)createButton{
     
-    _window = [UIApplication sharedApplication].windows[0];
+//    _window = [UIApplication sharedApplication].windows[0];
     
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [_button setTitle:@"按钮" forState:UIControlStateNormal];
     
     _button.frame = CGRectMake(UIScreenWidth - 70, UIScreenHeight - 150, 60, 60);
+    _button.center=self.view.center;
     
     _button.titleLabel.font = [UIFont systemFontOfSize:13.0f];
     
     [_button setBackgroundColor:[UIColor orangeColor]];
     
-    _button.layer.cornerRadius = 30;
+    _button.layer.cornerRadius = 10;
     
     _button.layer.masksToBounds = YES;
     
     [_button addTarget:self action:@selector(resignButton) forControlEvents:UIControlEventTouchUpInside];
     
-    //    _window = [[UIWindow alloc]initWithFrame:CGRectMake(kSize_width - 70, kSize_height - 150, 50, 50)];
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    animation.duration = 0.2;
+    animation.removedOnCompletion = YES;
+    animation.fillMode = kCAFillModeForwards;
+    animation.repeatCount = MAX_CANON;
+    int direction = arc4random() % 2;
+    if (direction == 0) {
+        animation.values = @[@(0),@(-M_PI / 90),@(0),@(M_PI / 90),@(0)];
+    }else{
+        animation.values = @[@(0),@(M_PI / 90),@(0),@(-M_PI / 90),@(0)];
+    }
+    [_button.layer addAnimation:animation forKey:@"animation"];
     
-    //    _window.windowLevel = UIWindowLevelAlert+1;
+    [self.view addSubview:_button];
     
-    //    _window.backgroundColor = [UIColor greenColor];
-    
-    //    _window.layer.cornerRadius = 25;
-    
-    //    _window.layer.masksToBounds = YES;
-    
-    [_window addSubview:_button];
-    
-    //    [_window makeKeyAndVisible];//显示window
     
     //放一个拖动手势，用来改变控件的位置
     
@@ -90,6 +102,54 @@
     
 }
 
+
+#pragma mark - CreateHuaji
+
+-(void)createHuaji{
+    if (!huaji) {
+        huaji=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"huaji"]];
+    }
+    [self.view addSubview:huaji];
+    huaji.frame=CGRectMake(0, 0, 100, 100);
+    huaji.center=self.view.center;
+//    huaji.y-=100;
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    animation.duration = 0.2;
+    animation.removedOnCompletion = YES;
+    animation.fillMode = kCAFillModeForwards;
+    animation.repeatCount = MAX_CANON;
+    int direction = arc4random() % 2;
+    if (direction == 0) {
+        animation.values = @[@(0),@(-M_PI / 9),@(0),@(M_PI / 9),@(0)];
+    }else{
+        animation.values = @[@(0),@(M_PI / 9),@(0),@(-M_PI / 9),@(0)];
+    }
+    [huaji.layer addAnimation:animation forKey:@"animation"];
+    
+    
+    if (!xiong) {
+        xiong=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xiong"]];
+    }
+    
+    [self.view addSubview:xiong];
+    xiong.frame=CGRectMake(0, 0, 100, 100);
+    xiong.center=self.view.center;
+    xiong.y-=150;
+    
+    CAKeyframeAnimation *animationx = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    animationx.duration = 0.8;
+    animationx.removedOnCompletion = YES;
+    animationx.fillMode = kCAFillModeForwards;
+    animationx.repeatCount = MAX_CANON;
+    int directionx = arc4random() % 2;
+    if (directionx == 0) {
+        animationx.values = @[@(0),@(-M_PI / 50),@(0),@(M_PI / 50),@(0)];
+    }else{
+        animationx.values = @[@(0),@(M_PI / 50),@(0),@(-M_PI / 50),@(0)];
+    }
+    [xiong.layer addAnimation:animation forKey:@"animation"];
+}
 //手势事件 －－ 改变位置
 
 -(void)changePostion:(UIPanGestureRecognizer *)pan{
