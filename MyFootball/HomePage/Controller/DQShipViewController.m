@@ -93,13 +93,20 @@
     //放一个拖动手势，用来改变控件的位置
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changePostion:)];
-    
+    _button.tag=1001;
     [_button addGestureRecognizer:pan];
     
 }
 
 - (void)resignButton{
     
+    if (huaji.layer.animationKeys.count>0) {
+        [huaji.layer removeAllAnimations];
+        [xiong.layer removeAllAnimations];
+    }
+    else{
+        [self createHuaji];
+    }
 }
 
 
@@ -149,97 +156,161 @@
         animationx.values = @[@(0),@(M_PI / 50),@(0),@(-M_PI / 50),@(0)];
     }
     [xiong.layer addAnimation:animation forKey:@"animation"];
+    
+    
+    xiong.userInteractionEnabled=YES;
+    huaji.userInteractionEnabled=YES;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changePostion:)];
+    UIPanGestureRecognizer *pan2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changePostion:)];
+    xiong.tag=1002;
+    [xiong addGestureRecognizer:pan2];
+    
+    huaji.tag=1003;
+    [huaji addGestureRecognizer:pan];
 }
 //手势事件 －－ 改变位置
 
 -(void)changePostion:(UIPanGestureRecognizer *)pan{
-    
-    CGPoint point = [pan translationInView:_button];
-    
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    
-    CGFloat height = [UIScreen mainScreen].bounds.size.height;
-    
-    CGRect originalFrame = _button.frame;
-    
-    if (originalFrame.origin.x >= 0 && originalFrame.origin.x+originalFrame.size.width <= width) {
+    if (pan.view.tag==1001) {
         
-        originalFrame.origin.x += point.x;
+        CGPoint point = [pan translationInView:_button];
         
-    }if (originalFrame.origin.y >= 64 && originalFrame.origin.y+originalFrame.size.height <= height) {
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
         
-        originalFrame.origin.y += point.y;
+        CGFloat height = [UIScreen mainScreen].bounds.size.height;
         
-    }
-    
-    _button.frame = originalFrame;
-    
-    [pan setTranslation:CGPointZero inView:_button];
-    
-    if (pan.state == UIGestureRecognizerStateBegan) {
+        CGRect originalFrame = _button.frame;
         
-        _button.enabled = NO;
+        if (originalFrame.origin.x >= 0 && originalFrame.origin.x+originalFrame.size.width <= width) {
+            
+            originalFrame.origin.x += point.x;
+            
+        }if (originalFrame.origin.y >= 64 && originalFrame.origin.y+originalFrame.size.height <= height) {
+            
+            originalFrame.origin.y += point.y;
+            
+        }
         
-    }else if (pan.state == UIGestureRecognizerStateChanged){
+        _button.frame = originalFrame;
         
-    } else {
+        [pan setTranslation:CGPointZero inView:_button];
         
-        CGRect frame = _button.frame;
-        
-        //是否越界
-        
-        BOOL isOver = NO;
-        
-        if (frame.origin.x < 0) {
+        if (pan.state == UIGestureRecognizerStateBegan) {
             
-            frame.origin.x = 0;
+            _button.enabled = NO;
             
-            isOver = YES;
+        }else if (pan.state == UIGestureRecognizerStateChanged){
             
-        } else if (frame.origin.x+frame.size.width > width) {
+        } else {
             
-            frame.origin.x = width - frame.size.width;
+            CGRect frame = _button.frame;
             
-            isOver = YES;
+            //是否越界
             
-        }if (frame.origin.y < 64) {
+            BOOL isOver = NO;
             
-            frame.origin.y = 64;
+            if (frame.origin.x < 0) {
+                
+                frame.origin.x = 0;
+                
+                isOver = YES;
+                
+            } else if (frame.origin.x+frame.size.width > width) {
+                
+                frame.origin.x = width - frame.size.width;
+                
+                isOver = YES;
+                
+            }if (frame.origin.y < 64) {
+                
+                frame.origin.y = 64;
+                
+                isOver = YES;
+                
+            } else if (frame.origin.y+frame.size.height > height) {
+                
+                frame.origin.y = height - frame.size.height;
+                
+                isOver = YES;
+                
+            }if (isOver) {
+                
+                [UIView animateWithDuration:0.3 animations:^{
+                    
+                    _button.frame = frame;
+                    
+                }];
+                
+            }
             
-            isOver = YES;
-            
-        } else if (frame.origin.y+frame.size.height > height) {
-            
-            frame.origin.y = height - frame.size.height;
-            
-            isOver = YES;
-            
-        }if (isOver) {
-            
+            if(_button.x+_button.width/2>UIScreenWidth/2){
+                frame.origin.x=UIScreenWidth-_button.width;
+            }
+            else{
+                frame.origin.x=0;
+            }
             [UIView animateWithDuration:0.3 animations:^{
                 
                 _button.frame = frame;
                 
             }];
             
+            _button.enabled = YES;
+            
+        }
+
+    }
+    else if (pan.view.tag==1002){
+       CGPoint point = [pan translationInView:xiong];
+        CGRect oldFrame=xiong.frame;
+        if (oldFrame.origin.x>=0&&oldFrame.origin.x+xiong.width<=UIScreenWidth) {
+            oldFrame.origin.x+=point.x;
+        }
+        if (oldFrame.origin.y>=64&&oldFrame.origin.y+xiong.height<=UIScreenHeight) {
+            oldFrame.origin.y+=point.y;
+        }
+        xiong.frame=oldFrame;
+        [pan setTranslation:CGPointZero inView:xiong];
+        
+        if (pan.state != UIGestureRecognizerStateBegan&&pan.state != UIGestureRecognizerStateChanged) {
+            CGRect frame = xiong.frame;
+            BOOL isOver=NO;
+            if (frame.origin.x<0) {
+                frame.origin.x=0;
+                isOver=YES;
+            }
+            if (frame.origin.y<64) {
+                frame.origin.y=64;
+                isOver=YES;
+            }
+            if (frame.origin.x+xiong.width>UIScreenWidth) {
+                frame.origin.x=UIScreenWidth-+xiong.width;
+                isOver=YES;
+            }
+            if (frame.origin.y+xiong.height>UIScreenHeight) {
+                frame.origin.y=UIScreenHeight-xiong.height;
+                isOver=YES;
+            }
+            if (isOver) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    
+                    xiong.frame = frame;
+                    
+                }];
+            }
         }
         
-        if(_button.x+_button.width/2>UIScreenWidth/2){
-            frame.origin.x=UIScreenWidth-_button.width;
+        if(pan.state==UIGestureRecognizerStateBegan){
+            xiong.userInteractionEnabled=NO;
         }
         else{
-            frame.origin.x=0;
+            xiong.userInteractionEnabled=YES;
         }
-        [UIView animateWithDuration:0.3 animations:^{
-            
-            _button.frame = frame;
-            
-        }];
-
-        _button.enabled = YES;
-        
+        NSLog(@"2");
     }
-    
+    else{
+        NSLog(@"3");
+    }
 }
 
 - (void)didReceiveMemoryWarning {

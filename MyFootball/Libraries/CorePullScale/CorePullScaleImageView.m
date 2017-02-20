@@ -138,18 +138,18 @@ static NSString *const CorePullScaleContentOffset = @"contentOffset";
  *  支持屏幕旋转
  */
 -(void)rotationSupportWithNavBarH:(CGFloat)navBarH{
-    NSLog(@"===%@",@(navBarH));
-    _navBarH=navBarH;
-
-//    if(_hasNavBar && (!iOS8 || (iOS8 && navBarH==44.0f))) _navBarH+=20.0f;
-    
-    CGRect frame=self.frame;
-    frame.size.height=_originalHeight;
-    frame.origin.y=-_originalHeight;
-    frame.size.width=_scrollView.bounds.size.width;
-    [UIView animateWithDuration:0.25f animations:^{
-        self.frame=frame;
-    }];
+//    NSLog(@"===%@",@(navBarH));
+//    _navBarH=navBarH;
+//
+////    if(_hasNavBar && (!iOS8 || (iOS8 && navBarH==44.0f))) _navBarH+=20.0f;
+//    
+//    CGRect frame=self.frame;
+//    frame.size.height=_originalHeight;
+//    frame.origin.y=-_originalHeight;
+//    frame.size.width=_scrollView.bounds.size.width;
+//    [UIView animateWithDuration:0.25f animations:^{
+//        self.frame=frame;
+//    }];
 }
 
 
