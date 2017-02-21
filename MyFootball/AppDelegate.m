@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DQMainTabBarController.h"
 #import "AFNetWorking.h"
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate ()
 
@@ -19,7 +20,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //腾讯bugly
+    [Bugly startWithAppId:BuglyAppID];
+    
+    
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     self.window.rootViewController
     =[DQMainTabBarController new];
     

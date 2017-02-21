@@ -9,5 +9,6 @@ use_frameworks!
 target 'MyFootball' do
 	pod 'pop', '~> 1.0'
     pod  'HexColors'
+    pod 'Bugly'
 
 end

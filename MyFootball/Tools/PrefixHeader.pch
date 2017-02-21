@@ -89,4 +89,13 @@
 
     #define BASEHOST @"https://api.dongqiudi.com"
 
+
+/**
+ *  腾讯Bugly 
+    App ID b272466d85
+    App Key 54021b71-602b-4c71-be55-f25857d2e623
+ */
+#define BuglyAppID @"b272466d85"
+#define BuglyAppKey @"54021b71-602b-4c71-be55-f25857d2e623"
+
 #endif /* PrefixHeader_pch */
