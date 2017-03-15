@@ -25,7 +25,7 @@
     [self creatingBanner];
     [self configTableView];
     
-    YYFPSLabel* fps=[[YYFPSLabel alloc]initWithFrame:CGRectMake(UIScreenWidth/2+50, 44, 55, 20)];
+    YYFPSLabel* fps=[[YYFPSLabel alloc]initWithFrame:CGRectMake(UIScreenWidth/2-100, 44, 55, 20)];
     [[UIApplication sharedApplication].windows[0] addSubview:fps];
     
     // Do any additional setup after loading the view.

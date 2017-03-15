@@ -262,7 +262,9 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    self.hotComments=nil;
+    self.normalComments=nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark DZNEmpty
@@ -273,10 +275,36 @@ static NSString* reuseCommentInCommentCell=@"reuseCommentInCommentCell";
     
 }
 
--(NSAttributedString* )titleForEmptyDataSet:(UIScrollView *)scrollView{
-    NSString* text=@"HJYDQD Tell You \n No More Data";
-    return [[NSAttributedString alloc]initWithString:text attributes:nil];
+-(CAAnimation* )imageAnimationForEmptyDataSet:(UIScrollView *)scrollView{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath: @"transform"];
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0.0, 0.0,   1.0)];
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    
+    CAKeyframeAnimation *animationx = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    animationx.duration = 0.8;
+    animationx.removedOnCompletion = YES;
+    animationx.fillMode = kCAFillModeForwards;
+    animationx.repeatCount = MAX_CANON;
+    int directionx = arc4random() % 2;
+    if (directionx == 0) {
+        animationx.values = @[@(0),@(-M_PI / 50),@(0),@(M_PI / 50),@(0)];
+    }else{
+        animationx.values = @[@(0),@(M_PI / 50),@(0),@(-M_PI / 50),@(0)];
+    }
+
+    return animationx;
 }
+
+-(BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView{
+    return YES;
+}
+//-(NSAttributedString* )titleForEmptyDataSet:(UIScrollView *)scrollView{
+//    NSString* text=@"HJYDQD Tell You \n No More Data";
+//    return [[NSAttributedString alloc]initWithString:text attributes:nil];
+//}
 
 - (void)emptyDataSetWillDisappear:(UIScrollView *)scrollView{
     
