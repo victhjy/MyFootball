@@ -58,7 +58,7 @@
 #define UIScreenSize [UIScreen mainScreen].bounds.size
 
 #ifdef DEBUG
-#   define DQLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#   define DQLog(fmt, ...) NSLog((@"%s [Line %d] ----- " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
 #   define DQLog(...)
 #endif

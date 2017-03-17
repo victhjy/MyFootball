@@ -98,21 +98,23 @@
 }
 
 -(void)saveImageToAlbum:(UIImage* )image{
-    MBProgressHUD * hud=[[MBProgressHUD alloc]initWithView:self.view];
-    [hud show:YES];
-    dispatch_time_t delayTime=dispatch_time(DISPATCH_TIME_NOW, (int64_t) 3.0*NSEC_PER_SEC);
-    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-        [hud hide:YES];
-    });
-
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-    } completionHandler:^(BOOL success, NSError * _Nullable error) {
-        if (success) {
-                UIAlertView* alert=[[UIAlertView alloc]initWithTitle:@"保存成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert show];
-        }
-    }];
+    [MyTools showText:@"123" inView:self.view];
+//    MBProgressHUD * hud=[[MBProgressHUD alloc]initWithView:self.view];
+//    [self.view addSubview:hud];
+//    [hud show:YES];
+//    
+//
+//    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+//        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+//    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+//        if (success) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [hud hide:YES];
+//                UIAlertView* alert=[[UIAlertView alloc]initWithTitle:@"保存成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//                [alert show];
+//            });
+//        }
+//    }];
 }
 
 /*

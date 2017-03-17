@@ -58,7 +58,7 @@
     self = [super initWithBaseURL:url];
     if (self) {
         // 请求超时设定
-        self.requestSerializer.timeoutInterval = 5;
+        self.requestSerializer.timeoutInterval = 10;
         self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [self.requestSerializer setValue:url.absoluteString forHTTPHeaderField:@"Referer"];

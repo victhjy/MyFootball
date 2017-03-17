@@ -9,6 +9,7 @@
 #import "MyTools.h"
 
 @implementation MyTools
+
 + (UIColor *)colorWithHexString:(NSString *)hexColorString {
     if ([hexColorString length] < 6) { //长度不合法
         return [UIColor blackColor];
@@ -194,5 +195,25 @@
     [stringFormatter setDateFormat:@"MM-dd HH:mm"];
     NSString* returnString=[stringFormatter stringFromDate:date];
     return returnString;
+}
+
++(void)showText:(NSString* )text inView:(UIView* )view{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    hud.margin = 10.f;
+    hud.yOffset = 150.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:1.5];
+}
+
++(void)showLoadingInView:(UIView* )view{
+    MBProgressHUD* hud=[[MBProgressHUD alloc]initWithView:view];
+    [view addSubview:hud];
+    [hud showAnimated:YES];
+}
+
++(void)hideLoadingViewInView:(UIView* )view{
+    [MBProgressHUD hideHUDForView:view animated:YES];
 }
 @end

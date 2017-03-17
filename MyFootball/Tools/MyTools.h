@@ -89,4 +89,9 @@
  *  @return 输出字符串型的时间 10-12 12：00
  */
 +(NSString* )dateStringFromNSDate:(NSDate* )date;
+
+
++(void)showText:(NSString* )text inView:(UIView* )view;
++(void)showLoadingInView:(UIView* )view;
++(void)hideLoadingViewInView:(UIView* )view;
 @end
