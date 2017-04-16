@@ -9,6 +9,7 @@
 #import "DQHotNewsViewController.h"
 #import "DYMRollingBannerVC.h"
 #import "YYFPSLabel.h"
+#import "HJYSTMainVC.h"
 
 @interface DQHotNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView* tableView;
@@ -117,8 +118,22 @@
     if (!cell) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+//    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.textLabel.text=@"紧急处理中……";
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.selectionStyle != UITableViewCellSelectionStyleNone) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    if (indexPath.row==0) {
+        NSMutableArray* arr=[NSMutableArray arrayWithArray:@[@1,@2,@3,@4,@5,@6,@7,@8,@9,@2,@3,@4,@5,@6,@7,@8,@9,@2,@3,@4,@5,@6,@7,@8,@9]];
+        HJYSTMainVC* mainVC=[[HJYSTMainVC alloc]initWithLines:arr andFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight)];
+        mainVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:mainVC animated:YES];
+    }
 }
 
 #pragma mark - private method

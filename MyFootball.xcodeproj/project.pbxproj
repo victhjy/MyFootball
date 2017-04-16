@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46259E5D1E9F208600AF4C17 /* DQDoubleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 46259E5C1E9F208600AF4C17 /* DQDoubleTable.m */; };
 		463D14F51DDD5C99008BD0BA /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14EE1DDD5C99008BD0BA /* YYCache.m */; };
 		463D14F61DDD5C99008BD0BA /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14F01DDD5C99008BD0BA /* YYDiskCache.m */; };
 		463D14F71DDD5C99008BD0BA /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D14F21DDD5C99008BD0BA /* YYKVStorage.m */; };
@@ -331,6 +332,7 @@
 		4655B4171DE6D9A6006DE712 /* YYTextWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655B3FC1DE6D9A6006DE712 /* YYTextWeakProxy.m */; };
 		4655B4181DE6D9A6006DE712 /* YYLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655B3FE1DE6D9A6006DE712 /* YYLabel.m */; };
 		4655B4191DE6D9A6006DE712 /* YYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4655B4011DE6D9A6006DE712 /* YYTextView.m */; };
+		465CD98F1E88E68000F76981 /* HJYSTMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 465CD98E1E88E68000F76981 /* HJYSTMainVC.m */; };
 		465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */; };
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F60501D98B29C00A571C5 /* DQGifCellItemView.m */; };
@@ -372,6 +374,8 @@
 /* Begin PBXFileReference section */
 		1F98479354110F5D032612EA /* Pods_MyFootball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFootball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D79441B1C9490BF32BA78F /* Pods-MyFootball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFootball.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFootball/Pods-MyFootball.debug.xcconfig"; sourceTree = "<group>"; };
+		46259E5B1E9F208600AF4C17 /* DQDoubleTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDoubleTable.h; sourceTree = "<group>"; };
+		46259E5C1E9F208600AF4C17 /* DQDoubleTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDoubleTable.m; sourceTree = "<group>"; };
 		463D14ED1DDD5C99008BD0BA /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
 		463D14EE1DDD5C99008BD0BA /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
 		463D14EF1DDD5C99008BD0BA /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
@@ -1020,6 +1024,8 @@
 		4655B3FF1DE6D9A6006DE712 /* YYText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYText.h; sourceTree = "<group>"; };
 		4655B4001DE6D9A6006DE712 /* YYTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextView.h; sourceTree = "<group>"; };
 		4655B4011DE6D9A6006DE712 /* YYTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTextView.m; sourceTree = "<group>"; };
+		465CD98D1E88E68000F76981 /* HJYSTMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJYSTMainVC.h; sourceTree = "<group>"; };
+		465CD98E1E88E68000F76981 /* HJYSTMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJYSTMainVC.m; sourceTree = "<group>"; };
 		465E0FEF1DBDB1970013F1B2 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		465ECD291D8262F500F60284 /* DQAttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAttachmentModel.h; sourceTree = "<group>"; };
@@ -1277,6 +1283,7 @@
 		4649C9801D791E1C00FC1AFA /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				465CD98C1E88E63A00F76981 /* ScrollTables */,
 				81E3F0C41D804DAE002A1387 /* WebViews */,
 				4649C98F1D791E8E00FC1AFA /* Controller */,
 				4649C98E1D791E8E00FC1AFA /* Model */,
@@ -2722,6 +2729,17 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		465CD98C1E88E63A00F76981 /* ScrollTables */ = {
+			isa = PBXGroup;
+			children = (
+				465CD98D1E88E68000F76981 /* HJYSTMainVC.h */,
+				465CD98E1E88E68000F76981 /* HJYSTMainVC.m */,
+				46259E5B1E9F208600AF4C17 /* DQDoubleTable.h */,
+				46259E5C1E9F208600AF4C17 /* DQDoubleTable.m */,
+			);
+			name = ScrollTables;
+			sourceTree = "<group>";
+		};
 		465E0FEE1DBDB1970013F1B2 /* Cagtgory */ = {
 			isa = PBXGroup;
 			children = (
@@ -3074,6 +3092,7 @@
 				4655B2731DE6C699006DE712 /* CocoaSecurity.m in Sources */,
 				4655B1EF1DE6C698006DE712 /* NSData+Encrypt.m in Sources */,
 				4649CA501D79204700FC1AFA /* MJRefreshConst.m in Sources */,
+				465CD98F1E88E68000F76981 /* HJYSTMainVC.m in Sources */,
 				464F05291D7FBB4A00C61574 /* NSObject+MJCoding.m in Sources */,
 				4649CA481D79204700FC1AFA /* MJRefreshAutoStateFooter.m in Sources */,
 				4649CA2E1D79204700FC1AFA /* DYMRollingBannerVC.m in Sources */,
@@ -3101,6 +3120,7 @@
 				4655B4091DE6D9A6006DE712 /* YYTextMagnifier.m in Sources */,
 				4649CA3E1D79204700FC1AFA /* View+MASAdditions.m in Sources */,
 				4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */,
+				46259E5D1E9F208600AF4C17 /* DQDoubleTable.m in Sources */,
 				465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */,
 				4655B22F1DE6C699006DE712 /* UIImageView+MAC.m in Sources */,
 				4655B2421DE6C699006DE712 /* UISearchBar+Blocks.m in Sources */,

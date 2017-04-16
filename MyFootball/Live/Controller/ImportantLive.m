@@ -98,23 +98,23 @@
 }
 
 -(void)saveImageToAlbum:(UIImage* )image{
-    [MyTools showText:@"123" inView:self.view];
+    [MyTools showLoadingInView:self.view];
 //    MBProgressHUD * hud=[[MBProgressHUD alloc]initWithView:self.view];
 //    [self.view addSubview:hud];
 //    [hud show:YES];
 //    
 //
-//    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-//        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-//    } completionHandler:^(BOOL success, NSError * _Nullable error) {
-//        if (success) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [hud hide:YES];
-//                UIAlertView* alert=[[UIAlertView alloc]initWithTitle:@"保存成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//                [alert show];
-//            });
-//        }
-//    }];
+    __weak typeof(self) weakself=self;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        if (success) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [MyTools hideLoadingViewInView:weakself.view];
+                [MyTools showText:@"保存成功" inView:weakself.view];
+            });
+        }
+    }];
 }
 
 /*

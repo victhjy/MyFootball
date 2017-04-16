@@ -12,11 +12,15 @@
 #import "DQDataPlayerCell.h"
 #import "DQDataTeamScheduleCell.h"
 #import "DQDataTeamDetailVC.h"
+
+#import "DQDoubleTable.h"
 @interface DQChineseTeamsRankVCViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UISegmentedControl* segment;
 @property(nonatomic,strong)DQDataTeamsRankModel* teamsModel;
 @property(nonatomic,strong)NSArray* teamsRankArr;
 @property(nonatomic,strong)NSMutableDictionary* roundingDic;
+
+@property(nonatomic,strong)DQDoubleTable* mixTable;
 @end
 
 @implementation DQChineseTeamsRankVCViewController
@@ -52,7 +56,7 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
     }];
     [_tableView registerClass:[DQDataNormalLeagueRankCell class] forCellReuseIdentifier:reuseCell];
     [_tableView registerClass:[DQDataNormalLeagueRankCell class] forCellReuseIdentifier:reuseTopCell];
-    [_tableView registerClass:[DQDataPlayerCell class] forCellReuseIdentifier:reusePlayerCell];
+//    [_tableView registerClass:[DQDataPlayerCell class] forCellReuseIdentifier:reusePlayerCell];
     [_tableView registerClass:[DQDataTeamScheduleCell class] forCellReuseIdentifier:resuescheduleCell];
     __weak typeof(self) weaself=self;
     _tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -83,6 +87,15 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
             break;
         case 1:
             path=APIGetDataGoalRanking;
+            [_tableView removeFromSuperview];
+            _mixTable=[[DQDoubleTable alloc]initWithFrame:CGRectMake(0, 50, UIScreenWidth, UIScreenHeight-50-49)         style:UITableViewStylePlain
+                                                 leftItem:[NSMutableArray arrayWithArray:@[@"1",@"2",@"3"]]
+                                                rightItem:[NSMutableArray arrayWithArray:@[@"1",@"2",@"3"]]];
+            [self.view addSubview:_mixTable];
+            [_mixTable addLeftTable];
+            _mixTable.delegate=self;
+            _mixTable.dataSource=self;
+            [_mixTable registerClass:[DQDataPlayerCell class] forCellReuseIdentifier:reusePlayerCell];
             break;
         case 2:
             path=APIGetDataAssistRanking;
@@ -95,70 +108,73 @@ static NSString* resuescheduleCell=@"resuescheduleCell";
             break;
     }
     //league 51 为中超   8 为英超
-    NSString* pathAndLeague=[NSString stringWithFormat:@"%@%@",path,league];
-    if (type==3) {
-        NSString *absolteUrl=[NSString stringWithFormat:@"%@%@",APIGetDataTeamRounding,self.leagueNumber];
-        [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:absolteUrl WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
-            self.roundingDic=[dic[@"roundList"] firstObject];
-            paramDic=@{
-                       @"round_id":self.roundingDic[@"round_id"],
-                       @"gameweek":self.roundingDic[@"activeNums"]
-                       };
-            
-            [[DQAFNetManager sharedManager]requestWithMethod:GET WithPath:APIGetDataGameSchedule WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
-                if (dic) {
-                   
-                    NSArray* arr=[dic valueForKey:@"matches"];
-                    self.teamsRankArr=[DQDataScheduleModel mj_objectArrayWithKeyValuesArray:arr];
-                    [_tableView.mj_header endRefreshing];
-                    [_tableView reloadData];
-                    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-                }
-            } WithFailurBlock:^(NSError *error) {
-                if (error) {
-                    DQLog(@"%@",error);
-                }
-            }];
-            
-            
-
-        } WithFailurBlock:^(NSError *error) {
-            if (error) {
-                DQLog(@"%@",error);
-            }
-        }];
-    }
-    else{
-        paramDic=@{
-                   @"season_id":@"",
-                   };
-    [[DQAFNetManager sharedManager]requestWithMethod:GET WithPath:pathAndLeague WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
-        if (dic) {
-            if (type==1){
-                NSArray* resultArr=(NSArray* )dic;
-                self.teamsRankArr=[DQDataPlayerRankModel mj_objectArrayWithKeyValuesArray:resultArr];
-                
-            }
-            else if(type==0){
-                NSArray* resultArr=(NSArray* )dic;
-                NSDictionary* resultDic=resultArr[0];
-                self.teamsModel=[DQDataTeamsRankModel mj_objectWithKeyValues:resultDic];
-                self.teamsRankArr=[DQDataSingleTeamModel mj_objectArrayWithKeyValuesArray:self.teamsModel.rankings];
-            }
-            else if (type==2){
-                NSArray* resultArr=(NSArray* )dic;
-                self.teamsRankArr=[DQDataPlayerRankModel mj_objectArrayWithKeyValuesArray:resultArr];
-            }
-            [_tableView.mj_header endRefreshing];
-            [_tableView reloadData];
-            [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }
-    } WithFailurBlock:^(NSError *error) {
-        if (error) {
-            DQLog(@"%@",error);
-        }
-    }];
-    }
+//    NSString* pathAndLeague=[NSString stringWithFormat:@"%@%@",path,league];
+//    if (type==3) {
+//        NSString *absolteUrl=[NSString stringWithFormat:@"%@%@",APIGetDataTeamRounding,self.leagueNumber];
+//        [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:absolteUrl WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+//            self.roundingDic=[dic[@"roundList"] firstObject];
+//            paramDic=@{
+//                       @"round_id":self.roundingDic[@"round_id"],
+//                       @"gameweek":self.roundingDic[@"activeNums"]
+//                       };
+//            
+//            [[DQAFNetManager sharedManager]requestWithMethod:GET WithPath:APIGetDataGameSchedule WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
+//                if (dic) {
+//                   
+//                    NSArray* arr=[dic valueForKey:@"matches"];
+//                    self.teamsRankArr=[DQDataScheduleModel mj_objectArrayWithKeyValuesArray:arr];
+//                    [_tableView.mj_header endRefreshing];
+//                    [_tableView reloadData];
+//                    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//                }
+//            } WithFailurBlock:^(NSError *error) {
+//                if (error) {
+//                    DQLog(@"%@",error);
+//                }
+//            }];
+//            
+//            
+//
+//        } WithFailurBlock:^(NSError *error) {
+//            if (error) {
+//                DQLog(@"%@",error);
+//            }
+//        }];
+//    }
+//    else{
+//        paramDic=@{
+//                   @"season_id":@"",
+//                   };
+//    [[DQAFNetManager sharedManager]requestWithMethod:GET WithPath:pathAndLeague WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
+//        if (dic) {
+//            if (type==1){
+//                NSArray* resultArr=(NSArray* )dic;
+////                self.teamsRankArr=[DQDataPlayerRankModel mj_objectArrayWithKeyValuesArray:resultArr];
+//                
+//            }
+//            else if(type==0){
+//                NSArray* resultArr=(NSArray* )dic;
+//                NSDictionary* resultDic=resultArr[0];
+//                self.teamsModel=[DQDataTeamsRankModel mj_objectWithKeyValues:resultDic];
+//                self.teamsRankArr=[DQDataSingleTeamModel mj_objectArrayWithKeyValuesArray:self.teamsModel.rankings];
+//            }
+//            else if (type==2){
+//                NSArray* resultArr=(NSArray* )dic;
+//                self.teamsRankArr=[DQDataPlayerRankModel mj_objectArrayWithKeyValuesArray:resultArr];
+//            }
+//            
+//            if (type!=1) {
+//                [_tableView.mj_header endRefreshing];
+//                [_tableView reloadData];
+//                [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//            }
+//        }
+//    } WithFailurBlock:^(NSError *error) {
+//        if (error) {
+//            DQLog(@"%@",error);
+//        }
+//    }];
+//    }
 }
 
 #pragma mark - TableView Delegate
