@@ -73,10 +73,9 @@
     _tableView.contentInset=UIEdgeInsetsMake(20, 0, 0, 0);
     
     _tableView.tableHeaderView=_rollingBannerVC.view;
+//    _tableView.emptyDataSetVisible
     
     [_tableView addSubview:self.searchView];
-    
-    
     [_rollingBannerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(_tableView);
         make.width.mas_equalTo(UIScreenWidth);

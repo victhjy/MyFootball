@@ -16,6 +16,7 @@
 		463D14FD1DDD89C8008BD0BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 463D14FC1DDD89C8008BD0BA /* libsqlite3.tbd */; };
 		463D5F931D8666C000C95592 /* DQDataTeamsRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */; };
 		463D5F961D8668EB00C95592 /* DQDataNormalLeagueRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */; };
+		4642F7371EAC536F001A8795 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = 4642F7361EAC536F001A8795 /* ReadMe.md */; };
 		464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */; };
 		4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A06A1D8134E400C12B7E /* DQAllAPI.m */; };
 		4646A06E1D813E7D00C12B7E /* DQCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A06D1D813E7D00C12B7E /* DQCommentsViewController.m */; };
@@ -391,6 +392,7 @@
 		463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamsRankModel.m; sourceTree = "<group>"; };
 		463D5F941D8668EB00C95592 /* DQDataNormalLeagueRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataNormalLeagueRankCell.h; sourceTree = "<group>"; };
 		463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataNormalLeagueRankCell.m; sourceTree = "<group>"; };
+		4642F7361EAC536F001A8795 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		464551D61D97D4A4005A89E3 /* DQChineseTeamGifCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamGifCell.h; sourceTree = "<group>"; };
 		464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamGifCell.m; sourceTree = "<group>"; };
 		4646A0691D8134E400C12B7E /* DQAllAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DQAllAPI.h; path = ../Common/DQAllAPI.h; sourceTree = "<group>"; };
@@ -1194,6 +1196,7 @@
 				4649C9561D791C5300FC1AFA /* LaunchScreen.storyboard */,
 				4649C9591D791C5300FC1AFA /* Info.plist */,
 				4649C9491D791C5300FC1AFA /* main.m */,
+				4642F7361EAC536F001A8795 /* ReadMe.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3173,6 +3176,7 @@
 				4655B27D1DE6C699006DE712 /* WXSTransitionManager.m in Sources */,
 				4655B2EA1DE6C88B006DE712 /* MMSheetView.m in Sources */,
 				4655642D1E5BFA5400EAAE46 /* DHGuidePageHUD.m in Sources */,
+				4642F7371EAC536F001A8795 /* ReadMe.md in Sources */,
 				464F052F1D7FBE9000C61574 /* DQChineseTeamModel.m in Sources */,
 				4649CA4E1D79204700FC1AFA /* MJRefreshStateHeader.m in Sources */,
 				4655B2431DE6C699006DE712 /* UITableView+HYBCacheHeight.m in Sources */,

@@ -6,6 +6,9 @@
 //  Copyright © 2016年 solloun. All rights reserved.
 //
 
+#define EMPTYTITLE @"默认空白标题"
+#define EMPTYCONTENT @"默认空白内容"
+
 #import <UIKit/UIKit.h>
 #import "UIScrollView+EmptyDataSet.h"
 #import "CellDataAdapter.h"

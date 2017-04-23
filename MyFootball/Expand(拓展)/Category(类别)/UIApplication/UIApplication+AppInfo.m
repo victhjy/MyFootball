@@ -297,7 +297,7 @@
     return topController;
 }
 //
-- (UIViewController*)getCurrentViewConttoller
+- (UIViewController*)getCurrentViewController
 {
     UIViewController *currentViewController = [self topMostController];
     

@@ -119,7 +119,7 @@ typedef void(^grantBlock)(BOOL granted);
 // *  获取当前视图
 // *
 // */
--(UIViewController*)getCurrentViewConttoller;
+-(UIViewController*)getCurrentViewController;
 
 
 @end

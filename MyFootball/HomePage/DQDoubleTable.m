@@ -14,9 +14,9 @@
 
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style leftItem:(NSMutableArray *)left rightItem:(NSMutableArray *)right{
     CGFloat leftWidth=frame.size.width/WIDTHSCALE;
-    CGRect leftFrame=CGRectMake(frame.origin.x, frame.origin.y,leftWidth , frame.size.height);
+    CGRect leftFrame=CGRectMake(frame.origin.x, frame.origin.y,leftWidth+1 , frame.size.height);
     CGRect rightFrame=CGRectMake(leftWidth, frame.origin.y, frame.size.width-leftWidth, frame.size.height);
-    
+    _currentItem=0;
     if (self=[super initWithFrame:rightFrame style:style]) {
         _leftItems=left;
         _rightItems=right;
@@ -25,9 +25,8 @@
         _leftTable.delegate=self;
         _leftTable.dataSource=self;
         _leftTable.tableFooterView=[UIView new];
-        _leftTable.separatorStyle=UITableViewCellSeparatorStyleNone;
-        _leftTable.backgroundColor=[MyTools colorWithHexString:@"0x2d2d2d"];
-//        _leftTable.backgroundColor=[UIColor redColor];
+        _leftTable.separatorStyle=UITableViewCellSeparatorStyleSingleLineEtched;
+        _leftTable.backgroundColor=[UIColor blackColor];
         _leftTable.scrollsToTop=NO;
         _leftTable.showsVerticalScrollIndicator=NO;
     }
@@ -57,12 +56,14 @@
     cell.textLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row];
     cell.textLabel.textColor=[UIColor redColor];
     cell.textLabel.textAlignment=1;
-    cell.centerX=cell.contentView.centerX;
+    cell.centerX=cell.contentView.centerX;         
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self reloadData];
+    UITableViewCell* cell=[tableView cellForRowAtIndexPath:indexPath];
+    cell.contentView.backgroundColor=[UIColor greenColor];
 }
 
 

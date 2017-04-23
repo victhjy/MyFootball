@@ -25,6 +25,9 @@
 
 @property (strong, nonatomic) CAGradientLayer *gradientLayer2;
 
+@property(nonatomic,weak)UITextField* t;
+@property(nonatomic,strong)UIImageView* imageV;
+
 @end
 
 @implementation LovedCommunityVC
@@ -54,7 +57,37 @@
     
     [self addGradient1];
     [self addGradient2];
+    
+    UITextField* t=[[UITextField alloc]init];
+    [self.view addSubview:t];
+    t.frame=CGRectMake(0, 0, 300, 30);
+    t.center=self.view.center;
+    t.layer.borderWidth=1;
+    self.t=t;
 }
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (self.t.hidden) {
+        self.imageV.hidden=YES;
+        self.t.hidden=NO;
+    }
+    else{
+        if (self.t.text.length>0) {
+            UIImage* QRImage=[MyTools generateQRCode:self.t.text];
+            self.t.hidden=YES;
+            
+            self.imageV=[[UIImageView alloc]initWithImage:QRImage];
+            [self.view addSubview:self.imageV];
+            self.imageV.center=self.view.center;
+            self.imageV.hidden=NO;
+        }
+        else{
+            [MyTools showText:@"没输入啊" inView:self.view];
+        }
+    }
+}
+
+
 
 - (void)drawPath {
     static double i = 0;

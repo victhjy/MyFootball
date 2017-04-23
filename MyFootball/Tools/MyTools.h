@@ -94,4 +94,13 @@
 +(void)showText:(NSString* )text inView:(UIView* )view;
 +(void)showLoadingInView:(UIView* )view;
 +(void)hideLoadingViewInView:(UIView* )view;
+
+/**
+ *  生成二维码图片
+ *
+ *  @param dataString 数据字符串
+ *
+ *  @return 二维码图片
+ */
++(UIImage* )generateQRCode:(NSString* )dataString;
 @end

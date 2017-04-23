@@ -174,7 +174,7 @@ typedef void(^ServerBlock)(id result, NSInteger errorCode, NSString *message);
     if (code !=-1009) {
         subTitle=@"您的服务器被程序猿搬走了,稍后重试吧";
     }
-    [TSMessage showNotificationInViewController:[UIApplication sharedApplication].getCurrentViewConttoller
+    [TSMessage showNotificationInViewController:[[UIApplication sharedApplication] getCurrentViewController]
                                           title:REQUEST_ERROR(code)
                                        subtitle:subTitle
                                            type:TSMessageNotificationTypeWarning];

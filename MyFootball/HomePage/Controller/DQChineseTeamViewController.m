@@ -155,9 +155,6 @@ static NSString* reuseGifCell=@"gifCell";
     NSDictionary* parDic=@{
                            @"mark":@"gif"
                            };
-    if (self.articles.count>0) {
-        [MyTools showLoadingInView:self.view];
-    }
 
     [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:parDic WithSuccessBlock:^(NSDictionary *dic) {
         if (dic) {
@@ -165,24 +162,20 @@ static NSString* reuseGifCell=@"gifCell";
             self.articles=[NSMutableArray new];
             self.articles=[DQChineseTeamListModel mj_objectArrayWithKeyValuesArray:self.model.articles];
             
-            [MyTools hideLoadingViewInView:self.view];
             [_tableView reloadData];
             [_tableView.mj_header endRefreshing];
         }
         
     } WithFailurBlock:^(NSError *error) {
         NSLog(@" request error %@",error);
-        [MyTools hideLoadingViewInView:self.view];
             [_tableView.mj_header endRefreshing];
     }];
 }
 
 -(void)loadMoreArticlesWithModel:(DQChineseTeamModel*)model{
     NSDictionary* paramDic=@{@"after":[NSNumber numberWithInteger:model.min],@"page":[NSNumber numberWithInteger:model.page],@"mark":@"gif"};
-    [MyTools showLoadingInView:self.view];
     [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIChinsesTeamList WithParams:paramDic WithSuccessBlock:^(NSDictionary *dic) {
         if (dic) {
-            [MyTools hideLoadingViewInView:self.view];
             self.model=(DQChineseTeamModel* )[DQChineseTeamModel mj_objectWithKeyValues:dic];
             NSArray* newArticles=[DQChineseTeamListModel mj_objectArrayWithKeyValuesArray:self.model.articles];
             [self.articles addObjectsFromArray:newArticles];
@@ -192,7 +185,6 @@ static NSString* reuseGifCell=@"gifCell";
         
     } WithFailurBlock:^(NSError *error) {
         NSLog(@" request error %@",error);
-        [MyTools hideLoadingViewInView:self.view];
         [_tableView.mj_footer endRefreshing];
     }];
 }

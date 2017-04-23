@@ -7,6 +7,7 @@
 //
 
 #import "DQAFNetManager.h"
+#import "MBProgressHUD.h"
 
 @implementation DQAFNetManager
 
@@ -76,14 +77,23 @@
          WithSuccessBlock:(requestSuccessBlock)success
           WithFailurBlock:(requestFailureBlock)failure
 {
+//    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    MBProgressHUD* hud=[MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
+    hud.mode=MBProgressHUDModeIndeterminate;
+    hud.removeFromSuperViewOnHide=YES;
+
     switch (method) {
         case GET:{
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
 //                NSLog(@"JSON: %@", responseObject);
                 success(responseObject);
+//                [hud hide:YES];
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 DQLog(@"Error: %@", error);
                 failure(error);
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
+//                [hud hide:YES];
             }];
             break;
         }

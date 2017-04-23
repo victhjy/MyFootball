@@ -10,4 +10,5 @@
 
 @interface DQMainTabBarController : UITabBarController<UITabBarControllerDelegate>
 
+-(void)tapTabBar;
 @end

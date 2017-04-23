@@ -73,25 +73,31 @@
 -(void)createTabBars{
     UINavigationController* hotNewsNav=[[UINavigationController alloc]initWithRootViewController:[HotNewsVC new]];
     hotNewsNav.tabBarItem.title=@"首页";
+    hotNewsNav.fd_interactivePopDisabled=YES;
     hotNewsNav.tabBarItem.selectedImage=[IMAGENAME(@"news_press")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     hotNewsNav.tabBarItem.image=[IMAGENAME(@"news_normal")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UINavigationController* liveNav=[[UINavigationController alloc]initWithRootViewController:[ImportantLive new]];
     liveNav.tabBarItem.title=@"直播";
+    liveNav.fd_interactivePopDisabled=YES;
     liveNav.tabBarItem.selectedImage=[IMAGENAME(@"game_press")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     liveNav.tabBarItem.image=[IMAGENAME(@"game_normal")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UINavigationController* lovedCommunityNav=[[UINavigationController alloc]initWithRootViewController:[LovedCommunityVC new]];
     lovedCommunityNav.tabBarItem.image=[IMAGENAME(@"2016")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    lovedCommunityNav.fd_interactivePopDisabled=YES;
+//    lovedCommunityNav.tabBarItem.imageInsets=UIEdgeInsetsMake(14, 5, 2, 5);
     lovedCommunityNav.tabBarItem.selectedImage=[IMAGENAME(@"2016")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UINavigationController* allCommunitiesNav=[[UINavigationController alloc]initWithRootViewController:[DQCommunityHomeVC new]];
     allCommunitiesNav.tabBarItem.title=@"圈子";
+    allCommunitiesNav.fd_interactivePopDisabled=YES;
     allCommunitiesNav.tabBarItem.selectedImage=[IMAGENAME(@"circle_press")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     allCommunitiesNav.tabBarItem.image=[IMAGENAME(@"circle_normal")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UINavigationController* footballDataNav=[[UINavigationController alloc]initWithRootViewController:[FootballDataVC new]];
     footballDataNav.tabBarItem.title=@"数据";
+    footballDataNav.fd_interactivePopDisabled=YES;
     footballDataNav.tabBarItem.image=[IMAGENAME(@"data_normal")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     footballDataNav.tabBarItem.selectedImage=[IMAGENAME(@"data_press")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -191,6 +197,11 @@
         NSLog(@"%@",error.localizedDescription);
     }
 }
+
+-(void)tapTabBar{
+    DQLog(@"tabBar");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

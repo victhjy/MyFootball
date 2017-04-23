@@ -23,6 +23,14 @@
 
 @implementation MACTableView
 
+-(instancetype)init{
+    self =[super init];
+    if (self) {
+        [self initUI];
+        self.firstShowEmpty = NO;
+    }
+    return self;
+}
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self=[super initWithCoder:aDecoder];

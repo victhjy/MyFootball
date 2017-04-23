@@ -12,6 +12,7 @@
 
 {
     UITableView* _leftTable;
+    NSInteger _currentItem; ///<当前选中  默认为0
 }
 
 @property(nonatomic,strong)NSMutableArray* leftItems;
