@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DQChineseTeamModel.h"
-@interface DQCommentsViewController : UIViewController
+@interface DQCommentsVC : UIViewController
 
 @property(nonatomic,strong)DQChineseTeamListModel* articleModel;
 @end

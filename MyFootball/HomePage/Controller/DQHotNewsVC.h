@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DQHotNewsViewController : UIViewController
+@interface DQHotNewsVC : UIViewController
 
 @end

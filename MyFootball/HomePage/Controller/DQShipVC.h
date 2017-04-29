@@ -1,5 +1,5 @@
 //
-//  DQChineseTeamViewController.h
+//  DQShipViewController.h
 //  MyFootball
 //
 //  Created by huangjinyang on 16/9/5.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DQChineseTeamViewController : UIViewController
+@interface DQShipVC : UIViewController
 
 @end

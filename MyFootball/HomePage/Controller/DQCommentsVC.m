@@ -6,10 +6,10 @@
 //  Copyright © 2016年 huangjinyang. All rights reserved.
 //
 
-#import "DQCommentsViewController.h"
+#import "DQCommentsVC.h"
 #import "DQCommentCell.h"
 #import "DQCommentModel.h"
-@interface DQCommentsViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface DQCommentsVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)UIToolbar* toolBar;
@@ -18,7 +18,7 @@
 @property(nonatomic,strong)DQCommentModel* commentModel;
 @end
 
-@implementation DQCommentsViewController
+@implementation DQCommentsVC
 static NSString* reuseNormalCell=@"reuseNormalCell";
 static NSString* reuseImageCell=@"reuseIamgeCell";
 static NSString* reuseCommentInCommentAndImageCell=@"reuseCommentInCommentAndImageCell";

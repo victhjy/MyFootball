@@ -8,7 +8,7 @@
 
 #import "DQNewsDetailViewController.h"
 #import <WebKit/WebKit.h>
-#import "DQCommentsViewController.h"
+#import "DQCommentsVC.h"
 #import "DQArticleDetail.h"
 @interface DQNewsDetailViewController ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
 @property(nonatomic,strong)UIToolbar* toolBar;
@@ -96,7 +96,7 @@
 }
 
 -(void)goToComment{
-    DQCommentsViewController* commentVC=[[DQCommentsViewController alloc]init];
+    DQCommentsVC* commentVC=[[DQCommentsVC alloc]init];
     commentVC.articleModel=self.detailModel;
     [self.navigationController pushViewController:commentVC animated:YES];
 }

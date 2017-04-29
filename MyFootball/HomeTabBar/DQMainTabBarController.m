@@ -23,10 +23,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self normalLoad];
+    self.tabBar.hidden=YES;
+    [self setupViewControllers];
+    [self createTabBarsNew];
+//    [self normalLoad];
         // Do any additional setup after loading the view.
 }
+
+- (void)setupViewControllers {
+    HotNewsVC* homeVC=[HotNewsVC new];
+    ImportantLive* liveVC=[ImportantLive new];
+    LovedCommunityVC* lovedVC=[LovedCommunityVC new];
+    DQCommunityHomeVC* allCommunityVC=[DQCommunityHomeVC new];
+    FootballDataVC* dataVC=[FootballDataVC new];
+    
+    self.viewControllers=@[homeVC,liveVC,lovedVC,allCommunityVC,dataVC];
+}
+
+- (void)createTabBarsNew {
+    NSArray* normalImages=@[@"news_normal",@"game_normal",@"2016",@"circle_normal",@"data_normal"];
+    NSArray* selectedImages=@[@"news_press",@"game_press",@"2016",@"circle_press",@"data_press"];
+    
+    UIImageView* tabbar=[[UIImageView alloc]initWithFrame:self.tabBar.frame];
+    tabbar.backgroundColor=[UIColor clearColor];
+    tabbar.userInteractionEnabled=YES;
+}
+
+
 
 -(void)normalLoad{
     [self createTabBars];
@@ -86,7 +109,7 @@
     UINavigationController* lovedCommunityNav=[[UINavigationController alloc]initWithRootViewController:[LovedCommunityVC new]];
     lovedCommunityNav.tabBarItem.image=[IMAGENAME(@"2016")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     lovedCommunityNav.fd_interactivePopDisabled=YES;
-//    lovedCommunityNav.tabBarItem.imageInsets=UIEdgeInsetsMake(14, 5, 2, 5);
+    lovedCommunityNav.tabBarItem.imageInsets=UIEdgeInsetsMake(10, 5, 2, 5);
     lovedCommunityNav.tabBarItem.selectedImage=[IMAGENAME(@"2016")imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UINavigationController* allCommunitiesNav=[[UINavigationController alloc]initWithRootViewController:[DQCommunityHomeVC new]];

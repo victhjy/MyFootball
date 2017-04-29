@@ -7,9 +7,9 @@
 //
 
 #import "HotNewsVC.h"
-#import "DQHotNewsViewController.h"
-#import "DQShipViewController.h"
-#import "DQChineseTeamViewController.h"
+#import "DQHotNewsVC.h"
+#import "DQShipVC.h"
+#import "DQChineseTeamVC.h"
 
 @interface HotNewsVC ()<LSYViewPagerVCDataSource,LSYViewPagerVCDelegate>
 @property(nonatomic,strong)NSArray* controllersArr;
@@ -33,9 +33,9 @@
 }
 
 -(void)setupControllers{
-    DQHotNewsViewController* hotVC=[[DQHotNewsViewController alloc]init];
-    DQShipViewController* shipVC=[[DQShipViewController alloc]init];
-    DQChineseTeamViewController* chineseTeamVC=[[DQChineseTeamViewController alloc]init];
+    DQHotNewsVC* hotVC=[[DQHotNewsVC alloc]init];
+    DQShipVC* shipVC=[[DQShipVC alloc]init];
+    DQChineseTeamVC* chineseTeamVC=[[DQChineseTeamVC alloc]init];
     _controllersArr=@[hotVC,shipVC,chineseTeamVC];
     
     _titlesArr=@[@"头条",@"懂球号",@"国足"];

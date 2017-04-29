@@ -6,18 +6,18 @@
 //  Copyright © 2016年 huangjinyang. All rights reserved.
 //
 
-#import "DQChineseTeamViewController.h"
+#import "DQChineseTeamVC.h"
 #import "DQChineseTeamModel.h"
 #import "DQChineseTeamCell.h"
 #import "DQNewsDetailViewController.h"
 #import "DQChineseTeamGifCell.h"
-@interface DQChineseTeamViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DQChineseTeamVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray* articles;
 @property(nonatomic,strong)DQChineseTeamModel* model;
 @end
 
-@implementation DQChineseTeamViewController
+@implementation DQChineseTeamVC
 
 {
     MACTableView* _tableView;
@@ -86,7 +86,6 @@ static NSString* reuseGifCell=@"gifCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
      DQChineseTeamListModel* model=self.articles[indexPath.row];
     if ([model.collection_type isEqualToString:@"gif"]) {
-        NSLog(@"gif cell %zd",220);
         return 220;
     }
     else{
@@ -94,8 +93,6 @@ static NSString* reuseGifCell=@"gifCell";
         if (model.album) {
             cell=[tableView dequeueReusableCellWithIdentifier:reuseImagesCell];
             [cell configWithModel:model];
-            NSLog(@"ablum cell %f",[cell heightForCell]);
-//            return [cell heightForCell];
             return 134;
         }
         else{

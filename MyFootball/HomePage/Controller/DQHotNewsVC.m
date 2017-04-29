@@ -6,17 +6,17 @@
 //  Copyright © 2016年 huangjinyang. All rights reserved.
 //
 
-#import "DQHotNewsViewController.h"
+#import "DQHotNewsVC.h"
 #import "DYMRollingBannerVC.h"
 #import "YYFPSLabel.h"
 #import "HJYSTMainVC.h"
 
-@interface DQHotNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DQHotNewsVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)UIView* searchView;
 @end
 
-@implementation DQHotNewsViewController
+@implementation DQHotNewsVC
 {
     DYMRollingBannerVC      *_rollingBannerVC;
 }
@@ -88,7 +88,6 @@
     view.frame=newFrame;
     _tableView. tableHeaderView =view;
 
-    DQLog(@"高度  %f",_tableView.tableHeaderView.frame.size.height);
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);

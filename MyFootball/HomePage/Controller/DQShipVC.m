@@ -6,9 +6,9 @@
 //  Copyright © 2016年 huangjinyang. All rights reserved.
 //
 
-#import "DQShipViewController.h"
+#import "DQShipVC.h"
 
-@interface DQShipViewController ()
+@interface DQShipVC ()
 {
     UIImageView* huaji;
     UIImageView* xiong;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation DQShipViewController
+@implementation DQShipVC
 
 
 {
