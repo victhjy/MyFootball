@@ -337,7 +337,7 @@
 		465ECD2B1D8262F500F60284 /* DQAttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465ECD2A1D8262F500F60284 /* DQAttachmentModel.m */; };
 		465F60511D98B29C00A571C5 /* DQGifCellItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F60501D98B29C00A571C5 /* DQGifCellItemView.m */; };
 		466014381E7281AB009BA598 /* DQDrawTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 466014371E7281AB009BA598 /* DQDrawTool.m */; };
-		4667D5C71EB4367C000D6886 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4667D5C61EB4367C000D6886 /* README.md */; };
+		4667D5C91EB436E5000D6886 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4667D5C81EB436E5000D6886 /* README.md */; };
 		4667E4DD1DC05BC0006BEB1C /* DQArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4667E4DC1DC05BC0006BEB1C /* DQArticleDetail.m */; };
 		466845921D7D1BEE00ED2121 /* DQMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845911D7D1BEE00ED2121 /* DQMainTabBarController.m */; };
 		466845961D7D1FE300ED2121 /* LSYViewPagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 466845951D7D1FE300ED2121 /* LSYViewPagerVC.m */; };
@@ -1035,7 +1035,7 @@
 		465F60501D98B29C00A571C5 /* DQGifCellItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQGifCellItemView.m; sourceTree = "<group>"; };
 		466014361E7281AB009BA598 /* DQDrawTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDrawTool.h; sourceTree = "<group>"; };
 		466014371E7281AB009BA598 /* DQDrawTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDrawTool.m; sourceTree = "<group>"; };
-		4667D5C61EB4367C000D6886 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4667D5C81EB436E5000D6886 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4667E4DB1DC05BC0006BEB1C /* DQArticleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQArticleDetail.h; sourceTree = "<group>"; };
 		4667E4DC1DC05BC0006BEB1C /* DQArticleDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQArticleDetail.m; sourceTree = "<group>"; };
 		466845901D7D1BEE00ED2121 /* DQMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQMainTabBarController.h; sourceTree = "<group>"; };
@@ -1166,7 +1166,7 @@
 		4649C9471D791C5300FC1AFA /* MyFootball */ = {
 			isa = PBXGroup;
 			children = (
-				4667D5C61EB4367C000D6886 /* README.md */,
+				4667D5C81EB436E5000D6886 /* README.md */,
 				465564301E5BFE4C00EAAE46 /* Images */,
 				4655B0561DE6C698006DE712 /* Expand(拓展) */,
 				464F05361D80063B00C61574 /* Common */,
@@ -3073,6 +3073,7 @@
 				4655B1F91DE6C698006DE712 /* XMLDictionary.m in Sources */,
 				4649CA551D79204700FC1AFA /* MKAnnotationView+WebCache.m in Sources */,
 				4655B2091DE6C698006DE712 /* NSObject+JKRuntime.m in Sources */,
+				4667D5C91EB436E5000D6886 /* README.md in Sources */,
 				4655B1FD1DE6C698006DE712 /* NSFileManager+Paths.m in Sources */,
 				4655B21F1DE6C699006DE712 /* UIButton+MAC.m in Sources */,
 				4655B1FE1DE6C698006DE712 /* DefaultNotificationCenter.m in Sources */,
@@ -3158,7 +3159,6 @@
 				4655B2781DE6C699006DE712 /* MMTweenFunction.m in Sources */,
 				4655B22C1DE6C699006DE712 /* UIImageView+Addition.m in Sources */,
 				464F052A1D7FBB4A00C61574 /* NSObject+MJKeyValue.m in Sources */,
-				4667D5C71EB4367C000D6886 /* README.md in Sources */,
 				4646A0781D8148A300C12B7E /* DQCommentModel.m in Sources */,
 				4649C94D1D791C5300FC1AFA /* AppDelegate.m in Sources */,
 				4655642C1E5BFA5400EAAE46 /* DHGifImageOperation.m in Sources */,
