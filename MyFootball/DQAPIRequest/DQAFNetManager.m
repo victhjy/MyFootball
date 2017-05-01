@@ -87,13 +87,13 @@
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
 //                NSLog(@"JSON: %@", responseObject);
                 success(responseObject);
-//                [hud hide:YES];
-                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
+                [hud hide:YES];
+//                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 DQLog(@"Error: %@", error);
                 failure(error);
-                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
-//                [hud hide:YES];
+//                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
+                [hud hide:YES];
             }];
             break;
         }

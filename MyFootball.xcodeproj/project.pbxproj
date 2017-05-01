@@ -17,7 +17,6 @@
 		463D5F931D8666C000C95592 /* DQDataTeamsRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F921D8666C000C95592 /* DQDataTeamsRankModel.m */; };
 		463D5F961D8668EB00C95592 /* DQDataNormalLeagueRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463D5F951D8668EB00C95592 /* DQDataNormalLeagueRankCell.m */; };
 		464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */; };
-		4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A06A1D8134E400C12B7E /* DQAllAPI.m */; };
 		4646A06E1D813E7D00C12B7E /* DQCommentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A06D1D813E7D00C12B7E /* DQCommentsVC.m */; };
 		4646A0711D81401100C12B7E /* DQCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A0701D81401100C12B7E /* DQCommentCell.m */; };
 		4646A0751D81425B00C12B7E /* DQUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4646A0741D81425B00C12B7E /* DQUserModel.m */; };
@@ -351,6 +350,9 @@
 		46D6293B1E49CF0400DB2062 /* UIScrollView+PullScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D629391E49CF0400DB2062 /* UIScrollView+PullScale.m */; };
 		46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */; };
 		813CDB4D1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */; };
+		8149A3361EB7159C000E9CCB /* DQHotNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149A3351EB7159C000E9CCB /* DQHotNewsModel.m */; };
+		8149A3391EB71822000E9CCB /* DQUniversalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149A3381EB71822000E9CCB /* DQUniversalCell.m */; };
+		8149A33B1EB71836000E9CCB /* DQUniversalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8149A33A1EB71836000E9CCB /* DQUniversalCell.xib */; };
 		81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */; };
 		D0EBD187F23CACAA10999D20 /* Pods_MyFootball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F98479354110F5D032612EA /* Pods_MyFootball.framework */; };
 /* End PBXBuildFile section */
@@ -395,7 +397,6 @@
 		464551D61D97D4A4005A89E3 /* DQChineseTeamGifCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQChineseTeamGifCell.h; sourceTree = "<group>"; };
 		464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQChineseTeamGifCell.m; sourceTree = "<group>"; };
 		4646A0691D8134E400C12B7E /* DQAllAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DQAllAPI.h; path = ../Common/DQAllAPI.h; sourceTree = "<group>"; };
-		4646A06A1D8134E400C12B7E /* DQAllAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DQAllAPI.m; path = ../Common/DQAllAPI.m; sourceTree = "<group>"; };
 		4646A06C1D813E7D00C12B7E /* DQCommentsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommentsVC.h; sourceTree = "<group>"; };
 		4646A06D1D813E7D00C12B7E /* DQCommentsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQCommentsVC.m; sourceTree = "<group>"; };
 		4646A06F1D81401100C12B7E /* DQCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQCommentCell.h; sourceTree = "<group>"; };
@@ -1063,6 +1064,11 @@
 		80BD12C105D8317BFFD40AE6 /* Pods-MyFootball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFootball.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFootball/Pods-MyFootball.release.xcconfig"; sourceTree = "<group>"; };
 		813CDB4B1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		8149A3341EB7159C000E9CCB /* DQHotNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQHotNewsModel.h; sourceTree = "<group>"; };
+		8149A3351EB7159C000E9CCB /* DQHotNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQHotNewsModel.m; sourceTree = "<group>"; };
+		8149A3371EB71822000E9CCB /* DQUniversalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQUniversalCell.h; sourceTree = "<group>"; };
+		8149A3381EB71822000E9CCB /* DQUniversalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQUniversalCell.m; sourceTree = "<group>"; };
+		8149A33A1EB71836000E9CCB /* DQUniversalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DQUniversalCell.xib; sourceTree = "<group>"; };
 		81E3F0C51D804DC9002A1387 /* DQNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQNewsDetailViewController.h; sourceTree = "<group>"; };
 		81E3F0C61D804DC9002A1387 /* DQNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQNewsDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1424,6 +1430,9 @@
 				464551D71D97D4A4005A89E3 /* DQChineseTeamGifCell.m */,
 				465F604F1D98B29C00A571C5 /* DQGifCellItemView.h */,
 				465F60501D98B29C00A571C5 /* DQGifCellItemView.m */,
+				8149A3371EB71822000E9CCB /* DQUniversalCell.h */,
+				8149A3381EB71822000E9CCB /* DQUniversalCell.m */,
+				8149A33A1EB71836000E9CCB /* DQUniversalCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1435,6 +1444,8 @@
 				464F052E1D7FBE9000C61574 /* DQChineseTeamModel.m */,
 				4646A0761D8148A300C12B7E /* DQCommentModel.h */,
 				4646A0771D8148A300C12B7E /* DQCommentModel.m */,
+				8149A3341EB7159C000E9CCB /* DQHotNewsModel.h */,
+				8149A3351EB7159C000E9CCB /* DQHotNewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1680,7 +1691,6 @@
 			isa = PBXGroup;
 			children = (
 				4646A0691D8134E400C12B7E /* DQAllAPI.h */,
-				4646A06A1D8134E400C12B7E /* DQAllAPI.m */,
 				464F05051D7FB08A00C61574 /* DQAllRequest.h */,
 				464F05061D7FB08A00C61574 /* DQAllRequest.m */,
 				464F05081D7FB2E500C61574 /* DQAFNetManager.h */,
@@ -2946,6 +2956,7 @@
 				465564401E5BFE4C00EAAE46 /* guideImage6.gif in Resources */,
 				4655643F1E5BFE4C00EAAE46 /* guideImage5.jpg in Resources */,
 				4655B2471DE6C699006DE712 /* icon_refresh_2@2x.png in Resources */,
+				8149A33B1EB71836000E9CCB /* DQUniversalCell.xib in Resources */,
 				4655B2681DE6C699006DE712 /* .gitkeep in Resources */,
 				4649C9551D791C5300FC1AFA /* Assets.xcassets in Resources */,
 				4655B2451DE6C699006DE712 /* icon_refresh_1@2x.png in Resources */,
@@ -3123,7 +3134,6 @@
 				4655B26F1DE6C699006DE712 /* UIViewController+MAC.m in Sources */,
 				4655B4091DE6D9A6006DE712 /* YYTextMagnifier.m in Sources */,
 				4649CA3E1D79204700FC1AFA /* View+MASAdditions.m in Sources */,
-				4646A06B1D8134E400C12B7E /* DQAllAPI.m in Sources */,
 				46259E5D1E9F208600AF4C17 /* DQDoubleTable.m in Sources */,
 				465E0FF11DBDB1970013F1B2 /* UIView+Frame.m in Sources */,
 				4655B22F1DE6C699006DE712 /* UIImageView+MAC.m in Sources */,
@@ -3208,6 +3218,7 @@
 				4655B2301DE6C699006DE712 /* UIImageView+Reflect.m in Sources */,
 				4655B2CB1DE6C76D006DE712 /* TSMessage.m in Sources */,
 				4655B2031DE6C698006DE712 /* NSNumber+Round.m in Sources */,
+				8149A3361EB7159C000E9CCB /* DQHotNewsModel.m in Sources */,
 				4655B2881DE6C699006DE712 /* GCDTimer.m in Sources */,
 				4655B2151DE6C699006DE712 /* ChineseToPinyin.m in Sources */,
 				4655B1FC1DE6C698006DE712 /* FileManager.m in Sources */,
@@ -3275,6 +3286,7 @@
 				4655B40D1DE6D9A6006DE712 /* YYTextParser.m in Sources */,
 				4655B2861DE6C699006DE712 /* GCDQueue.m in Sources */,
 				463D14F81DDD5C99008BD0BA /* YYMemoryCache.m in Sources */,
+				8149A3391EB71822000E9CCB /* DQUniversalCell.m in Sources */,
 				4649CA331D79204700FC1AFA /* AFURLResponseSerialization.m in Sources */,
 				4649CA531D79204700FC1AFA /* UIScrollView+MJRefresh.m in Sources */,
 				464C16881E77CE440021E6BE /* DQDrawView.m in Sources */,

@@ -23,10 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tabBar.hidden=YES;
-    [self setupViewControllers];
-    [self createTabBarsNew];
-//    [self normalLoad];
+//    self.tabBar.hidden=YES;
+//    [self setupViewControllers];
+//    [self createTabBarsNew];
+    [self normalLoad];
         // Do any additional setup after loading the view.
 }
 
