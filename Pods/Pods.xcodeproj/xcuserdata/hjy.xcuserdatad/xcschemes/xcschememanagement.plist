@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JLRoutes.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MyFootball.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>16CA59DB7734ACD443603DC0B39F1AAD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3228A614A28C286F663816E682F81E0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B70A2B91A8555B48C60C46830F5B9D06</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C408D4E183A88B763793C217A66A1950</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D6EF37133B13049D6CAAC9B0E387312C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DC8C7580C4128442FE4CA33580490D37</key>
 		<dict>
 			<key>primary</key>
 			<true/>

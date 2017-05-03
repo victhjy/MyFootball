@@ -19,6 +19,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "UIView+Frame.h"
 #import "YYCache.h"
+#import "JLRoutes.h"
 #import "DQCacheKeys.h"
 
 //category  常用扩展类
@@ -64,6 +65,8 @@
 #else
 #   define DQLog(...)
 #endif
+
+#define OPENURL(str) [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 
 #define DATACELLBGCOLOR [MyTools colorWithHexString:@"0x4b4b4b"]
 #define TEAMIMAGE(TEAMID) [NSString stringWithFormat:@"http://img.dongqiudi.com/data/pic/%@.png",TEAMID]

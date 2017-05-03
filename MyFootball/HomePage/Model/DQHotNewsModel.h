@@ -64,6 +64,12 @@
 
 @property (nonatomic, assign) BOOL show_comments;
 
+@property (nonatomic, assign) BOOL is_ad;
+
+@property (nonatomic, assign) NSInteger position;
+
+@property(nonatomic,strong)NSString* ad_id;
+
 @property(nonatomic,strong)NSString* share_title;
 
 @property(nonatomic,strong)NSString* thumb;

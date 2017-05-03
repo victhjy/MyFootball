@@ -103,4 +103,9 @@
  *  @return 二维码图片
  */
 +(UIImage* )generateQRCode:(NSString* )dataString;
+
+/**
+ *          获取当前控制器
+ */
++(UIViewController *)currentViewController;
 @end

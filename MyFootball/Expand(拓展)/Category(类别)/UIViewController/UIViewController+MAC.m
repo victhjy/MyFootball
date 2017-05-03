@@ -5,10 +5,42 @@
 //  Created by MacKun on 15/12/16.
 //  Copyright © 2015年 MacKun. All rights reserved.
 //
+#import <objc/runtime.h>
 
 #import "UIViewController+MAC.h"
 #import "UIImage+Additions.h"
 @implementation UIViewController(MAC)
+
+
+
++(void)load{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class=[self class];
+        swizzleMethod(class,@selector(viewWillAppear:),@selector(my_viewWillAppear:));
+    });
+}
+
+void swizzleMethod(Class class,SEL ori,SEL now){
+    Method oriMethod=class_getInstanceMethod(class, ori);
+    Method nowMethod=class_getInstanceMethod(class, now);
+    
+    BOOL didAddMethod=class_addMethod(class, ori, method_getImplementation(nowMethod), method_getTypeEncoding(nowMethod));
+    if (didAddMethod) {
+        class_replaceMethod(class, now, method_getImplementation(oriMethod),method_getTypeEncoding(oriMethod));
+    }
+    else{
+        method_exchangeImplementations(oriMethod, nowMethod);
+    }
+}
+
+-(void)my_viewWillAppear:(BOOL)animated{
+//    NSLog(@"view appear  分类 %@", NSStringFromClass([self class]));
+    [self my_viewWillAppear:animated];
+}
+
+
+
 
 
 -(void)showAlertMessage:(NSString*)message

@@ -70,10 +70,17 @@
             self.right_lbl.layer.borderColor=self.right_lbl.textColor.CGColor;
             self.right_lbl.layer.borderWidth=1;
             
-            self.left_lbl.hidden=NO;
+            
             self.left_lbl.text=[NSString stringWithFormat:@"%ld评论",item.comments_total];
             self.left_lbl.textColor=[UIColor lightGrayColor];
             self.comment_lbl.hidden=YES;
+            
+            if(item.is_ad){
+                self.left_lbl.hidden=YES;
+            }
+            else{
+                self.left_lbl.hidden=NO;
+            }
         }
         else{
             self.left_lbl.hidden=YES;
@@ -83,6 +90,7 @@
             self.comment_lbl.hidden=YES;
         }
     }
+    
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
     [self updateConstraints];

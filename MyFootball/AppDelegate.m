@@ -11,6 +11,7 @@
 #import "AFNetWorking.h"
 #import <Bugly/Bugly.h>
 #import <LocalAuthentication/LocalAuthentication.h>
+#import "DQNewsDetailViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,9 @@
     
     //腾讯bugly
     [Bugly startWithAppId:BuglyAppID];
+    
+    //JLRouter
+    [self registerJLRouters];
     
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
@@ -56,6 +60,28 @@
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
 }
 
+- (void)registerJLRouters {
+    __weak __typeof(self)weakSelf = self;
+    [JLRoutes addRoute:@"/:cagegary/:itemId" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        NSLog(@"%@",parameters);
+//        [weakSelf dealRouterParams:parameters];
+        return YES;
+    }];
+
+}
+
+- (void)dealRouterParams:(NSDictionary* )param {
+//    NSString* categary=param[@"categary"];
+//    NSString* itemId=param[@"itemId"];
+//    UIViewController *currentVc = [MyTools currentViewController];
+//    if ([categary isEqualToString:@"feed"]) {
+//        
+//    }
+//    else if ([categary isEqualToString:@"news"]){
+//        DQNewsDetailViewController *vc=[DQNewsDetailViewController new];
+////        vc.
+//    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -79,6 +105,10 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [JLRoutes routeURL:url];
 }
 
 -(void)authenticateUser{

@@ -12,7 +12,7 @@
 #import "HJYSTMainVC.h"
 #import "DQHotNewsModel.h"
 #import "DQUniversalCell.h"
-
+#import "DQAdVC.h"
 
 #define HeaderViewH 160
 
@@ -128,9 +128,11 @@
         
         if (weakSelf.hotNewsModel.ad.count>0) {
             DQLog(@"有广告");
+            NSArray* ADs=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:weakSelf.hotNewsModel.ad];
+            for (DQHotNewsSingleItem* adItem in ADs) {
+                [weakSelf.dataArr insertObject:adItem atIndex:adItem.position];
+            }
         }
-        
-//        [weakSelf.tableView setContentOffset:CGPointMake(0, -10) animated:YES];
         [weakSelf.tableView reloadData];
         [weakSelf.tableView.mj_header endRefreshing];
         
@@ -179,11 +181,23 @@
     if (cell.selectionStyle != UITableViewCellSelectionStyleNone) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+    DQHotNewsSingleItem* item=self.dataArr[indexPath.row];
     if (indexPath.row==0) {
         NSMutableArray* arr=[NSMutableArray arrayWithArray:@[@1,@2,@3,@4,@5,@6,@7,@8,@9,@2,@3,@4,@5,@6,@7,@8,@9,@2,@3,@4,@5,@6,@7,@8,@9]];
         HJYSTMainVC* mainVC=[[HJYSTMainVC alloc]initWithLines:arr andFrame:CGRectMake(0, 0, UIScreenWidth, UIScreenHeight)];
         mainVC.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:mainVC animated:YES];
+    }
+    else{
+        if (item.is_ad) {
+            DQAdVC* adVc=[DQAdVC new];
+            adVc.urlStr=item.scheme;
+            [self.navigationController pushViewControllerHideTabBar:adVc animated:YES];
+        }
+        else{
+//            OPENURL(item.scheme);
+            //        OPENURL(@"dongqiudi:///feed/123456");
+        }
     }
 }
 
