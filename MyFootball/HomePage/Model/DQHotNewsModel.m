@@ -15,6 +15,16 @@
              @"hotNewsListId":@"id"
              };
 }
+
++(NSString* )getPrimaryKey{
+    return @"hotNewsKey";
+}
+
+-(NSString* )hotNewsKey{
+    return @"uniqueKey";
+}
+
+
 @end
 
 

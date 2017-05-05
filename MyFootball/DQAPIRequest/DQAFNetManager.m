@@ -77,6 +77,15 @@
          WithSuccessBlock:(requestSuccessBlock)success
           WithFailurBlock:(requestFailureBlock)failure
 {
+//    AFNetworkReachabilityManager*manager = [AFNetworkReachabilityManager sharedManager];
+//    
+//    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        //代码
+//        if(status==AFNetworkReachabilityStatusNotReachable){
+//            [MyTools showText:@"没网啊" inView:uniqueWindow];
+//        }
+//    } ];
+    
 //    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     MBProgressHUD* hud=[MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
     hud.mode=MBProgressHUDModeIndeterminate;

@@ -4,12 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HexColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>JLRoutes.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LKDBHelper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16CA59DB7734ACD443603DC0B39F1AAD</key>
+		<key>23CF27B2BA6AC7125EFFEDA8C5AA819F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,7 +47,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B70A2B91A8555B48C60C46830F5B9D06</key>
+		<key>8BE2FC04FF3C59CD64DD6B7AFE704081</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A21B20898E3A3B7E58EA7773661AAA87</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A40E7949E2DDDE5D20FB32DF4537D3B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

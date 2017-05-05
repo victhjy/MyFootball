@@ -31,6 +31,8 @@
 
 @property(nonatomic,strong)NSString* prev;
 
+@property(nonatomic, strong) NSString *hotNewsKey; //数据库主键
+
 @end
 
 

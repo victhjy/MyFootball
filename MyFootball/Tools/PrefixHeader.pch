@@ -20,6 +20,7 @@
 #import "UIView+Frame.h"
 #import "YYCache.h"
 #import "JLRoutes.h"
+#import "LKDBHelper.h"
 #import "DQCacheKeys.h"
 
 //category  常用扩展类
@@ -61,12 +62,13 @@
 #define UIScreenSize [UIScreen mainScreen].bounds.size
 
 #ifdef DEBUG
-#   define DQLog(fmt, ...) NSLog((@" [Line %d] ----- " fmt), __LINE__, ##__VA_ARGS__)
+#   define DQLog(fmt, ...) NSLog((@" ^_^ %s [Line %d] - " fmt),__func__, __LINE__, ##__VA_ARGS__)
 #else
 #   define DQLog(...)
 #endif
 
 #define OPENURL(str) [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+#define uniqueWindow [UIApplication sharedApplication].keyWindow
 
 #define DATACELLBGCOLOR [MyTools colorWithHexString:@"0x4b4b4b"]
 #define TEAMIMAGE(TEAMID) [NSString stringWithFormat:@"http://img.dongqiudi.com/data/pic/%@.png",TEAMID]

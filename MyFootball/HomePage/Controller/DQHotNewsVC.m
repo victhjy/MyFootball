@@ -13,10 +13,11 @@
 #import "DQHotNewsModel.h"
 #import "DQUniversalCell.h"
 #import "DQAdVC.h"
+#import "UIScrollView+EmptyDataSet.h"
 
 #define HeaderViewH 160
 
-@interface DQHotNewsVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface DQHotNewsVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)UIView* searchView;
 
@@ -37,9 +38,34 @@
     YYFPSLabel* fps=[[YYFPSLabel alloc]initWithFrame:CGRectMake(UIScreenWidth/2-100, 44, 55, 20)];
     [[UIApplication sharedApplication].windows[0] addSubview:fps];
     
+    [self initCache];
     [self loadData];
     
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - 读取缓存
+
+- (void)initCache {
+    NSMutableArray* cacheArr=[DQHotNewsModel searchWithWhere:nil orderBy:nil offset:0 count:100];
+    if (cacheArr.count>0) {
+        DQHotNewsModel* model=(DQHotNewsModel*)cacheArr[0];
+        self.hotNewsModel=model;
+        
+         self.hotNewsModel.articles=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:self.hotNewsModel.articles];
+        self.dataArr=[NSMutableArray new];
+        self.dataArr=[self.hotNewsModel.articles mutableCopy];
+        if (self.hotNewsModel.ad.count>0) {
+            DQLog(@"有广告");
+            NSArray* ADs=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:self.hotNewsModel.ad];
+            for (DQHotNewsSingleItem* adItem in ADs) {
+                [self.dataArr insertObject:adItem atIndex:adItem.position];
+            }
+        }
+
+        DQLog(@"读到缓存");
+        [self.tableView reloadData];
+    }
 }
 
 -(void)creatingBanner{
@@ -77,7 +103,10 @@
     _tableView=[[UITableView alloc]init];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.emptyDataSetSource=self;
+    _tableView.emptyDataSetDelegate=self;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+    _tableView.tableFooterView=[UIView new];
     
     _tableView.tableHeaderView=_rollingBannerVC.view;
     _tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -86,6 +115,7 @@
     _tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreData];
     }];
+    
 //    _tableView.emptyDataSetVisible
     
 //    [_tableView addSubview:self.searchView];
@@ -119,8 +149,10 @@
     __weak __typeof(self)weakSelf = self;
     [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIHotNews WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
         DQHotNewsModel* model=[DQHotNewsModel mj_objectWithKeyValues:dic];
-//        [MyTools importADic:model.articles[0]];
-//        [MyTools importADic:model.ad[0]];
+
+        //缓存
+        [model saveToDB];
+        DQLog(@"进行缓存");
         weakSelf.hotNewsModel=model;
         model.articles=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:model.articles];
         weakSelf.dataArr=[NSMutableArray new];
@@ -150,6 +182,7 @@
         [weakSelf.dataArr addObjectsFromArray:weakSelf.hotNewsModel.articles];
         [weakSelf.tableView reloadData];
         [weakSelf.tableView.mj_footer endRefreshing];
+        [weakSelf.tableView.mj_footer resetNoMoreData];
     } WithFailurBlock:^(NSError *error) {
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -199,6 +232,39 @@
             //        OPENURL(@"dongqiudi:///feed/123456");
         }
     }
+}
+
+#pragma mark -DZNEmptyData
+
+-(UIImage* )imageForEmptyDataSet:(UIScrollView *)scrollView{
+    return IMAGENAME(@"2016");
+}
+
+-(CAAnimation* )imageAnimationForEmptyDataSet:(UIScrollView *)scrollView{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath: @"transform"];
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0.0, 0.0,   1.0)];
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    
+    CAKeyframeAnimation *animationx = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    animationx.duration = 0.8;
+    animationx.removedOnCompletion = YES;
+    animationx.fillMode = kCAFillModeForwards;
+    animationx.repeatCount = MAX_CANON;
+    int directionx = arc4random() % 2;
+    if (directionx == 0) {
+        animationx.values = @[@(0),@(-M_PI / 50),@(0),@(M_PI / 50),@(0)];
+    }else{
+        animationx.values = @[@(0),@(M_PI / 50),@(0),@(-M_PI / 50),@(0)];
+    }
+    
+    return animationx;
+}
+
+-(BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView{
+    return YES;
 }
 
 #pragma mark - private method

@@ -1,21 +1,29 @@
 PODS:
   - Bugly (2.4.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - HexColors (4.0.0)
   - JLRoutes (1.6.2)
+  - LKDBHelper (2.3.4):
+    - FMDB
   - pop (1.0.9)
 
 DEPENDENCIES:
   - Bugly
   - HexColors
   - JLRoutes
+  - LKDBHelper
   - pop (~> 1.0)
 
 SPEC CHECKSUMS:
   Bugly: 3b56d8365c5687f74fd6fbb50c5b7ede3cdac96c
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   JLRoutes: 00671e008acb226b8b4c2385318dc1c583ef0dcf
+  LKDBHelper: 21fed3d2a010ea6f97996490abd717d379f9c772
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
-PODFILE CHECKSUM: 60bbffb0b4b7f8da0cbc7d4f6deafcacf83c8783
+PODFILE CHECKSUM: b9b570289c14cdda7e45329a77d5ad05a6812355
 
 COCOAPODS: 1.0.1
