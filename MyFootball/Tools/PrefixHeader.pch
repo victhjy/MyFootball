@@ -61,11 +61,17 @@
 #define UIScreenWidth [UIScreen mainScreen].bounds.size.width
 #define UIScreenSize [UIScreen mainScreen].bounds.size
 
+#define WeakSelf __weak typeof(self) weakSelf = self;
+
 #ifdef DEBUG
 #   define DQLog(fmt, ...) NSLog((@" ^_^ %s [Line %d] - " fmt),__func__, __LINE__, ##__VA_ARGS__)
 #else
 #   define DQLog(...)
 #endif
+
+
+#define DEALLOCSTR @"当前控制器是%@",NSStringFromClass([self class]) 
+
 
 #define OPENURL(str) [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 #define uniqueWindow [UIApplication sharedApplication].keyWindow

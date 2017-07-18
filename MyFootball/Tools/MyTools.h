@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^EventBlock)(id info);
+
 @interface MyTools : NSObject
 /**
  *  16进制颜色

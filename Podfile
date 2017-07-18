@@ -12,5 +12,6 @@ target 'MyFootball' do
     pod 'Bugly'
     pod 'JLRoutes'
     pod 'LKDBHelper'
+    pod 'WCDB'
 
 end

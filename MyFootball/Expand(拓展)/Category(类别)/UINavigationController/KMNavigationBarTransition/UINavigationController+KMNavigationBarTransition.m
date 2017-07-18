@@ -25,6 +25,7 @@
 #import "UIViewController+KMNavigationBarTransition.h"
 #import <objc/runtime.h>
 #import "KMSwizzle.h"
+#import <WebKit/WebKit.h>
 
 @implementation UINavigationController (KMNavigationBarTransition)
 
@@ -62,6 +63,17 @@
 - (UIViewController *)km_popViewControllerAnimated:(BOOL)animated {
     UIViewController *disappearingViewController = self.viewControllers.lastObject;
     [disappearingViewController km_addTransitionNavigationBarIfNeeded];
+    
+//    //如果pop 的界面中有 wkwebView
+//
+//    [disappearingViewController.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([obj isKindOfClass:[WKWebView class]]) {
+//            WKWebView* wk=(WKWebView* )obj;
+//            [wk.configuration.userContentController removeAllUserScripts];
+////            [wk.configuration.userContentController removeScriptMessageHandlerForName:@"href"];
+//        }
+//    }];
+//    DQLog(@"%@",self.viewControllers);
     if (self.viewControllers.count >= 2) {
         UIViewController *appearingViewController = self.viewControllers[self.viewControllers.count - 2];
         if (appearingViewController.km_transitionNavigationBar) {

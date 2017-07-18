@@ -32,8 +32,8 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
+    [self setupAFN];
     
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [self configNavigationBar];
 #if TARGET_IPHONE_SIMULATOR
     NSLog(@"模拟器-跳过验证");
@@ -109,6 +109,40 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [JLRoutes routeURL:url];
+}
+
+#pragma mark - setup
+
+- (void)setupAFN {
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+//    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
+//    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        // 当网络状态发生改变的时候调用这个block
+//        switch (status) {
+//            case AFNetworkReachabilityStatusReachableViaWiFi:
+//                [MyTools showText:@"wifi" inView:self.window];
+//                NSLog(@"WIFI");
+//                break;
+//                
+//            case AFNetworkReachabilityStatusReachableViaWWAN:
+//                [MyTools showText:@"移动数据" inView:self.window];
+//                NSLog(@"自带网络");
+//                break;
+//                
+//            case AFNetworkReachabilityStatusNotReachable:
+//                [MyTools showText:@"没网" inView:self.window];
+//                NSLog(@"没有网络");
+//                break;
+//                
+//            case AFNetworkReachabilityStatusUnknown:
+//                NSLog(@"未知网络");
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
+//    // 开始监控
+//    [mgr startMonitoring];
 }
 
 -(void)authenticateUser{

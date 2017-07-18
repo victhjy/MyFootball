@@ -63,7 +63,7 @@
             }
         }
 
-        DQLog(@"读到缓存");
+        [MyTools showText:@"读取了缓存" inView:self.view];
         [self.tableView reloadData];
     }
 }
@@ -152,7 +152,7 @@
 
         //缓存
         [model saveToDB];
-        DQLog(@"进行缓存");
+        [MyTools showText:@"进行缓存" inView:weakSelf.view];
         weakSelf.hotNewsModel=model;
         model.articles=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:model.articles];
         weakSelf.dataArr=[NSMutableArray new];
