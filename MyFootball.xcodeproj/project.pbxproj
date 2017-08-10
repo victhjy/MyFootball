@@ -2906,6 +2906,7 @@
 				TargetAttributes = {
 					4649C9441D791C5300FC1AFA = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = W5CST6BRTL;
 					};
 					4649C95D1D791C5300FC1AFA = {
 						CreatedOnToolsVersion = 7.3;
@@ -3502,12 +3503,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = W5CST6BRTL;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyFootball/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = MyFootball/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.first.MyFootball;
+				PRODUCT_BUNDLE_IDENTIFIER = com.first.MyFootball1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3520,12 +3522,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = W5CST6BRTL;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyFootball/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = MyFootball/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.first.MyFootball;
+				PRODUCT_BUNDLE_IDENTIFIER = com.first.MyFootball1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

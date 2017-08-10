@@ -42,6 +42,16 @@
 #else
     [self authenticateUser];
 #endif
+    
+    
+#ifdef DEBUG//因为这个是私有的api，一定要保证上线时的包中不包含这段代码！
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    id debugClass = NSClassFromString(@"UIDebuggingInformationOverlay");//获得对象
+    [debugClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];//开启调试模式
+#pragma clang diagnostic pop
+#endif
+    
     return YES;
 }
 

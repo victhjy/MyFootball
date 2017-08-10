@@ -58,9 +58,9 @@
         if (self.hotNewsModel.ad.count>0) {
             DQLog(@"有广告");
             NSArray* ADs=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:self.hotNewsModel.ad];
-            for (DQHotNewsSingleItem* adItem in ADs) {
-                [self.dataArr insertObject:adItem atIndex:adItem.position];
-            }
+//            for (DQHotNewsSingleItem* adItem in ADs) {
+//                [self.dataArr insertObject:adItem atIndex:adItem.position];
+//            }
         }
 
         DQLog(@"读到缓存");
@@ -160,10 +160,10 @@
         
         if (weakSelf.hotNewsModel.ad.count>0) {
             DQLog(@"有广告");
-            NSArray* ADs=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:weakSelf.hotNewsModel.ad];
-            for (DQHotNewsSingleItem* adItem in ADs) {
-                [weakSelf.dataArr insertObject:adItem atIndex:adItem.position];
-            }
+//            NSArray* ADs=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:weakSelf.hotNewsModel.ad];
+//            for (DQHotNewsSingleItem* adItem in ADs) {
+//                [weakSelf.dataArr insertObject:adItem atIndex:adItem.position];
+//            }
         }
         [weakSelf.tableView reloadData];
         [weakSelf.tableView.mj_header endRefreshing];
