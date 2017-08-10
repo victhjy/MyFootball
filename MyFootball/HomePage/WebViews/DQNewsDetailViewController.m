@@ -10,7 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "DQCommentsVC.h"
 #import "DQArticleDetail.h"
-@interface DQNewsDetailViewController ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
+@interface DQNewsDetailViewController ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,UINavigationControllerDelegate>
 @property(nonatomic,strong)UIToolbar* toolBar;
 @property(nonatomic,strong)WKWebView* wkWebView;
 @property(nonatomic,strong)UILabel* loadingLable;
@@ -25,52 +25,57 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)dealloc {
+    DQLog(DEALLOCSTR);
+}
+
 -(void)configWKWebView{
     [self.view addSubview:self.wkWebView];
-    [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 50, 0));
-    }];
-    NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.url]];
-    NSMutableURLRequest* mutableRequest=[request mutableCopy];
-    [mutableRequest addValue:@"device_id=eyJpdiI6IkNsdjJhdUd4aVJYQlBha3d3cGl0dFdTbU00eU9vcXU2MFZONWlNNWNjbEE9IiwidmFsdWUiOiJDU2pYSEtsVUYrYm9hditXZk4zSnB6ZkFjZzdvM25JVHk0djZ6cjk5SVNVPSIsIm1hYyI6IjNiNThmZWYzMWRjMTk4YTkyMDM4YjYwNjRiNmM1YTVhMjA4M2RkYjBlNDM4YmMyNjJhNTI1OWZiZGFmYmI1MDMifQ%3D%3D; laravel_session=eyJpdiI6ImhaN3pvd1RNeWRRZ0Ywbm85elJvbFhNenk4R3l5MFpDcWtvN2poM3hqcEE9IiwidmFsdWUiOiJIdkhqcjgxcGZUMFdaYnJBMFY4TXo0SFl5K2hqTklaQWpMMzVReTZjdmVcL0xuUTdmbXNcL01lXC9objZlSEIxVjQzV1Mwb3hHc3RqM1hObjBwQlZvTmVYdz09IiwibWFjIjoiODQwY2I4MzMzOWJjYmQzMzRhZmVhZDQ1YzBjODQ2ZDFlMmQxODBmYzJhOGE1MzQ3NThkMzQyOGI4N2NjZGFiNCJ9" forHTTPHeaderField:@"Cookie"];
+    self.wkWebView.frame=self.view.bounds;
+//    [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 50, 0));
+//    }];
+//    NSURLRequest* request=[NSURLRequest requestWithURL:[NSURL URLWithString:self.detailModel.url]];
+//    NSMutableURLRequest* mutableRequest=[request mutableCopy];
+//    [mutableRequest addValue:@"device_id=eyJpdiI6IkNsdjJhdUd4aVJYQlBha3d3cGl0dFdTbU00eU9vcXU2MFZONWlNNWNjbEE9IiwidmFsdWUiOiJDU2pYSEtsVUYrYm9hditXZk4zSnB6ZkFjZzdvM25JVHk0djZ6cjk5SVNVPSIsIm1hYyI6IjNiNThmZWYzMWRjMTk4YTkyMDM4YjYwNjRiNmM1YTVhMjA4M2RkYjBlNDM4YmMyNjJhNTI1OWZiZGFmYmI1MDMifQ%3D%3D; laravel_session=eyJpdiI6ImhaN3pvd1RNeWRRZ0Ywbm85elJvbFhNenk4R3l5MFpDcWtvN2poM3hqcEE9IiwidmFsdWUiOiJIdkhqcjgxcGZUMFdaYnJBMFY4TXo0SFl5K2hqTklaQWpMMzVReTZjdmVcL0xuUTdmbXNcL01lXC9objZlSEIxVjQzV1Mwb3hHc3RqM1hObjBwQlZvTmVYdz09IiwibWFjIjoiODQwY2I4MzMzOWJjYmQzMzRhZmVhZDQ1YzBjODQ2ZDFlMmQxODBmYzJhOGE1MzQ3NThkMzQyOGI4N2NjZGFiNCJ9" forHTTPHeaderField:@"Cookie"];
+//    
+//    [mutableRequest addValue:@"ZpUDJ4pc8QuyckYG0C39qnKqiRICvxOI9Sxzbp8U3iWq0lUUFxCjpVMpJZd2JaNd" forHTTPHeaderField:@"Authorization"];
     
-    [mutableRequest addValue:@"ZpUDJ4pc8QuyckYG0C39qnKqiRICvxOI9Sxzbp8U3iWq0lUUFxCjpVMpJZd2JaNd" forHTTPHeaderField:@"Authorization"];
-    
-    request=[mutableRequest copy];
-    [self.wkWebView loadRequest:request];
-    DQLog(@"DQD WKWebView url %@",self.detailModel.url);
+//    request=[mutableRequest copy];
+//    [self.wkWebView loadRequest:request];
+//    DQLog(@"DQD WKWebView url %@",self.detailModel.url);
     
     
-    [self.view addSubview:self.toolBar];
-    [self.toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.mas_equalTo(self.view);
-        make.width.mas_equalTo(UIScreenWidth);
-        make.top.mas_equalTo(self.wkWebView.mas_bottom);
-    }];
-    
-    self.loadingLable=[UILabel new];
-    self.loadingLable.text=@"努力加载中";
-    self.loadingLable.font=[UIFont systemFontOfSize:15];
-    self.loadingLable.textColor=ThemeColor;
-    
-    self.loadErrorLable=[UILabel new];
-    self.loadErrorLable.text=@"加载失败";
-    self.loadErrorLable.font=[UIFont systemFontOfSize:15];
-    self.loadErrorLable.textColor=ThemeColor;
-    
-    [self.view addSubview:self.loadingLable];
-    [self.view addSubview:self.loadErrorLable];
-    
-    [self.loadingLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.centerY.equalTo(self.view);
-    }];
-    [self.loadErrorLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.view);
-        make.centerX.equalTo(self.view);
-    }];
-    self.loadErrorLable.hidden=YES;
-    self.loadingLable.hidden=YES;
+//    [self.view addSubview:self.toolBar];
+//    [self.toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.bottom.mas_equalTo(self.view);
+//        make.width.mas_equalTo(UIScreenWidth);
+//        make.top.mas_equalTo(self.wkWebView.mas_bottom);
+//    }];
+//    
+//    self.loadingLable=[UILabel new];
+//    self.loadingLable.text=@"努力加载中";
+//    self.loadingLable.font=[UIFont systemFontOfSize:15];
+//    self.loadingLable.textColor=ThemeColor;
+//    
+//    self.loadErrorLable=[UILabel new];
+//    self.loadErrorLable.text=@"加载失败";
+//    self.loadErrorLable.font=[UIFont systemFontOfSize:15];
+//    self.loadErrorLable.textColor=ThemeColor;
+//    
+//    [self.view addSubview:self.loadingLable];
+//    [self.view addSubview:self.loadErrorLable];
+//    
+//    [self.loadingLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self.view);
+//        make.centerY.equalTo(self.view);
+//    }];
+//    [self.loadErrorLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.view);
+//        make.centerX.equalTo(self.view);
+//    }];
+//    self.loadErrorLable.hidden=YES;
+//    self.loadingLable.hidden=YES;
 }
 
 -(void)configNavigationItem{
@@ -172,13 +177,15 @@
     
 }
 
-#pragma mark  UIDelegate
+#pragma mark  UINaviDelegate
 
 
 #pragma mark WKScriptMessageHandler
 -(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     NSLog(@"%@",message);
 }
+
+
 
 #pragma mark getter&&setter
 

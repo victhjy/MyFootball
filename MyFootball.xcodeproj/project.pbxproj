@@ -350,6 +350,9 @@
 		46D6293A1E49CF0400DB2062 /* CorePullScaleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D629371E49CF0400DB2062 /* CorePullScaleImageView.m */; };
 		46D6293B1E49CF0400DB2062 /* UIScrollView+PullScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D629391E49CF0400DB2062 /* UIScrollView+PullScale.m */; };
 		46FB602D1DA8C0D900970C31 /* DQDataTeamScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */; };
+		5C20AC661F04E08E009B6511 /* UIViewController+DQCheckTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C20AC651F04E08E009B6511 /* UIViewController+DQCheckTool.m */; };
+		5C931DDE1F1D9F97005D6D2B /* DQNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C931DDD1F1D9F97005D6D2B /* DQNavigationVC.m */; };
+		5C931DE11F1DA1F9005D6D2B /* DQNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C931DE01F1DA1F9005D6D2B /* DQNavigationBar.m */; };
 		813CDB4D1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */; };
 		8149A3361EB7159C000E9CCB /* DQHotNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149A3351EB7159C000E9CCB /* DQHotNewsModel.m */; };
 		8149A3391EB71822000E9CCB /* DQUniversalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149A3381EB71822000E9CCB /* DQUniversalCell.m */; };
@@ -1064,6 +1067,12 @@
 		46D629391E49CF0400DB2062 /* UIScrollView+PullScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PullScale.m"; sourceTree = "<group>"; };
 		46FB602B1DA8C0D800970C31 /* DQDataTeamScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQDataTeamScheduleCell.h; sourceTree = "<group>"; };
 		46FB602C1DA8C0D800970C31 /* DQDataTeamScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQDataTeamScheduleCell.m; sourceTree = "<group>"; };
+		5C20AC641F04E08E009B6511 /* UIViewController+DQCheckTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DQCheckTool.h"; sourceTree = "<group>"; };
+		5C20AC651F04E08E009B6511 /* UIViewController+DQCheckTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DQCheckTool.m"; sourceTree = "<group>"; };
+		5C931DDC1F1D9F97005D6D2B /* DQNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQNavigationVC.h; sourceTree = "<group>"; };
+		5C931DDD1F1D9F97005D6D2B /* DQNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQNavigationVC.m; sourceTree = "<group>"; };
+		5C931DDF1F1DA1F9005D6D2B /* DQNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQNavigationBar.h; sourceTree = "<group>"; };
+		5C931DE01F1DA1F9005D6D2B /* DQNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQNavigationBar.m; sourceTree = "<group>"; };
 		80BD12C105D8317BFFD40AE6 /* Pods-MyFootball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFootball.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFootball/Pods-MyFootball.release.xcconfig"; sourceTree = "<group>"; };
 		813CDB4B1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		813CDB4C1D83B6BB001666D2 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
@@ -1743,6 +1752,10 @@
 				463D14FA1DDD5CE3008BD0BA /* DQCacheKeys.m */,
 				4653B5511EB861A000C4F752 /* DQAdVC.h */,
 				4653B5521EB861A000C4F752 /* DQAdVC.m */,
+				5C931DDC1F1D9F97005D6D2B /* DQNavigationVC.h */,
+				5C931DDD1F1D9F97005D6D2B /* DQNavigationVC.m */,
+				5C931DDF1F1DA1F9005D6D2B /* DQNavigationBar.h */,
+				5C931DE01F1DA1F9005D6D2B /* DQNavigationBar.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2763,6 +2776,8 @@
 			children = (
 				465E0FEF1DBDB1970013F1B2 /* UIView+Frame.h */,
 				465E0FF01DBDB1970013F1B2 /* UIView+Frame.m */,
+				5C20AC641F04E08E009B6511 /* UIViewController+DQCheckTool.h */,
+				5C20AC651F04E08E009B6511 /* UIViewController+DQCheckTool.m */,
 			);
 			path = Cagtgory;
 			sourceTree = "<group>";
@@ -3031,7 +3046,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3117,6 +3132,7 @@
 				464F05291D7FBB4A00C61574 /* NSObject+MJCoding.m in Sources */,
 				4649CA481D79204700FC1AFA /* MJRefreshAutoStateFooter.m in Sources */,
 				4649CA2E1D79204700FC1AFA /* DYMRollingBannerVC.m in Sources */,
+				5C931DE11F1DA1F9005D6D2B /* DQNavigationBar.m in Sources */,
 				464F05261D7FBB4A00C61574 /* MJPropertyKey.m in Sources */,
 				81E3F0C71D804DC9002A1387 /* DQNewsDetailViewController.m in Sources */,
 				4655B2651DE6C699006DE712 /* UIView+Shake.m in Sources */,
@@ -3245,6 +3261,7 @@
 				4649CA3F1D79204700FC1AFA /* ViewController+MASAdditions.m in Sources */,
 				4655B4081DE6D9A6006DE712 /* YYTextLine.m in Sources */,
 				4655B4021DE6D9A6006DE712 /* YYTextContainerView.m in Sources */,
+				5C931DDE1F1D9F97005D6D2B /* DQNavigationVC.m in Sources */,
 				46490B6F1DAA2AFB00587896 /* DQCommunityIconCell.m in Sources */,
 				4649CA441D79204700FC1AFA /* MJRefreshFooter.m in Sources */,
 				4655B2661DE6C699006DE712 /* UIView+ViewController.m in Sources */,
@@ -3355,6 +3372,7 @@
 				4655B40E1DE6D9A6006DE712 /* YYTextRubyAnnotation.m in Sources */,
 				464551D81D97D4A4005A89E3 /* DQChineseTeamGifCell.m in Sources */,
 				4655B2CA1DE6C76D006DE712 /* TSBlurView.m in Sources */,
+				5C20AC661F04E08E009B6511 /* UIViewController+DQCheckTool.m in Sources */,
 				4655B2271DE6C699006DE712 /* UIControl+Block.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3447,7 +3465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";
@@ -3487,7 +3505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = MyDQD;
