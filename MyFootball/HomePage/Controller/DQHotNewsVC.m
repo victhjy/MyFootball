@@ -41,6 +41,11 @@
     [self initCache];
     [self loadData];
     
+//    WeakSelf
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        [weakSelf testRequest];
+//    }];
+//    [timer fire];
     // Do any additional setup after loading the view.
 }
 
@@ -80,7 +85,7 @@
         showedImages=(NSArray* )[cache objectForKey:DQCACHEKEYBannerImages];
     }
     else{
-        UIImage* image1=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://jiangsu.china.com.cn/uploadfile/2016/0811/1470877745678390.jpg"]]];
+        UIImage* image1=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cmsimg.sports.cn/Image/140829/54-140RZI133354.jpg"]]];
         UIImage* image2=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cmsimg.sports.cn/Image/140829/54-140RZI133354.jpg"]]];
         UIImage* image3=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://sports.scol.com.cn/gjfootball/img/attachement/jpg/site2/20120426/001d093215011103063056.jpg"]]];
         UIImage* image4=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cdnq.duitang.com/uploads/item/201502/02/20150202135339_XmNLE.thumb.700_0.jpeg"]]];
@@ -144,6 +149,18 @@
 }
 
 #pragma mark - Request
+
+- (void)testRequest {
+    __weak __typeof(self)weakSelf = self;
+    [[DQAFNetManager sharedManager] requestWithMethod:GET WithPath:APIHotNews WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+        DQHotNewsModel* model=[DQHotNewsModel mj_objectWithKeyValues:dic];
+
+        model.articles=[DQHotNewsSingleItem mj_objectArrayWithKeyValuesArray:model.articles];
+        DQLog(@"请求到了了 %ld 条数据",model.articles.count);
+        
+    } WithFailurBlock:^(NSError *error) {
+    }];
+}
 
 - (void)loadData {
     __weak __typeof(self)weakSelf = self;

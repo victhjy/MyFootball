@@ -13,5 +13,6 @@ target 'MyFootball' do
     pod 'JLRoutes'
     pod 'LKDBHelper'
     pod 'WCDB'
-
+    pod 'SDWebImage'
+    pod 'IQKeyboardManager'
 end

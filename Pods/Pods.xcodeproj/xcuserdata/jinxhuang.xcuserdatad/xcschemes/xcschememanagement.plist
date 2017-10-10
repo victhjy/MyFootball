@@ -4,60 +4,95 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HexColors.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JLRoutes.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LKDBHelper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-MyFootball.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>WCDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>23CF27B2BA6AC7125EFFEDA8C5AA819F</key>
+		<key>0AD4CF8043D551D5E25CFA7EF7326115</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3228A614A28C286F663816E682F81E0F</key>
+		<key>251BAD17812F7EBF6532EACF66F941C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8BE2FC04FF3C59CD64DD6B7AFE704081</key>
+		<key>279AA6726F52A334C45E85774BD21A3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A21B20898E3A3B7E58EA7773661AAA87</key>
+		<key>2B4F96AD9BDB4F9F6F6BBA1662EC4618</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A40E7949E2DDDE5D20FB32DF4537D3B9</key>
+		<key>3CD77640EDB7F9F58326327D7CADB3EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C408D4E183A88B763793C217A66A1950</key>
+		<key>58840F4BED3D5692B9C122BE73FE3DBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6EF37133B13049D6CAAC9B0E387312C</key>
+		<key>66F07F520EC712A6B0118628BD4A770E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC8C7580C4128442FE4CA33580490D37</key>
+		<key>AB57EF7D8B23701455085EC663E5FA40</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CCA9C33B127D6C859A3F8AFBEFCBABF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

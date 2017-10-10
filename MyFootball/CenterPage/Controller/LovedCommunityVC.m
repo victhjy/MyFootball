@@ -8,8 +8,22 @@
 #define color(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
 #import "LovedCommunityVC.h"
+#import "ZLPhotoActionSheet.h"
+#import <Photos/Photos.h>
+#import "ZLCollectionCell.h"
+#import "ZLPhotoModel.h"
+#import "ZLPhotoManager.h"
+#import "ZLPhotoBrowser.h"
+#import "ZLShowBigImgViewController.h"
+#import "ZLThumbnailViewController.h"
+#import "ZLNoAuthorityViewController.h"
+#import "ToastUtils.h"
+#import "ZLEditViewController.h"
 
-@interface LovedCommunityVC ()
+#include "AssetsLibrary/ALAssetsLibrary.h"
+#include "AssetsLibrary/ALAssetRepresentation.h"
+@interface LovedCommunityVC ()<UIImagePickerControllerDelegate,
+UINavigationControllerDelegate>
 
 @property (strong, nonatomic) CADisplayLink *displayLink;
 
@@ -24,6 +38,11 @@
 @property (strong, nonatomic) CAGradientLayer *gradientLayer;
 
 @property (strong, nonatomic) CAGradientLayer *gradientLayer2;
+
+@property (nonatomic, strong) NSArray *arrDataSources;
+@property (nonatomic, strong) NSMutableArray<UIImage *> *lastSelectPhotos;
+@property (nonatomic, strong) NSMutableArray<PHAsset *> *lastSelectAssets;
+@property(nonatomic, strong) UIImagePickerController *imagePickerController;
 
 @property(nonatomic,weak)UITextField* t;
 @property(nonatomic,strong)UIImageView* imageV;
@@ -64,25 +83,32 @@
     t.center=self.view.center;
     t.layer.borderWidth=1;
     self.t=t;
+    
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if (self.t.hidden) {
-        self.imageV.hidden=YES;
-        self.t.hidden=NO;
+    CGPoint touchP = [[touches anyObject] locationInView:self.view];
+    if (touchP.y < 250) {
+        [self.navigationController presentViewController:self.imagePickerController animated:YES completion:nil];
     }
-    else{
-        if (self.t.text.length>0) {
-            UIImage* QRImage=[MyTools generateQRCode:self.t.text];
-            self.t.hidden=YES;
-            
-            self.imageV=[[UIImageView alloc]initWithImage:QRImage];
-            [self.view addSubview:self.imageV];
-            self.imageV.center=self.view.center;
-            self.imageV.hidden=NO;
+    else if (touchP.y < self.view.height/2){
+        if (self.t.hidden) {
+            self.imageV.hidden=YES;
+            self.t.hidden=NO;
         }
         else{
-            [MyTools showText:@"没输入啊" inView:self.view];
+            if (self.t.text.length>0) {
+                UIImage* QRImage=[MyTools generateQRCode:self.t.text];
+                self.t.hidden=YES;
+                
+                self.imageV=[[UIImageView alloc]initWithImage:QRImage];
+                [self.view addSubview:self.imageV];
+                self.imageV.center=self.view.center;
+                self.imageV.hidden=NO;
+            }
+            else{
+                [MyTools showText:@"没输入啊" inView:self.view];
+            }
         }
     }
 }
@@ -221,6 +247,111 @@
     animation.toValue = toValue;
     [_gradientLayer2 addAnimation:animation forKey:@"gradientLayer"];
     
+}
+
+- (ZLPhotoActionSheet *)getPas
+{
+    ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+    //如果调用的方法没有传sender，则该属性必须提前赋值
+    actionSheet.sender = self;
+    
+    actionSheet.arrSelectedAssets =self.lastSelectAssets;
+    
+    weakify(self);
+    [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        strongify(weakSelf);
+        strongSelf.arrDataSources = images;
+        strongSelf.lastSelectAssets = assets.mutableCopy;
+        strongSelf.lastSelectPhotos = images.mutableCopy;
+//        [strongSelf.collectionView reloadData];
+        
+        
+        
+        NSLog(@"image:%@", images);
+    }];
+    
+    return actionSheet;
+}
+#pragma mark - UIImagePickerController代理方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+//    UIImage *image= [info objectForKey:UIImagePickerControllerOriginalImage];//获取图片
+//    
+//    if (!image){return;}
+    
+    NSURL *imageURL = [info valueForKey:UIImagePickerControllerReferenceURL];
+    
+    ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)   {
+        ALAssetRepresentation *representation = [myasset defaultRepresentation];
+        NSDictionary * dic = [representation metadata];
+        NSLog(@"meta=%@",dic);
+        
+        NSString *fileName = [representation filename];
+        NSLog(@"fileName : %@",fileName);
+        
+        
+        if (dic && dic.allKeys.count < 100 && dic[@"{GPS}"]) {
+            dic  = dic[@"{GPS}"];
+            UITextView *tv = [[UITextView alloc]initWithFrame:CGRectMake(0, UIScreenHeight/2+10, UIScreenWidth, UIScreenHeight/2-50)];
+            tv.text = [MyTools convertToJsonData:dic];
+            tv.scrollEnabled = YES;
+            [self.view addSubview:tv];
+        }
+        else{
+            [MyTools showText:@"无位置信息" inView:self.view];
+        }
+
+    };
+    
+    ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init]  ;
+    [assetslibrary assetForURL:imageURL
+                   resultBlock:resultblock
+                  failureBlock:nil];
+    
+//    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((CFURLRef)imageURL, NULL);
+//    if (imageSource) {
+//        CFDictionaryRef imageInfo = CGImageSourceCopyPropertiesAtIndex(imageSource, 0,NULL);
+//        NSDictionary *exifDic = (__bridge NSDictionary *)CFDictionaryGetValue(imageInfo, kCGImagePropertyExifDictionary) ;
+//        
+//        
+//        UITextView *tv = [[UITextView alloc]initWithFrame:CGRectMake(0, UIScreenHeight/2+40, UIScreenWidth, UIScreenHeight/2-50)];
+//        tv.text = [MyTools convertToJsonData:exifDic];
+//        tv.scrollEnabled = YES;
+//        tv.editable = YES;
+//        [self.view addSubview:tv];
+//    }
+//    else{
+//        [MyTools showText:@"无位置信息" inView:self.view];
+//    }
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - Getter
+
+-(NSMutableArray *)lastSelectAssets{
+    if (!_lastSelectAssets) {
+        _lastSelectAssets = [NSMutableArray new];
+    }
+    return _lastSelectAssets;
+}
+
+-(UIImagePickerController *)imagePickerController
+{
+    if (!_imagePickerController)
+    {
+        _imagePickerController = [[UIImagePickerController alloc] init];
+        _imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        _imagePickerController.delegate = self;
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    return _imagePickerController;
 }
 
 - (void)didReceiveMemoryWarning {

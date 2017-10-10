@@ -297,5 +297,71 @@
     return currVC;
 }
 
+//字典、数组转json
++(NSString *)convertToJsonData:(id )dict
+
+{
+    
+    NSError *error;
+    if (!dict) {
+        return @"json null";
+    }
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSString *jsonString;
+    
+    if (!jsonData) {
+        
+        NSLog(@"%@",error);
+        
+    }else{
+        
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+    }
+    
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+    
+    NSRange range = {0,jsonString.length};
+    
+    //去掉字符串中的空格
+    
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+    
+    NSRange range2 = {0,mutStr.length};
+    
+    //去掉字符串中的换行符
+    
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+    
+    return mutStr;
+    
+}
+
+
+//保存图片
++(void)saveImageDocuments:(UIImage *)image andName:(NSString *) imageName{
+    //拿到图片
+    UIImage *imagesave = image;
+    NSString *path_sandox = NSHomeDirectory();
+    NSString *imagePathStr = [NSString stringWithFormat:@"/Documents/%@.png",imageName];
+    //设置一个图片的存储路径
+    NSString *imagePath = [path_sandox stringByAppendingString:imagePathStr];
+    //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
+    [UIImagePNGRepresentation(imagesave) writeToFile:imagePath atomically:YES];
+}
+// 读取并存贮到相册
++(UIImage *)getDocumentImageFromName:(NSString *)imageName{
+    // 读取沙盒路径图片
+    NSString *aPath3=[NSString stringWithFormat:@"%@/Documents/%@.png",NSHomeDirectory(),imageName];
+    // 拿到沙盒路径图片
+    UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
+    // 图片保存相册
+    UIImageWriteToSavedPhotosAlbum(imgFromUrl3, self, nil, nil);
+    return imgFromUrl3;
+}
+
+
 
 @end

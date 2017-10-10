@@ -110,4 +110,14 @@ typedef void (^EventBlock)(id info);
  *          获取当前控制器
  */
 +(UIViewController *)currentViewController;
+
+//字典、数组转json
++(NSString *)convertToJsonData:(id )dict;
+
+
+//保存图片
++(void)saveImageDocuments:(UIImage *)image andName:(NSString *) imageName;
+
+//获取图片
++(UIImage *)getDocumentImageFromName:(NSString *)imageName;
 @end

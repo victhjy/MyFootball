@@ -38,6 +38,7 @@
 #import "UIViewController+MAC.h"
 #import "UINavigationBar+Awesome.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
+#import "DQAppManager.h"
 
 #import "UINavigationController+MAC.h"
 #import "UIApplication+AppInfo.h"

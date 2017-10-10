@@ -77,42 +77,41 @@
          WithSuccessBlock:(requestSuccessBlock)success
           WithFailurBlock:(requestFailureBlock)failure
 {
-//    AFNetworkReachabilityManager*manager = [AFNetworkReachabilityManager sharedManager];
-//    
-//    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//        //代码
-//        if(status==AFNetworkReachabilityStatusNotReachable){
-//            [MyTools showText:@"没网啊" inView:uniqueWindow];
-//        }
-//    } ];
-    
-//    MBProgressHUD* hud=[MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] getCurrentViewController].view animated:YES];
-//    hud.mode=MBProgressHUDModeIndeterminate;
-//    hud.removeFromSuperViewOnHide=YES;
-
     switch (method) {
         case GET:{
             [self GET:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
-//                NSLog(@"JSON: %@", responseObject);
                 success(responseObject);
-//                [hud hide:YES];
+                
+                if ([DQAppManager share].simulator) {
+                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                    dispatch_async(queue, ^{
+                        NSString *log = [NSString stringWithFormat:@"url:%@\nparam:%@\nresponse:%@",path,[MyTools convertToJsonData:params],[MyTools convertToJsonData:responseObject]];
+                        [[DQAppManager share] recordHttpRequestLog:log];
+                    });
+                }
+                
 
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 DQLog(@"Error: %@", error);
                 failure(error);
 
-//                [hud hide:YES];
             }];
             break;
         }
         case POST:{
             [self POST:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
-                DQLog(@"JSON: %@", responseObject);
+//                DQLog(@"JSON: %@", responseObject);
                 success(responseObject);
+                
+                if ([DQAppManager share].simulator) {
+                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                    dispatch_async(queue, ^{
+                        NSString *log = [NSString stringWithFormat:@"url:%@\nparam:%@\nresponse:%@",path,[MyTools convertToJsonData:params],[MyTools convertToJsonData:responseObject]];
+                        [[DQAppManager share] recordHttpRequestLog:log];
+                    });
+                }
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 DQLog(@"Error: %@", error);
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:error.localizedDescription delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert show];
                 failure(error);
             }];
             break;

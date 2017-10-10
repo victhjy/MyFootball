@@ -4,29 +4,37 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - HexColors (4.0.0)
+  - IQKeyboardManager (4.0.11)
   - JLRoutes (1.6.2)
   - LKDBHelper (2.3.4):
     - FMDB
   - pop (1.0.9)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
   - WCDB (1.0.1)
 
 DEPENDENCIES:
   - Bugly
   - HexColors
+  - IQKeyboardManager
   - JLRoutes
   - LKDBHelper
   - pop (~> 1.0)
+  - SDWebImage
   - WCDB
 
 SPEC CHECKSUMS:
   Bugly: 3b56d8365c5687f74fd6fbb50c5b7ede3cdac96c
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   JLRoutes: 00671e008acb226b8b4c2385318dc1c583ef0dcf
   LKDBHelper: 21fed3d2a010ea6f97996490abd717d379f9c772
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  WCDB: 6484b59d8017c8aeeac0232a9cc65f3c7df71157
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  WCDB: 7eb5e50fb4b5ba14da3454fb1d1999c9eed2e9ae
 
-PODFILE CHECKSUM: 84c8ef3279520a7a77a65bbbb5fec1a6441dd50e
+PODFILE CHECKSUM: e4eebc979393d83644829cbaa7b4b3622f3fdf20
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
