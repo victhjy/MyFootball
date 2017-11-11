@@ -15,4 +15,5 @@ target 'MyFootball' do
     pod 'WCDB'
     pod 'SDWebImage'
     pod 'IQKeyboardManager'
+    pod 'Google-Mobile-Ads-SDK'
 end

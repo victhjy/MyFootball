@@ -8,7 +8,9 @@
 
 #import "MyTools.h"
 #import <CoreImage/CoreImage.h>
+#import <AdSupport/AdSupport.h>
 
+static NSString * const kDeviceIdentifier = @"kDeviceIdentifier";
 @implementation MyTools
 
 + (UIColor *)colorWithHexString:(NSString *)hexColorString {
@@ -362,6 +364,10 @@
     return imgFromUrl3;
 }
 
++ (NSString *)getDeviceIdentifier {
+    NSString *udid = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    return udid;
+}
 
 
 @end

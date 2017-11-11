@@ -120,4 +120,6 @@ typedef void (^EventBlock)(id info);
 
 //获取图片
 +(UIImage *)getDocumentImageFromName:(NSString *)imageName;
+
++(NSString *)getDeviceIdentifier;
 @end

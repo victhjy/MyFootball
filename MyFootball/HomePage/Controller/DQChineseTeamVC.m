@@ -11,10 +11,12 @@
 #import "DQChineseTeamCell.h"
 #import "DQNewsDetailViewController.h"
 #import "DQChineseTeamGifCell.h"
+@import GoogleMobileAds;
 @interface DQChineseTeamVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray* articles;
 @property(nonatomic,strong)DQChineseTeamModel* model;
+@property(nonatomic, strong) GADBannerView *bannerView;
 @end
 
 @implementation DQChineseTeamVC
@@ -53,7 +55,7 @@ static NSString* reuseGifCell=@"gifCell";
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 50, 0));
+        make.edges.equalTo(self.view).mas_offset(UIEdgeInsetsMake(0, 0, 100, 0));
     }];
     _tableView.scrollsToTop=YES;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
@@ -70,6 +72,22 @@ static NSString* reuseGifCell=@"gifCell";
         [weakself loadMoreArticlesWithModel:self.model];
     }];
     _tableView.backgroundColor=[MyTools colorWithHexString:@"0xf4f3f4"];
+    
+    self.bannerView = [[GADBannerView alloc]initWithFrame:CGRectMake(0,self.view.height - 50, UIScreenWidth, 50)];;
+    [self.view addSubview:self.bannerView];
+
+    self.bannerView.adUnitID = @"ca-app-pub-5964239870068429/6168523693";
+    self.bannerView.rootViewController = self;
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    request.testDevices = @[
+                            [MyTools getDeviceIdentifier]  // Eric's iPod Touch
+                            ];
+    [self.bannerView loadRequest:request];
+    
 }
 
 #pragma mark TableView Delegate

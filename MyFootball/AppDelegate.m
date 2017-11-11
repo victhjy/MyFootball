@@ -12,6 +12,7 @@
 #import <Bugly/Bugly.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "DQNewsDetailViewController.h"
+@import GoogleMobileAds;
 
 @interface AppDelegate ()
 
@@ -24,12 +25,17 @@
     // Override point for customization after application launch.
     
     //腾讯bugly
-    [Bugly startWithAppId:BuglyAppID];
+//    [Bugly startWithAppId:BuglyAppID];
     
     //JLRouter
     [self registerJLRouters];
     
-    
+//    Download the Google Mobile Ads SDK.
+//    Follow the SDK integration guide. Specify ad type, size and placement when you integrate the code.
+//    App ID: ca-app-pub-5964239870068429~8495304136
+//    Ad unit ID: ca-app-pub-5964239870068429/6168523693
+    // Initialize Google Mobile Ads SDK
+    [GADMobileAds configureWithApplicationID:@"ca-app-pub-5964239870068429~8495304136"];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     [self setupAFN];
